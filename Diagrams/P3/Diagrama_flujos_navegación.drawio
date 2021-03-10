@@ -1,1 +1,67 @@
-<mxfile host="app.diagrams.net" modified="2021-03-10T17:28:56.739Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36" version="14.4.6" etag="8ZNsfFAzb6r2gkJORgXR" type="github"><diagram id="P8r9rNyO7EW6EXqI-jp5">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-03-10T17:40:40.173Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36" etag="SBZ-4Ms6sGl5Ndfk1aVF" version="14.4.6" type="github">
+  <diagram id="P8r9rNyO7EW6EXqI-jp5" name="Page-1">
+    <mxGraphModel dx="1038" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4_WWaViknrb365EZA3EA-23" value="" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="110" width="440" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="4_WWaViknrb365EZA3EA-4" target="4_WWaViknrb365EZA3EA-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-4" value="Autenticación del tutor" style="html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="220" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="4_WWaViknrb365EZA3EA-5" target="4_WWaViknrb365EZA3EA-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-5" value="Visualización&lt;br&gt;&amp;nbsp;solicitudes" style="html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="330" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="4_WWaViknrb365EZA3EA-6" target="4_WWaViknrb365EZA3EA-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="445" />
+              <mxPoint x="560" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="4_WWaViknrb365EZA3EA-6" target="4_WWaViknrb365EZA3EA-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="445" />
+              <mxPoint x="280" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4_WWaViknrb365EZA3EA-6" target="4_WWaViknrb365EZA3EA-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-6" value="Responder solicitud" style="html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="359" y="420" width="121" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-8" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="402.5" y="130" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-9" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" source="4_WWaViknrb365EZA3EA-8" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="417.5" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-16" value="Selección de solicitud" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="380" width="130" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-17" value="Aceptada" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="380" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-18" value="Denegada" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="380" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="4_WWaViknrb365EZA3EA-19" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="405" y="490" width="30" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
