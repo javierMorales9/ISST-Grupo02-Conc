@@ -7,17 +7,17 @@ descripcion_servicio, links_navegacion, link_hoteles, footer_upper_text, footer_
 export default class NavBar extends React.Component {
 	render() {
 		return (
-			<div style={{backgroundColor: 'black', listStyleType:'none', padding:'0em', margin:'auto', display:'flex', alignItems:'center', justifyContent: 'center', position: 'sticky', top: '0', width: '100%'}}>
-				<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20%', margin:'1em 1em'}}>
+			<div style={{backgroundColor: 'black', padding:'0em', display:'flex', alignItems:'center', justifyContent: 'center', position: 'sticky', top: '0', width: '100%'}}>
+				<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20%'}}>
 					<a style={link_hoteles_titulo} href='/'>Hotels</a>
 				</div>
-				<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '60%', margin:'0 2.5em 0'}}>
+				<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '60%'}}>
 					<a style={links_titulo} href='/booking'>Reserva</a>
 					<a style={links_titulo} href='/room_service'>Servicio</a>
 					<a style={links_titulo} href='/transport'>Transportes</a>
 					<a style={links_titulo} href='/leisure'>Ocio</a>
 				</div>
-				<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20%', margin:'1em 1em'}}>
+				<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20%'}}>
 					<a style={links_titulo} href='/profile'>Link al perfil</a>
 				</div>
 			</div>

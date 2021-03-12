@@ -12,7 +12,7 @@ export default class Game extends React.Component {
 		return (
 			<div style={{background: 'D0D0D0'}}>
 
-				<div style={{backgroundImage: 'url(' + color + ')', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', position:'absolute', height:'100%', width: '100%', left:'0', top:'0'}}>
+				<div style={{backgroundImage: 'url(' + color + ')', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height:'100%', width: '100%', left:'0', top:'0'}}>
 
 					<div style={{listStyleType:'none', padding:'0em', margin:'auto', display:'flex', alignItems:'center', justifyContent: 'center'}}>
 						<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20%', margin:'1em 1em'}}>
@@ -40,7 +40,7 @@ export default class Game extends React.Component {
 				</div>
 
 				
-				<div style={{marginTop: '3.5em', fontSize: '200px', padding: '20px', display: 'grid', alignItems:'center', justifyContent: 'center'}}>
+				<div style={{marginTop:'40px', fontSize: '200px', display: 'grid', alignItems:'center', justifyContent: 'center'}}>
 					<span style={subtitulo}><u>Servicios</u></span>
 				</div>
 
