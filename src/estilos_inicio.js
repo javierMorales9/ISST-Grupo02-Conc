@@ -21,9 +21,6 @@ export const footer_upper_text={
 	fontStyle: 'normal',
 	fontWeight: 'normal',
 	fontSize: '55px',
-	lineHeight: '137px',
-	display: 'flex',
-	alignItems: 'center',
 	textAlign: 'center',
 	color: '#FFFFFF'
 }
@@ -33,9 +30,6 @@ export const footer_lower_text={
 	fontStyle: 'normal',
 	fontWeight: 'normal',
 	fontSize: '40px',
-	lineHeight: '100px',
-	display: 'flex',
-	alignItems: 'center',
 	textAlign: 'center',
 	color: '#FCFCFC'
 }
@@ -53,6 +47,39 @@ export const titulo={
 	alignItems: 'center',
 	textAlign: 'center',
 	color: '#503000'
+}
+
+
+export const links_titulo={
+	listStyleType:'none', 
+	margin:'1rem', 
+	padding:'5px',
+	marginLeft:'1.8em',
+	marginRight:'1.8em',
+	display:'flex', 
+	alignItems:'center',
+	justifyContent: 'center',
+	fontFamily: 'Habibi',
+	fontStyle: 'normal',
+	fontWeight: 'normal',
+	fontSize: '25px',
+	lineHeight: '62px',
+	display: 'flex',
+	alignItems: 'center',
+	textAlign: 'center',
+	color: '#51351B'
+}
+
+export const link_hoteles_titulo={
+	fontFamily: 'Habibi',
+	fontStyle: 'normal',
+	fontWeight: 'normal',
+	fontSize: '50px',
+	lineHeight: '97px',
+	display: 'flex',
+	alignItems: 'center',
+	textAlign: 'center',
+	color: '#51351B',
 }
 
 export const descripcion_titulo={
@@ -80,22 +107,20 @@ export const foto_inicio={
 
 export const subtitulo={
 	fontFamily: 'Habibi',
-	fontStyle: 'normal',
 	fontWeight: 'normal',
 	fontSize: '50px',
-	lineHeight: '62px',
-	display: 'flex',
-	alignItems: 'center',
 	textAlign: 'center',
 	color: '#503000'
 }
 
 export const cuadrados_servicios={
 	width: '609px',
+	backgroundColor: 'white',
 	height: '515px',
+	padding: '15px',
+	margin: '1em',
 	left: '54px',
 	top: '1087px',
-	background: '#FFFFFF',
 	border:' 2px solid #505149',
 	boxSizing: 'border-box'
 }
@@ -118,10 +143,12 @@ export const saber_mas={
 	fontWeight: 'normal',
 	fontSize: '30px',
 	lineHeight: '37px',
+	marginLeft: '2em',
 	display: 'flex',
 	alignItems: 'center',
 	textAlign: 'center',
-	color: '#F6FACB'
+	backgroundColor: '#5A5847',
+	color:'#F6FACB'
 }
 
 export const foto_servicio={
@@ -133,12 +160,10 @@ export const foto_servicio={
 
 export const descripcion_servicio={
 	fontFamily: 'Varela',
+	marginBottom: '10px',
 	fontStyle: 'normal',
 	fontWeight: 'normal',
 	fontSize: '15px',
-	lineHeight: '19px',
-	display: 'flex',
-	alignItems: 'center',
 	textAlign: 'center',
 	color: '#000000'
 }
@@ -158,8 +183,8 @@ export const links_navegacion={
 	listStyleType:'none', 
 	margin:'1rem', 
 	padding:'5px',
-	marginLeft:'1.5em',
-	marginRight:'1.5em',
+	marginLeft:'1.8em',
+	marginRight:'1.8em',
 	display:'flex', 
 	alignItems:'center',
 	justifyContent: 'center',
@@ -171,7 +196,7 @@ export const links_navegacion={
 	display: 'flex',
 	alignItems: 'center',
 	textAlign: 'center',
-	color: '#51351B'
+	color: '#BF5900'
 }
 
 export const link_hoteles={
@@ -183,7 +208,7 @@ export const link_hoteles={
 	display: 'flex',
 	alignItems: 'center',
 	textAlign: 'center',
-	color: '#51351B',
+	color: '#BF5900',
 }
 
 // PAGINA RESERVAS: LOS ESTILOS DE LOS TITULOS == SUBTITULO
