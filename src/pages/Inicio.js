@@ -17,16 +17,16 @@ render() {
 
 			    <div style={{listStyleType:'none', padding:'0em', margin:'auto', display:'flex', alignItems:'center', justifyContent: 'center'}}>
 			    	<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20%', margin:'1em 1em'}}>
-			    		<a style={link_hoteles_titulo}>Hotels</a>
+						<a style={link_hoteles} href='/'>Hotels</a>
 			    	</div>
 					<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '60%', margin:'0 2.5em 0'}}>
-						<a style={links_titulo}>Reserva</a>
-						<a style={links_titulo}>Servicio</a>
-						<a style={links_titulo}>Transportes</a>
-						<a style={links_titulo}>Ocio</a>
+						<a style={links_titulo} href='/booking'>Reserva</a>
+						<a style={links_titulo} href='/room_service'>Servicio</a>
+						<a style={links_titulo} href='/transport'>Transportes</a>
+						<a style={links_titulo} href='/leisure'>Ocio</a>
 					</div>
 					<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20%', margin:'1em 1em'}}>
-						<a style={links_titulo}>Link al perfil</a>
+						<a style={links_titulo} href='/profile'>Link al perfil</a>
 					</div>
 			    </div>
 
