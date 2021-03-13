@@ -12,7 +12,7 @@ export default class RoomService extends React.Component {
 
             <NavBar/>
 
-            <h1 className='subtitulo'>RoomService</h1>
+            <h1 className='subtitulo'>Room Service</h1>
             <hr style={{color:'gray', width: '70%', border:'2px solid'}}/>
 
             <Footer/>

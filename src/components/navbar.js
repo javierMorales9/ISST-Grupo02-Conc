@@ -18,7 +18,7 @@ export default class NavBar extends React.Component {
 			</div>
 			<div style={{flex:'2', display:'flex', justifyContent:'center'}}>
 				<li>
-					<a  href='/booking'>Reserva</a>
+					<a  href='/booking'>Reservas</a>
 				</li>
 				<li>
 					<a href='/room_service'>RoomService</a>
