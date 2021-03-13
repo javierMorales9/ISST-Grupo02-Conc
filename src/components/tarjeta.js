@@ -1,6 +1,6 @@
 import React from 'react';
 import obras from '../media/obras.png';
-import {cuadrados_servicios, descripcion_servicio, saber_mas, titulo_servicio} from '../public/estilos_inicio';
+import {cuadrados_servicios, descripcion_servicio, button_saber_mas, saber_mas, titulo_servicio} from '../public/estilos_inicio';
 
 export default class Tarjeta extends React.Component {
 	render() {
@@ -9,14 +9,16 @@ export default class Tarjeta extends React.Component {
                 <div style={{display: 'grid', alignItems: 'center', justifyContent: 'center'}}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <hr style={{color:'#5A5847', width: '9em'}}/>
-                        <h2 style={titulo_servicio}>Reserva Estancia</h2>
+                        <h2 style={titulo_servicio}>{this.props.titulo}</h2>
                         <hr style={{color:'#5A5847', width: '9em'}}/>
                     </div>
-                    <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div style={{display: 'flex', alignItems: 'center', justifyContent:'space-around'}}>
                         <img src={obras} style={{width: '50%'}}/>
-                        <button style={saber_mas}>Saber Mas</button>
+                        <button style={button_saber_mas}>
+                            <a style={saber_mas} href={this.props.navigate}>Saber Mas</a>
+                        </button>
                     </div>
-                    <div style={{width:'100%', paddingBottom:'10px'}}>
+                    <div style={{width:'100%', paddingTop:'20px'}}>
                         <span style={{descripcion_servicio}}>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum, ipsum morbi turpis feugiat eros enim. 
                             Nec nulla orci sed vitae nulla nam luctus mattis pellentesque. Amet elit tellus dolor fermentum felis. 

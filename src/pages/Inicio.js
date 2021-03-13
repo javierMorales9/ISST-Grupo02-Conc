@@ -20,12 +20,12 @@ export default class Game extends React.Component {
 
 				<div style={{display: 'grid', padding: '20px'}}>
 					<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', margin:'10px 10px 10px 10px'}}>
-						<Tarjeta/>
-						<Tarjeta/>
+						<Tarjeta titulo={'Reserva estancia'} navigate={'/booking'}/>
+						<Tarjeta titulo={'Room Service'} navigate={'/room_service'}/>
 					</div>	
 					<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', margin:'10px 10px 10px 10px'}}>
-						<Tarjeta/>
-						<Tarjeta/>
+						<Tarjeta titulo={'Transporte'} navigate={'/transport'}/>
+						<Tarjeta titulo={'Ocio'} navigate={'/leisure'}/>
 					</div>				
 				</div>
 

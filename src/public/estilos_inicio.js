@@ -136,7 +136,17 @@ export const titulo_servicio={
 	display: 'flex',
 	alignItems: 'center',
 	textAlign: 'center',
-	color: '#5A5847'
+
+}
+
+export const button_saber_mas={
+	marginLeft: '2em',
+	display: 'flex',
+	alignItems: 'center',
+	textAlign: 'center',
+	backgroundColor: '#5A5847',
+	color:'#F6FACB',
+	textDecoration: 'none'
 }
 
 export const saber_mas={
@@ -144,13 +154,8 @@ export const saber_mas={
 	fontStyle: 'normal',
 	fontWeight: 'normal',
 	fontSize: '30px',
-	lineHeight: '37px',
-	marginLeft: '2em',
-	display: 'flex',
-	alignItems: 'center',
-	textAlign: 'center',
-	backgroundColor: '#5A5847',
-	color:'#F6FACB'
+	color:'#F6FACB',
+	textDecoration: 'none'
 }
 
 export const foto_servicio={
