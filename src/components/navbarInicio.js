@@ -15,7 +15,7 @@ export default class NavBarInicio extends React.Component {
                     </div>
                     <div style={{flex:'2', display: 'flex', justifyContent: 'center'}}>
                         <a className='link_titulo' href='/booking'>Reserva</a>
-                        <a className='link_titulo' href='/room_service'>Servicio</a>
+                        <a className='link_titulo' href='/room_service'>RoomService</a>
                         <a className='link_titulo' href='/transport'>Transportes</a>
                         <a className='link_titulo' href='/leisure'>Ocio</a>
                     </div>

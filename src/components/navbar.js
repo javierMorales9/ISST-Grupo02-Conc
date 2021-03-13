@@ -21,7 +21,7 @@ export default class NavBar extends React.Component {
 					<a  href='/booking'>Reserva</a>
 				</li>
 				<li>
-					<a href='/room_service'>Servicio</a>
+					<a href='/room_service'>RoomService</a>
 				</li>
 				<li>
 					<a href='/transport'>Transportes</a>
