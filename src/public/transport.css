@@ -1,0 +1,93 @@
+
+.raya_titulo{
+    color:gray;
+    width: 70%;
+    border: 2px solid;
+}
+
+.map{
+    width: 600px;
+    height: 500px;
+    position: relative;
+}
+
+.category{
+    text-align:center;
+    color: #503000;
+    margin-top: 84px;
+    text-decoration: underline;
+}
+
+#reseras_general_transporte{
+    width:100%;
+    display: flex;
+    justify-content:center;
+}
+
+#reservas_hechas{
+    width: 1400px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    margin:4px;
+}
+
+#mis_reservas{
+    width: 600px;
+}
+
+.reserva_transporte{
+    padding:8px;
+    border: solid 1px;
+    margin-bottom:10px;
+}
+
+.formulario_reserva{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    padding-bottom: 24px;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+    font-size: 24px;
+    font-family: Habibi;
+}
+
+label{
+    margin:12px;
+}
+
+#form_esp{
+    display:flex;
+    flex-direction:column;
+}
+
+#form_hab input{
+    width: 54px;
+    height: 40px;
+}
+
+#form_tipo select{
+    width:90px; 
+    height: 30px;
+    margin-left: 5px;
+}
+
+#form_esp textarea{
+    justify-self: center;
+    width: 700px;
+    height:350px;
+    margin-top: 5px;
+}
+
+#form_submit{
+    align-self:flex-end;
+    width: 97px;
+    height: 40px;
+    background-color: #503000;
+    color: #FAF4EB;
+    border: none;
+}

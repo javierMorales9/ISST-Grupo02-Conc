@@ -1,4 +1,5 @@
 #navbar {
+	z-index: 2;
     overflow: hidden;
     background-color:#362e27;
     display: flex;
