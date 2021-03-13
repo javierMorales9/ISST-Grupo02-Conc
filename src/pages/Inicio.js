@@ -7,7 +7,7 @@ import Tarjeta from '../components/tarjeta.js';
 import obras from '../media/obras.png';
 
 
-export default class Game extends React.Component {
+export default class Inicio extends React.Component {
 	render() {
 		return (
 			<div style={{background: 'D0D0D0'}}>

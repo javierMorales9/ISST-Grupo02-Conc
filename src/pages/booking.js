@@ -6,7 +6,7 @@ import obras from '../media/obras.png'
 import NavBar from '../components/navbar.js'
 import Footer from '../components/footer.js'
 
-export default class Game extends React.Component {
+export default class Booking extends React.Component {
     render() {
         return (
           <div>
