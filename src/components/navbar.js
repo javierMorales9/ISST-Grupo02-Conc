@@ -2,6 +2,7 @@
 import React from 'react';
 import Diamond from './diamond.js';
 import '../public/navbar.css';
+import default_profile from '../media/default_profile.jpeg';
 
 export default class NavBar extends React.Component {
 	render() {
@@ -31,7 +32,9 @@ export default class NavBar extends React.Component {
 			</div>
 			<div style={{flex:'1', display:'flex', justifyContent:'flex-end'}}>
 				<li>
-					<a href='/profile'>Link al perfil</a>
+					<a href='/profile' style={{paddingBottom: '0'}}>
+						<img src={default_profile} className='image'/>
+					</a>
 				</li>	
 			</div>
 		</div>
