@@ -1,5 +1,5 @@
 import React from 'react';
-import {titulo, descripcion_titulo, links_titulo, link_hoteles_titulo, background_image} from '../public/estilos_inicio';
+import {titulo, descripcion_titulo, background_image} from '../public/estilos_inicio';
 import Diamond from './diamond';
 import '../public/navbar.css';
 import default_profile from '../media/default_profile.jpeg';
@@ -20,7 +20,7 @@ export default class NavBarInicio extends React.Component {
                         <a className='link_titulo' href='/leisure'>Ocio</a>
                     </div>
                     <div style={{flex:'1', display: 'flex', justifyContent: 'flex-end'}}>
-                        <a className='link_titulo' href='/profile'>
+                        <a className='link_profile' href='/profile'>
                             <img src={default_profile} className='image'/>
                         </a>
                     </div>

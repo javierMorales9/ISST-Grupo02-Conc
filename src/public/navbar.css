@@ -63,6 +63,15 @@ li:hover{
 	color: #51351B;
 }
 
+.link_profile{  
+	padding:5px;
+	margin-left:1.8em;
+	margin-right:1.8em;
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
 .link_hotel{
   font-family: 'Habibi';
 	font-style: normal;
