@@ -1,5 +1,3 @@
-import React from 'react';
-
 // PARA EL FOOTER
 
 export const footer={
@@ -12,7 +10,7 @@ export const footer={
 	left: '0',
 	right: '0',
 	padding: '0',
-	margin:'0 0 0'
+	marginTop: '-1px'
 }
 
 
@@ -51,14 +49,10 @@ export const titulo={
 
 
 export const links_titulo={
-	listStyleType:'none', 
-	margin:'1rem', 
+	listStyleType:'none',  
 	padding:'5px',
 	marginLeft:'1.8em',
 	marginRight:'1.8em',
-	display:'flex', 
-	alignItems:'center',
-	justifyContent: 'center',
 	fontFamily: 'Habibi',
 	fontStyle: 'normal',
 	fontWeight: 'normal',
@@ -76,9 +70,7 @@ export const link_hoteles_titulo={
 	fontWeight: 'normal',
 	fontSize: '50px',
 	lineHeight: '97px',
-	display: 'flex',
-	alignItems: 'center',
-	textAlign: 'center',
+	paddingLeft: '15px',
 	color: '#51351B',
 }
 

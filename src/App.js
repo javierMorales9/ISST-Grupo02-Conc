@@ -1,6 +1,4 @@
-import './App.css';
 import React, { Component } from 'react';
-import './App.css';
 import { connect } from 'react-redux';
 import Inicio from './pages/Inicio';
 import Booking from './pages/booking';
