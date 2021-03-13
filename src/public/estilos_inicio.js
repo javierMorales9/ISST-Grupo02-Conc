@@ -1,4 +1,5 @@
 // PARA EL FOOTER
+import color from '../media/color.jpeg';
 
 export const footer={
 	backgroundColor: 'rgba(81, 53, 27, 0.82)',
@@ -47,6 +48,15 @@ export const titulo={
 	color: '#503000'
 }
 
+export const background_image={
+	backgroundImage: 'url(' + color + ')', 
+	backgroundRepeat: 'no-repeat', 
+	backgroundSize: 'cover', 
+	height:'600px', 
+	width: '100%', 
+	left:'0', 
+	top:'0'
+}
 
 export const links_titulo={
 	listStyleType:'none',  
