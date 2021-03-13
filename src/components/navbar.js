@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Diamont from './diamont.js';
+import Diamond from './diamond.js';
 import '../public/navbar.css';
 
 export default class NavBar extends React.Component {
@@ -9,7 +9,7 @@ export default class NavBar extends React.Component {
 		<div id="navbar">
 			<div style={{flex:'1'}}>
 				<li style={{paddingTop:'15px', paddingLeft:'55px'}}>
-					<Diamont color={'#c0b4b4'}/>
+					<Diamond color={'#c0b4b4'}/>
 				</li>
 				<li style={{fontSize:'50px'}}>
 					<a  href='/'>Hotel</a>
