@@ -1,10 +1,8 @@
 import React from 'react';
-import {footer, titulo, descripcion_titulo, foto_inicio, subtitulo, cuadrados_servicios, titulo_servicio, saber_mas, foto_servicio, 
-descripcion_servicio, links_navegacion, link_hoteles, footer_upper_text, footer_lower_text, links_titulo, link_hoteles_titulo} from '../public/estilos_inicio';
 import NavBarInicio from '../components/navbarInicio.js';
 import Footer from '../components/footer.js';
 import Tarjeta from '../components/tarjeta.js';
-import obras from '../media/obras.png';
+import '../public/main_styles.css';
 
 
 export default class Inicio extends React.Component {
@@ -14,10 +12,9 @@ export default class Inicio extends React.Component {
 
 				<NavBarInicio/>
 				
-				<div style={{marginTop:'40px', fontSize: '200px', display: 'grid', alignItems:'center', justifyContent: 'center'}}>
-					<span style={subtitulo}><u>Servicios</u></span>
-				</div>
-
+				<h1 className='subtitulo'>Servicios</h1>
+				<hr style={{color:'gray', width: '70%', border:'2px solid'}}/>
+		
 				<div style={{display: 'grid', padding: '20px'}}>
 					<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', margin:'10px 10px 10px 10px'}}>
 						<Tarjeta titulo={'Reserva estancia'} navigate={'/booking'}/>

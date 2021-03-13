@@ -1,0 +1,30 @@
+.footer{
+	background-color: rgba(81, 53, 27, 0.82);
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	left: 0;
+	right: 0;
+	padding: 0;
+	margin-top: -1px;
+}
+
+.upper_text{
+    font-Family: Ibarra Real Nova;
+	font-Style: normal;
+	font-Weight: normal;
+	font-Size: 55px;
+	text-Align: center;
+	color: #FFFFFF;
+}
+
+.lower_text{
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	text-align: center;
+	color: #FCFCFC;
+}

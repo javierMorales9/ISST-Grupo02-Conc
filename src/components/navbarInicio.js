@@ -1,5 +1,4 @@
 import React from 'react';
-import {titulo, descripcion_titulo, background_image} from '../public/estilos_inicio';
 import Diamond from './diamond';
 import '../public/navbar.css';
 import default_profile from '../media/default_profile.jpeg';
@@ -7,7 +6,7 @@ import default_profile from '../media/default_profile.jpeg';
 export default class NavBarInicio extends React.Component {
 	render() {
 	   return(
-            <div id='inicio' style={background_image}>
+            <div id='navbar_main'>
                 <div style={{display:'flex', justifyContent: 'center'}}>
                     <div style={{flex:1, display: 'flex', padding:'10px 30px'}}>
                         <Diamond color={'#51351B'}/>
@@ -27,11 +26,11 @@ export default class NavBarInicio extends React.Component {
                 </div>
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
                     <div>
-                        <h1 style={titulo}>CONCIERGE</h1>
+                        <h1 className='titulo'>CONCIERGE</h1>
                     </div>
                     <div style={{direction:'flex', display:'column'}}>
-                        <span style={descripcion_titulo}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                        <span style={descripcion_titulo}>In sagittis nulla turpis urna, gravida. Mattis mauris sagittis.</span>
+                        <span className='descripcion_titulo'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                        <span className='descripcion_titulo'>In sagittis nulla turpis urna, gravida. Mattis mauris sagittis.</span>
                     </div>
                 </div>     
             </div>

@@ -3,7 +3,21 @@
     background-color:#362e27;
     display: flex;
     flex-direction: row;
-  }
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+#navbar_main {
+    background-image: url('../media/color.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:600px;
+    width: 100%; 
+    left:0;
+    top:0;
+}  
+
 #navbar ul {
   list-style-type: none;
   margin: 0;
@@ -46,6 +60,29 @@ li:hover{
 .image:hover{
   transform: scale(1.3);
   transition: 1.5s;
+}
+
+.titulo {
+  font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 72px;
+	line-height: 90px;
+	align-items: center;
+	text-align: center;
+	color: #503000;
+}
+
+.descripcion_titulo {
+  font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 56px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #503000;
 }
 
 .link_titulo{  

@@ -1,0 +1,60 @@
+.tarjeta{
+	width: 609px;
+	background-color: white;
+	height: 515px;
+	padding: 15px;
+	margin: 1em;
+	left: 54px;
+	top: 1087px;
+	border: 2px solid #505149;
+	box-sizing: border-box;
+}
+
+.titulo_servicio{
+	font-family: Varela;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 36px;
+	line-height: 47px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+.descripcion_servicio{
+	font-family: 'Varela';
+	margin-bottom: '10px';
+	font-style: 'normal';
+	font-weight: 'normal';
+	font-size: '15px';
+	text-align: 'center';
+	color: #000000;
+}
+
+.button{
+    margin-left: 2em;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	background-color: #5A5847;
+	color:#F6FACB;
+	text-decoration: none;
+}
+
+.text{
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	color:#F6FACB;
+	text-decoration: none;
+}
+
+.text:hover{
+	color: #000000;
+}
+
+.button:hover{
+	background: #F1D874;
+	box-shadow: black;
+}
