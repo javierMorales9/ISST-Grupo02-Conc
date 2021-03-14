@@ -22,7 +22,7 @@ export default function TarjetaReserva(props){
                             <p>Tipo de habitación: premium</p>
                         </div>
                         <div className='buttons_container'>
-                            <button className='booking_buttons'>Modifcar Reserva</button>
+                            <button className='booking_buttons' style={{marginRight:'40px'}}>Modifcar Reserva</button>
                             <button className='booking_buttons'>Cancelar Reserva</button>
                         </div>                
                     </div>
@@ -30,13 +30,14 @@ export default function TarjetaReserva(props){
                 
                 <div className='second_container'>
                     <div>
-                        Normativa sobre uso de las habitaciones: <a href=''>guía</a>
+                        Normativa de las habitaciones: <a href=''>guía</a>
                     </div>
-                    <div style = {{paddingRight:'20%'}}> Contacto : 9108921</div> 
+                    <div> Contacto : 9108921</div> 
                 </div>
 
-                <p style = {{textAlign:'center'}}>hotels.com</p>
-                                
+                <div className='third_container'>
+                    <p>hotels.com</p>
+                </div>                
             </div>
         </div>
 
