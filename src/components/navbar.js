@@ -9,14 +9,12 @@ export default class NavBar extends React.Component {
 	   return(
 		<div id="navbar">
 			<div style={{flex:'1'}}>
-				<li style={{paddingTop:'15px', paddingLeft:'55px'}}>
+				<li id='none' style={{display:'flex', alignItems: 'center', justifyContent:'flex-start', marginLeft:'30px',fontSize:'50px'}}>
 					<Diamond color={'#c0b4b4'}/>
-				</li>
-				<li style={{fontSize:'50px'}}>
-					<a  href='/'>Hotel</a>
+					<a style={{paddingLeft:'20px', paddingRight:'20px'}} href='/'>Hotel</a>
 				</li>
 			</div>
-			<div style={{flex:'2', display:'flex', justifyContent:'center'}}>
+			<div style={{flex:'2', display:'flex', justifyContent:'center', alignItems:'center'}}>
 				<li>
 					<a  href='/booking'>Reservas</a>
 				</li>
@@ -30,9 +28,9 @@ export default class NavBar extends React.Component {
 					<a  href='/leisure'>Ocio</a>
 				</li>
 			</div>
-			<div style={{flex:'1', display:'flex', justifyContent:'flex-end'}}>
+			<div style={{flex:'1', display:'flex', justifyContent:'flex-end', alignItems:'center'}}>
 				<li>
-					<a href='/profile' style={{paddingBottom: '0'}}>
+					<a href='/profile' style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
 						<img src={default_profile} className='image'/>
 					</a>
 				</li>	

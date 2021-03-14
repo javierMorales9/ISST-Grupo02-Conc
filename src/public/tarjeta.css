@@ -32,29 +32,24 @@
 }
 
 .button{
-    margin-left: 2em;
+    margin: 2em;
+	padding: 4px;
 	display: flex;
 	align-items: center;
 	text-align: center;
 	background-color: #5A5847;
 	color:#F6FACB;
 	text-decoration: none;
-}
-
-.text{
-    font-family: Ibarra Real Nova;
+	font-family: Ibarra Real Nova;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 30px;
 	color:#F6FACB;
-	text-decoration: none;
-}
-
-.text:hover{
-	color: #000000;
+    border: 1px solid black;
 }
 
 .button:hover{
+	color: #000000;
 	background: #F1D874;
 	box-shadow: black;
 }

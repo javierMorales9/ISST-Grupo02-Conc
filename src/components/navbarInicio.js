@@ -8,7 +8,7 @@ export default class NavBarInicio extends React.Component {
 	   return(
             <div id='navbar_main'>
                 <div style={{display:'flex', justifyContent: 'center'}}>
-                    <div style={{flex:1, display: 'flex', padding:'10px 30px'}}>
+                    <div style={{flex:1, display: 'flex', alignItems:'center',padding:'10px 30px'}}>
                         <Diamond color={'#51351B'}/>
                         <a className='link_hotel' href='/'>Hotel</a>
                     </div>
