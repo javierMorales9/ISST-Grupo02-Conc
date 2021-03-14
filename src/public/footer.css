@@ -11,6 +11,41 @@
 	margin-top: -1px;
 }
 
+.footer_logos{
+	flex: 2;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin: 10px 0px;
+}
+
+.footer_diamond1{
+	flex:1;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: 20px;
+}
+
+.footer_diamond2{
+	flex:1;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-right: 10px;
+}
+
+.footer_contact{
+	font-Family: Ibarra Real Nova;
+	font-Style: normal;
+	font-Weight: normal;
+	font-Size: 27px;
+	text-Align: center;
+	color: #FFFFFF;
+	margin: 15px 0px;
+}
+
 .upper_text{
     font-Family: Ibarra Real Nova;
 	font-Style: normal;
