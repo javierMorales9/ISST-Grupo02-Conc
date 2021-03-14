@@ -2,7 +2,7 @@
     width:100%;
     display:flex;
     justify-content:center;
-
+    text-align: center;
 }
 
 form{
@@ -27,7 +27,7 @@ label{
 }
 
 #form_tipo select{
-    width:90px; 
+    width: 90px; 
     height: 30px;
     margin-left: 5px;
 }
