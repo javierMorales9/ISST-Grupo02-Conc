@@ -1,37 +1,37 @@
-#container_bg{ 
-    padding-top: 20px;
-
+#container{ 
+    display: flex;
+    justify-content: center;
 }
-#booking_bg {
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    background-image: url('../media/descarga.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin:auto;
-    height:400px;
-    width: 40%; 
-    left: 60%;
+
+#imagen_reserva {
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;  
-
+    justify-content: flex-start;  
+    border: none;
+    background-image: url('../media/reserva.png');
+    background-size: cover;
+    height:400px;
+    width: 800px; 
 }
 #text_foto_top {
     font-family: Ibarra Real Nova;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 37px;
+	font-size: 20px;
 	text-align: center;
+    margin: 40px 150px;
     color:antiquewhite;
-
- 
 }
+
+#reservar_container{
+    width: 300px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgb(119, 45, 45);
+    text-decoration: none;
+}
+
 #span_butt {
     font-family: Ibarra Real Nova;
 	font-style: normal;
@@ -39,8 +39,14 @@
 	font-size: 37px;
 	text-align: center;
     color:black;
-
 }
+
+#reservar_container:hover{
+    transform: scale(1.2);
+	transition: 1.5s;
+}
+
+/* Hasta aqui comprobado */
 
 .booking_container{
     margin: auto;

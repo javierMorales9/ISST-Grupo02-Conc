@@ -1,42 +1,42 @@
 import React from 'react';
-import NavBar from '../components/navbar.js'
-import Footer from '../components/footer.js'
-import '../public/booking.css'
-
-import BookingButtons from '../components/actualbookings';
-
+import NavBar from '../components/navbar.js';
+import TarjetaReserva from '../components/actualbookings';
+import Footer from '../components/footer.js';
+import '../public/booking.css';
 
 export default class Booking extends React.Component {
     render() {
         return (
           <div>
+
             <NavBar/>
+
             <h1 className="subtitulo">Gestión de Reserva</h1> 
             <hr className="raya_titulo"/>
 
             <h2 className="category">Reservar</h2>
 
-            <div id = "container_bg"> 
-                <button id="booking_bg">
-                   
+            <div id='container'> 
+                <div id="imagen_reserva">
                     <h2 id='text_foto_top' >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
                         In sagittis nulla turpis urna, gravida. Mattis mauris sagittis.
                     </h2>
-                    <p id = 'span_butt'>RESERVAR</p>
-                 
-                </button>
+                    <a href='https://booking.com/' target='_blank'  id='reservar_container'>
+                        <p id ='span_butt'>RESERVAR</p>
+                    </a> 
+                </div>
             </div>
             
             <h2 className="category">Mis reservas</h2>
 
             <div >
             {[1,2].map((value,index) =>
-                    <BookingButtons/>)}
+                    <TarjetaReserva/>)}
             </div>                
             
-
             <Footer/>
+
           </div>
         );
     }

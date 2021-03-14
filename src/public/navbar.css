@@ -61,20 +61,20 @@ li:hover:not(#none){
 }
 
 .image{
-  width: 60px;
-  height: 60px;
-  border-radius: 45%;
-  object-fit: cover;
-  object-position: center;
+	width: 60px;
+	height: 60px;
+	border-radius: 45%;
+	object-fit: cover;
+	object-position: center;
 }
 
 .image:hover{
-  transform: scale(1.3);
-  transition: 1.5s;
+	transform: scale(1.3);
+	transition: 1.5s;
 }
 
 .titulo {
-  font-family: Ibarra Real Nova;
+  	font-family: Ibarra Real Nova;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 72px;
