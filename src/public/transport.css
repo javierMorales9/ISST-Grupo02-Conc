@@ -85,12 +85,12 @@ label{
 
 #form_submit{
     align-self:center;
+    border: 1px solid black;
     margin-top: 20px;
     width: 97px;
     height: 40px;
     background-color: #503000;
     color: #FAF4EB;
-    border: none;
 }
 
 #form_submit:hover{
