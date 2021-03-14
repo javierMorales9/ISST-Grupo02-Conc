@@ -4,11 +4,10 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ReduxProvider from './redux/ReduxProvider';
 
-
 ReactDOM.render(
-  <React.StrictMode>
-    <ReduxProvider />
-  </React.StrictMode>,
+    <React.StrictMode>
+      <ReduxProvider />
+    </React.StrictMode>,
   document.getElementById('root')
 );
 

@@ -25,7 +25,7 @@
 }
 
 #reservas_hechas{
-    width: 1400px;
+    width: 1100px;
     display:flex;
     justify-content: space-between;
     align-items:center;
@@ -33,7 +33,7 @@
 }
 
 #mis_reservas{
-    width: 600px;
+    width: 400px;
 }
 
 .reserva_transporte{

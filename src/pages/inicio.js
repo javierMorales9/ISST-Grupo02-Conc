@@ -15,7 +15,7 @@ export default class Inicio extends React.Component {
 				<h1 className='subtitulo'>Servicios</h1>
 				<hr style={{color:'gray', width: '70%', border:'2px solid'}}/>
 		
-				<div style={{display: 'grid', padding: '20px'}}>
+				<div style={{display: 'flex', flexDirection:'column',padding: '20px'}}>
 					<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', margin:'10px 10px 10px 10px'}}>
 						<Tarjeta titulo={'Reserva estancia'} navigate={'/booking'}/>
 						<Tarjeta titulo={'Room Service'} navigate={'/room_service'}/>
