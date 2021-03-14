@@ -20,28 +20,3 @@
 .texto{
     margin-bottom: 40px;
 }
-
-.leisure_tarjet{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-    background-repeat: no-repeat;
-    width: 1200px;
-    height: 700px;
-    margin: 80px 0px;
-}
-
-.leisure_title{
-    background-color: white;
-    position: relative;
-    width: 600px;   
-}
-
-.leisure_name{
-    font-family: Montserrat;
-	font-weight: bold;
-	font-size: 40px;
-	text-align: center;
-	color: #503000;
-}
