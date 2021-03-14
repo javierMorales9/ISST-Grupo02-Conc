@@ -51,10 +51,10 @@ export default class Transport extends React.Component {
               <div className="formulario_reserva">
                 <form>
                     <label id="form_hab">
-                        nºhabitacion: <input type="text" name="name"/>
+                        Nº habitacion: <input type="text" name="name"/>
                     </label>
                     <label id="form_tipo">
-                        tipo de transporte: 
+                        Tipo de transporte: 
                         <select>
                             <option selected value="none">--None--</option>
                             <option value="uber">Uber</option>
@@ -66,7 +66,7 @@ export default class Transport extends React.Component {
                          <br></br>
                         <textarea></textarea>
                     </label>
-                    <input id="form_submit" type="submit" value="Submit" />
+                    <input id="form_submit" type="submit" value="Enviar" />
                 </form>
               </div>
              

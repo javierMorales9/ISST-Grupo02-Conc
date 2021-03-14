@@ -46,7 +46,7 @@
     width:100%;
     display:flex;
     justify-content:center;
-    padding-bottom: 24px;
+    padding-bottom: 40px;
 }
 
 form{
@@ -84,10 +84,17 @@ label{
 }
 
 #form_submit{
-    align-self:flex-end;
+    align-self:center;
+    margin-top: 20px;
     width: 97px;
     height: 40px;
     background-color: #503000;
     color: #FAF4EB;
     border: none;
+}
+
+#form_submit:hover{
+    color: #000000;
+	background: #F1D874;
+	box-shadow: black;
 }
