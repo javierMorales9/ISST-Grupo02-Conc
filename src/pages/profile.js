@@ -29,8 +29,8 @@ export default class Profile extends React.Component {
 								<span className='datos'>Metodo de pago: Visa  E20...</span>
 								<span className='datos'>Tipo de cliente: Premium</span>
 								<div style={{display: 'flex', marginTop: '15px', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-									<button className='profile_actions'><span className='text_button'>Cambiar Contraseña</span></button>
-									<button className='profile_actions'><span className='text_button'>Cambiar Datos</span></button>
+									<button className='profile_actions'>Cambiar Contraseña</button>
+									<button className='profile_actions'>Cambiar Datos</button>
 								</div>
 						</div>
 					</div>

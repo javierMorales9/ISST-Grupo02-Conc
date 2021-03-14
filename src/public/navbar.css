@@ -10,14 +10,27 @@
 }
 
 #navbar_main {
-    background-image: url('../media/color.jpeg');
+	position: relative;
+	height:600px;
+    width: 100%;
+}  
+
+#navbar_main::before{
+	content:"";
+	position:absolute;
+	background-image: url('../media/color.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
-    height:600px;
-    width: 100%; 
     left:0;
     top:0;
-}  
+	opacity:0.75;
+	width:100%;
+	height:100%;
+}
+
+.no-background{
+	position:relative;
+}
 
 #navbar li {
   	list-style-type: none;

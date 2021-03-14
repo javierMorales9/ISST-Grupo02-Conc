@@ -14,9 +14,6 @@
 	margin-top: 12.5px;
 	transition-duration: 0.4s;
 	border: 1px solid black;
-}
-
-.text_button{
 	font-family: Asul;
 	font-style: normal;
 	font-weight: normal;
@@ -27,11 +24,8 @@
 	transition-duration: 0.4s;
 }
 
-.text_button:hover{
-	color: #000000;
-}
-
 .profile_actions:hover{
+	color: #000000;
 	background: #F1D874;
 	box-shadow: black;
 }
