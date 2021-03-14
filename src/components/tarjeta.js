@@ -14,9 +14,8 @@ export default class Tarjeta extends React.Component {
                     </div>
                     <div style={{display: 'flex', alignItems: 'center', justifyContent:'space-around'}}>
                         <img src={obras} style={{width: '50%'}}/>
-                        <button className='button'>
-                            <a className='text' href={this.props.navigate}>Saber Mas</a>
-                        </button>
+                        <a className='text' href={this.props.navigate}>Saber Mas</a>
+
                     </div>
                     <div style={{width:'100%', paddingTop:'20px'}}>
                         <span className='descripcion_servicio'>

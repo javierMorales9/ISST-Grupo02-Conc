@@ -1,8 +1,8 @@
 
 .raya_titulo{
-    color:gray;
-    width: 70%;
-    border: 2px solid;
+    width: 80%;
+    border-width: 0.1px ;
+    color:red;
 }
 
 .map{
@@ -13,9 +13,12 @@
 
 .category{
     text-align:center;
-    color: #503000;
+    color: #53360a;
     margin-top: 84px;
-    text-decoration: underline;
+    font-family: Varela, Tahoma, sans-serif;
+    font-size: 35px;
+    font-weight: 300;
+    text-decoration-line: underline;
 }
 
 #reseras_general_transporte{

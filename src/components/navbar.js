@@ -1,42 +1,33 @@
-
 import React from 'react';
 import Diamond from './diamond.js';
-import '../public/navbar.css';
+import '../public/navbar_pages.css';
 import default_profile from '../media/default_profile.jpeg';
 
 export default class NavBar extends React.Component {
 	render() {
 	   return(
 		<div id="navbar">
-			<div style={{flex:'1'}}>
-				<li style={{paddingTop:'15px', paddingLeft:'55px'}}>
-					<Diamond color={'#c0b4b4'}/>
-				</li>
-				<li style={{fontSize:'50px'}}>
-					<a  href='/'>Hotel</a>
-				</li>
+
+			<div id="links">
+				<div className="home_button">
+					<div id="Diamond"><Diamond color={"#FFFFFF"} x={"45"} y={"50"} /></div>
+					<a id="home_link" href='/'>Hotel</a>
+				</div>
+
+				<div id="pages">
+					<a className="page_link" href='/booking'>Reservas</a>
+					<a className="page_link" href='/room_service'>RoomService</a>
+					<a className="page_link" href='/transport'>Transportes</a>
+					<a className="page_link" href='/leisure'>Ocio</a>
+				</div>
 			</div>
-			<div style={{flex:'2', display:'flex', justifyContent:'center'}}>
-				<li>
-					<a  href='/booking'>Reservas</a>
-				</li>
-				<li>
-					<a href='/room_service'>RoomService</a>
-				</li>
-				<li>
-					<a href='/transport'>Transportes</a>
-				</li>
-				<li >
-					<a  href='/leisure'>Ocio</a>
-				</li>
+
+			<div id="profile">
+				<a className= "profile_link" href='/profile'>
+					<img id="profile_pic" src={default_profile}/>
+				</a>
 			</div>
-			<div style={{flex:'1', display:'flex', justifyContent:'flex-end'}}>
-				<li>
-					<a href='/profile' style={{paddingBottom: '0'}}>
-						<img src={default_profile} className='image'/>
-					</a>
-				</li>	
-			</div>
+
 		</div>
 
 	   );

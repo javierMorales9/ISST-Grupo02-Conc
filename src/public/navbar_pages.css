@@ -1,0 +1,73 @@
+
+#navbar{ /* 1 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+    z-index: 2;
+    overflow: hidden;
+    background-color:#7c6d16;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    margin-bottom: 140px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+#links{
+    display:flex;
+    justify-content:space-between;
+    width: 50%;
+}
+
+/* Home */
+
+.home_button{ /* 2 */
+    display: flex;
+    flex-direction: row;   
+}
+
+#Diamond{ /* 3 */
+    margin-left: 10px;
+    margin-right: 7px;
+}
+
+#home_link{ /* 3 */
+    font-size: 35px;
+}
+
+/* Pages */
+
+#pages{ /* 2 */
+    width: 70%;
+    display:flex;
+    justify-content: space-between;
+}
+
+.page_link{ /* 3 */
+    font-size: 20px;
+    padding: 13px 25px ;
+}
+
+.page_link:hover{
+    background-color: antiquewhite;
+    color:rgb(94, 70, 36)
+}
+
+/* Profile */
+
+#profile{ /* 2 */
+    margin-right: 25px;
+}
+
+#profile_pic{ /* 3 */
+    width: 40px;
+    height: 40px;
+    border-radius: 45%;
+    object-fit: cover;
+    object-position: center;
+}
