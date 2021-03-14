@@ -1,0 +1,161 @@
+#id_lavanderia {
+    background-image: url('../media/lavanderia.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:auto;
+    height:130px;
+    width: 90%; 
+    margin-top: 40px;
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 100px;
+    text-align: center;
+}
+
+#id_cafeteria {
+    background-image: url('../media/cafeteria.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:auto;
+    height:130px;
+    width: 100%; 
+    margin-top: 40px;
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 100px;
+    text-align: center;
+}
+
+#id_confort {
+    background-image: url('../media/confort.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:auto;
+    height:130px;
+    width: 100%; 
+    margin-top: 40px;
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 100px;
+    text-align: center;
+}
+
+#id_otros {
+    background-image: url('../media/otros.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:auto;
+    height:130px;
+    width: 90%; 
+    margin-top: 40px;
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 100px;
+    text-align: center;
+}
+
+#inputGrande {
+    width: 1000px;
+    height: 200px;
+    text-align:center;
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 20px;
+    color: gray; 
+    margin-bottom: 40px;
+
+}
+
+
+p {
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 22px;
+}
+
+ul {
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 22px;
+
+}
+
+.formulario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.formularioSolicitud {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.otrosform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.cafeconf {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.formulario_container{
+    padding-left: 20%; 
+    margin-top:5%;
+    margin-bottom: 4%;
+}
+
+div.formulario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+select.formulario, input.formulario {
+    
+    margin-left: 5%;
+    width: 120px;
+    text-align:center;
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 20px;
+    color: gray;    
+}
+
+
+.send_button{
+    margin-left: 60%;
+    width: 20%;
+    padding:auto;
+    padding-top:0.5%;
+    padding-bottom:0.5%;
+    margin-bottom: 5%;
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 22px;
+    background-color: #503000;
+    color: #FAF4EB;
+    cursor:pointer;
+    
+    outline:none;
+}
