@@ -11,7 +11,7 @@ export default class NavBar extends React.Component {
 			<div style={{flex:'1'}}>
 				<li id='none' style={{display:'flex', alignItems: 'center', justifyContent:'flex-start', marginLeft:'30px',fontSize:'50px'}}>
 					<Diamond color={'#c0b4b4'}/>
-					<a style={{paddingLeft:'20px', paddingRight:'20px'}} href='/'>Hotel</a>
+					<a style={{marginLeft:'5px',paddingLeft:'20px', paddingRight:'20px'}} href='/'>Hotel</a>
 				</li>
 			</div>
 			<div style={{flex:'2', display:'flex', justifyContent:'center', alignItems:'center'}}>

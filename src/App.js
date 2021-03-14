@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Inicio from './pages/Inicio';
+import Inicio from './pages/inicio';
 import Booking from './pages/booking';
 import Leisure from './pages/leisure';
 import OtherService from './pages/other_services';
