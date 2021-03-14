@@ -49,37 +49,45 @@
 /* Hasta aqui comprobado */
 
 .booking_container{
-    margin: auto;
-    margin-bottom: 2%;
-    width: 50%;
-    padding: 2%;
-    padding-bottom: 0%;
-    border: solid 1px;
-
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .booking_smallcontainer{
-    
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-    margin-bottom: 2%;  
-    
+    border: solid 1px;
+    padding: 30px;
+    margin: 30px;
+    width: 760px;
 }
 
-.booking_buttonscontainer{
-    
+.first_group{
     display: flex;
     flex-direction: row;
-    align-self: center;
-    justify-content: space-between;
-    
+    width: 100%;
 }
+
+.tb{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+.buttons_container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+
 .booking_buttons{
-    margin-left: 10%;
-    margin-right: -5%;
-    width: 300px;
     padding: 5px;
     font-family: Ibarra Real Nova;
 	font-style: normal;
@@ -87,10 +95,19 @@
     font-size: 18px;
     background-color: #503000;
     color: #FAF4EB;
-    cursor:pointer;
-    
+    cursor:pointer; 
     outline:none;
 }
+
+.second_container{
+    
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: space-between;
+    
+}
+
 
 p {
     font-family: Ibarra Real Nova;

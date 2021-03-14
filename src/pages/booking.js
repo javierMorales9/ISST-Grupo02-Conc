@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../components/navbar.js';
-import TarjetaReserva from '../components/actualbookings';
+import TarjetaReserva from '../components/tarjeta_reserva';
 import Footer from '../components/footer.js';
 import '../public/booking.css';
 
@@ -30,9 +30,9 @@ export default class Booking extends React.Component {
             
             <h2 className="category">Mis reservas</h2>
 
-            <div >
-            {[1,2].map((value,index) =>
-                    <TarjetaReserva/>)}
+            <div>
+                <TarjetaReserva/>
+                <TarjetaReserva/>
             </div>                
             
             <Footer/>

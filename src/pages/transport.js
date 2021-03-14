@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/navbar.js';
 import Footer from '../components/footer.js';
-import MapContainer from '../components/Map';
+import MapContainer from '../components/map.js';
 import Form from '../components/form.js';
 import '../public/transport.css';
 import '../public/main_styles.css';
