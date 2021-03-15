@@ -45,10 +45,11 @@
 	font-size: 30px;
 	color:#F6FACB;
     border: 1px solid black;
+	transition-duration: 0.4s;
 }
 
 .button:hover{
 	color: #000000;
-	background: #050504;
+	background: #F1D874;
 	box-shadow: black;
 }

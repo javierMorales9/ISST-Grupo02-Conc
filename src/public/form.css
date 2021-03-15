@@ -47,6 +47,7 @@ label{
     height: 40px;
     background-color: #503000;
     color: #FAF4EB;
+    transition-duration: 0.4s;
 }
 
 #form_submit:hover{

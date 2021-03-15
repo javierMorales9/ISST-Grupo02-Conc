@@ -247,4 +247,5 @@ select.formulario, input.formulario {
     color: #FAF4EB;
     cursor:pointer;
     outline:none;
+    transition-duration: 0.4s;
 }

@@ -86,15 +86,18 @@
 
 
 .booking_buttons{
-    padding: 5px;
-    font-family: Ibarra Real Nova;
+	background: #503000;
+	padding: 9px;
+	margin-top: 12.5px;
+	transition-duration: 0.4s;
+	border: 1px solid black;
+	font-family: Asul;
 	font-style: normal;
 	font-weight: normal;
-    font-size: 18px;
-    background-color: #503000;
-    color: #FAF4EB;
-    cursor:pointer; 
-    outline:none;
+	font-size: 15px;
+	align-items: center;
+	text-align: center;
+	color: #FAF4EB;
 }
 
 .booking_buttons:hover{
