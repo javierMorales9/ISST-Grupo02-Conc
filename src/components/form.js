@@ -4,6 +4,22 @@ import '../public/form.css';
 export default class Form extends React.Component {
 	render() {
         switch(this.props.page){
+            case 'room_service':  
+            return (
+                <div className="formulario_reserva">
+                    <form>
+                        <label id="form_hab">
+                            N habitacion: <input type="text" name="name"/>
+                        </label>
+                        <label id="form_esp">
+                            Algún otro requisito especial:
+                            <br></br>
+                            <textarea></textarea>
+                        </label>
+                        <input id="form_submit" type="submit" value="Enviar" style={{marginBottom:'30px'}}/>
+                    </form>
+                </div>
+            ); 
             case 'transport':  
                 return (
                     <div className="formulario_reserva">

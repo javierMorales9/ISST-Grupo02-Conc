@@ -1,65 +1,157 @@
-#id_lavanderia {
-    background-image: url('../media/lavanderia.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin:auto;
-    height:130px;
-    width: 90%; 
-    margin-top: 40px;
-    font-family: Ibarra Real Nova;
-	font-style: normal;
-	font-weight: normal;
-    font-size: 100px;
-    text-align: center;
+.room_container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 500px;
+}
+
+.sin-background{
+	position:relative;
+}
+
+.room_container ul{
+    padding-left: 20px;
+}
+
+.cafeconf {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.cafeconf_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1100px;
 }
 
 #id_cafeteria {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 70px;
+    text-align: center;
+    width:100%;
+    height:106px;
+}
+
+#id_cafeteria::before {
+    content: "";
+    position: absolute;
     background-image: url('../media/cafeteria.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    margin:auto;
-    height:130px;
-    width: 100%; 
+    width: 100%;
+    height: 106px;
+    opacity: 0.6;  
+}
+
+
+#id_confort {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 40px;
     font-family: Ibarra Real Nova;
 	font-style: normal;
 	font-weight: normal;
-    font-size: 100px;
+    font-size: 70px;
     text-align: center;
+    width:100%;
+    height:106px;
 }
 
-#id_confort {
+#id_confort::before {
+    content: "";
+    position: absolute;
     background-image: url('../media/confort.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    margin:auto;
-    height:130px;
-    width: 100%; 
+    width: 100%;
+    height: 106px;
+    opacity: 0.6;  
+}
+
+.laundry_container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#id_lavanderia {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 40px;
     font-family: Ibarra Real Nova;
 	font-style: normal;
 	font-weight: normal;
-    font-size: 100px;
+    font-size: 70px;
     text-align: center;
+    width:1100px;
+    height:106px;
 }
 
-#id_otros {
+#id_lavanderia::before{
+    content: "";
+    position: absolute;
+    background-image: url('../media/lavanderia.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 106px;
+    opacity: 0.6; 
+}
+
+.otros_container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#id_otros{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    font-family: Ibarra Real Nova;
+	font-style: normal;
+	font-weight: normal;
+    font-size: 70px;
+    text-align: center;
+    width:1100px;
+    height:106px;
+}
+
+#id_otros::before{
+    content: "";
+    position: absolute;
     background-image: url('../media/otros.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    margin:auto;
-    height:130px;
-    width: 90%; 
-    margin-top: 40px;
-    font-family: Ibarra Real Nova;
-	font-style: normal;
-	font-weight: normal;
-    font-size: 100px;
-    text-align: center;
+    width: 100%;
+    height: 106px;
+    opacity: 0.6;
 }
 
 #inputGrande {
-    width: 1000px;
+    width: 700px;
     height: 200px;
     text-align:center;
     font-family: Ibarra Real Nova;
@@ -67,10 +159,7 @@
 	font-weight: normal;
     font-size: 20px;
     color: gray; 
-    margin-bottom: 40px;
-
 }
-
 
 p {
     font-family: Ibarra Real Nova;
@@ -109,46 +198,47 @@ ul {
 
 }
 
-.cafeconf {
+.formulario_container{ 
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 2% 0%;
+    width: 400px;
 }
 
-.formulario_container{
-    padding-left: 20%; 
-    margin-top:5%;
-    margin-bottom: 4%;
+.formularioGrande_container{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0%;
+    width: 800px;
 }
+
 
 div.formulario {
     display: flex;
     flex-direction: row;
     align-items: center;
-
 }
 
 select.formulario, input.formulario {
-    
-    margin-left: 5%;
-    width: 120px;
     text-align:center;
     font-family: Ibarra Real Nova;
 	font-style: normal;
 	font-weight: normal;
     font-size: 20px;
-    color: gray;    
+    color: gray; 
+    width: 120px;
+    margin-left: 5px;   
 }
 
-
 .send_button{
-    margin-left: 60%;
-    width: 20%;
+    width: 400px;
     padding:auto;
     padding-top:0.5%;
     padding-bottom:0.5%;
-    margin-bottom: 5%;
     font-family: Ibarra Real Nova;
 	font-style: normal;
 	font-weight: normal;
@@ -156,6 +246,5 @@ select.formulario, input.formulario {
     background-color: #503000;
     color: #FAF4EB;
     cursor:pointer;
-    
     outline:none;
 }

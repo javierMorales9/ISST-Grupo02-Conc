@@ -21,7 +21,7 @@ export default class Tarjeta extends React.Component {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum, ipsum morbi turpis feugiat eros enim. 
                             Nec nulla orci sed vitae nulla nam luctus mattis pellentesque. Amet elit tellus dolor fermentum felis. 
                             Nisi, enim vitae orci fames nunc mauris sagittis facilisis eu. Gravida sed purus placerat ultricies morbi.
-                            Sed eget tellus id nam pellentesque tincidunt luctus. 
+                            Sed eget tellus id nam pellentesque tincidunt. 
                         </span>
                     </div>
                 </div>
