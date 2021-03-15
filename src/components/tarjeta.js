@@ -1,5 +1,4 @@
 import React from 'react';
-import obras from '../media/obras.png';
 import '../public/tarjeta.css';
 
 export default class Tarjeta extends React.Component {
@@ -13,7 +12,7 @@ export default class Tarjeta extends React.Component {
                         <hr style={{color:'#5A5847', width: '9em'}}/>
                     </div>
                     <div style={{display: 'flex', alignItems: 'center', justifyContent:'space-around'}}>
-                        <img src={obras} style={{width: '50%'}}/>
+                        <img src={this.props.foto} style={{width: '300px'}}/>
                         <a className='button' href={this.props.navigate}>Saber Mas</a>
                     </div>
                     <div style={{width:'100%', paddingTop:'20px'}}>

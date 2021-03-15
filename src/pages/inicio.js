@@ -2,6 +2,10 @@ import React from 'react';
 import NavBarInicio from '../components/navbarInicio.js';
 import Footer from '../components/footer.js';
 import Tarjeta from '../components/tarjeta.js';
+import Habitacion from '../media/habitacion.png';
+import Confort from '../media/confort.jpg';
+import Transporte from '../media/avion.jpg';
+import Ocio from '../media/spa.png';
 import '../public/main_styles.css';
 
 
@@ -17,12 +21,12 @@ export default class Inicio extends React.Component {
 		
 				<div style={{display: 'flex', flexDirection:'column',padding: '20px'}}>
 					<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', margin:'10px 10px 10px 10px'}}>
-						<Tarjeta titulo={'Reserva estancia'} navigate={'/booking'}/>
-						<Tarjeta titulo={'Room Service'} navigate={'/room_service'}/>
+						<Tarjeta titulo={'Reserva estancia'} foto={Habitacion} navigate={'/booking'}/>
+						<Tarjeta titulo={'Room Service'} foto={Confort} navigate={'/room_service'}/>
 					</div>	
 					<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', margin:'10px 10px 10px 10px'}}>
-						<Tarjeta titulo={'Transporte'} navigate={'/transport'}/>
-						<Tarjeta titulo={'Ocio'} navigate={'/leisure'}/>
+						<Tarjeta titulo={'Transporte'} foto={Transporte} navigate={'/transport'}/>
+						<Tarjeta titulo={'Ocio'} foto={Ocio} navigate={'/leisure'}/>
 					</div>				
 				</div>
 
