@@ -8,7 +8,7 @@ Versión: 16 de Marzo de 2021
 
 # Web - URL
 
-This project web is available on https://acallejasz.github.io/conciergeWeb/
+This web project is available on https://acallejasz.github.io/conciergeWeb/
 
 ## Available Scripts
 
