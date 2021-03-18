@@ -1,5 +1,5 @@
 .formulario_reserva{
-    width:100%;
+    
     display:flex;
     justify-content:center;
     text-align: center;
@@ -37,6 +37,13 @@ label{
     width: 700px;
     height:250px;
     margin-top: 5px;
+}
+
+#form_esp1 textarea{
+    justify-self: center;
+    margin-top: 5px;
+    width: 400px;
+    height:100px;
 }
 
 #form_submit{

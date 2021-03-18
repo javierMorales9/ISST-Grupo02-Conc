@@ -9,8 +9,6 @@ export default class Booking extends React.Component {
         return (
           <div>
 
-            <NavBar/>
-
             <h1 className="subtitulo">Gestión de Reserva</h1> 
             <hr className="raya_titulo"/>
 

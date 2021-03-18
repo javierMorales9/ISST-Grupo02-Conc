@@ -8,9 +8,6 @@ export default class RoomService extends React.Component {
   render() {
     return (
       <div>
-
-        <NavBar />
-
         <h1 className='subtitulo'>Room Service</h1>
         <hr style={{ color: 'gray', width: '70%', border: '2px solid' }} />
 

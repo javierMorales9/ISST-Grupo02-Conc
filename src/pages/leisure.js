@@ -7,9 +7,7 @@ import '../public/leisure.css';
 export default class Leisure extends React.Component {
     render() {
         return (
-          <div>
-            <NavBar/>
-
+        <div>
             <h1 className='subtitulo'>Ocio</h1>
             <hr style={{color:'gray', width: '70%', border:'2px solid'}}/>
 

@@ -153,12 +153,12 @@
 #inputGrande {
     width: 700px;
     height: 200px;
-    text-align:center;
     font-family: Ibarra Real Nova;
 	font-style: normal;
 	font-weight: normal;
     font-size: 20px;
-    color: gray; 
+    padding-left: 10px;
+    text-align: start;
 }
 
 p {

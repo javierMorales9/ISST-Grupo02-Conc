@@ -8,17 +8,44 @@ body {
   zoom: 100%;
 }
 
-@media (max-width: 1068px) {
+@media (max-width: 1277px) {
   body {
     zoom:80%;
   }
 }
 
-@media (max-width: 854px) {
+@media (max-width: 1029px) {
+  body {
+    zoom:70%;
+  }
+}
+
+@media (max-width: 904px) {
   body {
     zoom:60%;
   }
 }
+
+
+@media (max-width: 775px) {
+  body {
+    zoom:50%;
+  }
+}
+
+@media (max-width: 648px) {
+  body {
+    zoom:40%;
+  }
+}
+
+
+@media (max-width: 522px) {
+  body {
+    zoom:30%;
+  }
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
