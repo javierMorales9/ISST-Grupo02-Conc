@@ -38,10 +38,7 @@ export default class RoomService extends React.Component {
 		this.setState({receivedtext: temp});
 	}
 
-  comprobachioni= () => {
-    console.log(this.state.receivedtext)
-  }
-
+  
 
   render() {
 
