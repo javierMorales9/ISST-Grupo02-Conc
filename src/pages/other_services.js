@@ -84,7 +84,6 @@ export default class RoomService extends React.Component {
             </div>
             <form className='formularioGrande_container'>
               <input id='inputGrande' type='text' value={this.state.receivedtext}></input>
-              
               <div className='formulario'>
                 <input id="form_submit" type="submit" value="Enviar" style={{marginBottom:'30px'}}/>
               </div>
