@@ -10,8 +10,6 @@ export default class Profile extends React.Component {
     render() {
         return (
         	<div>
-            	<NavBar/>
-            	
 				<h1 className='subtitulo'>Profile</h1>
 				<hr style={{color:'gray', width: '70%', border:'2px solid'}}/>
 
@@ -21,8 +19,8 @@ export default class Profile extends React.Component {
 							<img src={default_profile} style={{}} width='525px'/>
 						</div>
 						<div style={{flex: '1', padding: '10px 10px 10px 80px', display: 'flex', flexDirection:'column', justifyContent:'flex-start', alignItems: 'flex-start'}}>
-								<span className='datos'>Nombre: Adrian Callejas Zurita</span>
-								<span className='datos'>email: 5acallejaszurita@gmail.com</span>
+								<span className='datos'>Nombre: Pichai Sundarajan</span>
+								<span className='datos'>Email: pichai.sunda@gmail.com</span>
 								<span className='datos'>DNI: 46798359E</span>
 								<span className='datos'>Fecha inicio: 01/04/2021</span>
 								<span className='datos'>Fecha salida: 02/04/2021</span>

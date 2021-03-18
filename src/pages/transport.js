@@ -10,7 +10,6 @@ export default class Transport extends React.Component {
     render() {
         return (
             <div>
-                <NavBar/>
                 <h1 className="subtitulo">Transporte</h1>
                 <hr className="raya_titulo"/>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../public/tarjeta.css';
+import {BrowserRouter as Router,Switch,Route, Link} from "react-router-dom";
 
 export default class Tarjeta extends React.Component {
 	render() {
@@ -13,7 +14,7 @@ export default class Tarjeta extends React.Component {
                     </div>
                     <div style={{display: 'flex', alignItems: 'center', justifyContent:'space-around'}}>
                         <img src={this.props.foto} style={{width: '300px'}}/>
-                        <a className='button' href={this.props.navigate}>Saber Mas</a>
+                        <Link onClick={this.props.onClick} className='button' to={this.props.navigate}>Saber Mas</Link>
                     </div>
                     <div style={{width:'100%', paddingTop:'20px'}}>
                         <span className='descripcion_servicio'>

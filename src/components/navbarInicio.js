@@ -2,27 +2,29 @@ import React from 'react';
 import Diamond from './diamond';
 import '../public/navbar.css';
 import default_profile from '../media/default_profile.jpeg';
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 export default class NavBarInicio extends React.Component {
 	render() {
 	   return(
-            <div id='navbar_main'>
+            <nav id='navbar_main'>
                 <div className='no-background'>
                     <div style={{display:'flex', justifyContent: 'center'}}>
                         <div style={{flex:1, display: 'flex', alignItems:'center',padding:'10px 30px'}}>
                             <Diamond color={'#51351B'}/>
-                            <a className='link_hotel' href='/'>Hotel</a>
+                            <Link onClick={this.props.click} className='link_hotel' to='/'>Hotel</Link>
                         </div>
-                        <div style={{flex:'2', display: 'flex', justifyContent: 'center'}}>
-                            <a className='link_titulo' href='/booking'>Reservas</a>
-                            <a className='link_titulo' href='/room_service'>RoomService</a>
-                            <a className='link_titulo' href='/transport'>Transportes</a>
-                            <a className='link_titulo' href='/leisure'>Ocio</a>
+                        <div style={{flex:'4', display: 'flex', justifyContent: 'center'}}>
+                            <Link onClick={this.props.click} className='link_titulo' to='/booking'>Reservas</Link>
+                            <Link onClick={this.props.click} className='link_titulo' to='/room_service'>RoomService</Link>
+                            <Link onClick={this.props.click} className='link_titulo' to='/transport'>Transportes</Link>
+                            <Link onClick={this.props.click} className='link_titulo' to='/leisure'>Ocio</Link>                    
+						    <Link onClick={this.props.click} className='link_titulo' to='/other_services'>Otros</Link>
                         </div>
                         <div style={{flex:'1', display: 'flex', justifyContent: 'flex-end'}}>
-                            <a className='link_profile' href='/profile'>
+                            <Link onClick={this.props.click} className='link_profile' to='/profile'>
                                 <img src={default_profile} className='image'/>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
@@ -35,7 +37,7 @@ export default class NavBarInicio extends React.Component {
                         </div>
                     </div>     
                 </div>
-            </div>
+            </nav>
 	   );
 	}
 }

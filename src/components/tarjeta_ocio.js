@@ -3,7 +3,7 @@ import Form from '../components/form.js';
 import '../public/tarjeta_ocio.css';
 
 function rutaImg(props){
-    return '../media/' + props;
+    return '/conciergeWeb/media/' + props;
     }
 
 export default class TarjetaOcio extends React.Component {
