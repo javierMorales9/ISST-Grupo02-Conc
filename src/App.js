@@ -7,7 +7,6 @@ import OtherService from './pages/other_services';
 import Profile from './pages/profile';
 import RoomService from './pages/room_service';
 import Transport from './pages/transport';
-import Premium from './pages/premium';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 
 
@@ -35,9 +34,6 @@ function App(props) {
           </Route>
           <Route path="/transport">
             <Transport/>
-          </Route>
-          <Route path="/premium">
-            <Premium/>
           </Route>
         </Switch>
     </Router>
