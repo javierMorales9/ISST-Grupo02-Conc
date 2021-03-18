@@ -37,7 +37,7 @@ export default class Form extends React.Component {
                                     <option value="tren">Tren</option>
                                 </select>
                             </label>
-                            <label id="form_esp">
+                            <label id="form_esp1">
                                 Algún otro requisito especial:
                                 <br></br>
                                 <textarea></textarea>
