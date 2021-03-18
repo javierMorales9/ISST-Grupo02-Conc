@@ -19,7 +19,7 @@ export default class NavBarInicio extends React.Component {
                             <Link onClick={this.props.click} className='link_titulo' to='/room_service'>RoomService</Link>
                             <Link onClick={this.props.click} className='link_titulo' to='/transport'>Transportes</Link>
                             <Link onClick={this.props.click} className='link_titulo' to='/leisure'>Ocio</Link>                    
-						    <Link onClick={this.props.click} className='link_titulo' to='/other_services'>Otros</Link>
+						    <Link onClick={this.props.click} className='link_titulo' to='/premium'>Premium</Link>
                         </div>
                         <div style={{flex:'1', display: 'flex', justifyContent: 'flex-end'}}>
                             <Link onClick={this.props.click} className='link_profile' to='/profile'>
