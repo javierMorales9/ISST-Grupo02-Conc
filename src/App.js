@@ -71,7 +71,7 @@ class App extends React.Component {
                 <Booking/>
               </div>
             </Route>
-            <Route path="/other_services">
+            <Route path="/premium">
               <div>
                 {this.state.primer_componente}
                 <OtherService/>

@@ -29,7 +29,7 @@ export default class NavBar extends React.Component {
 						<Link onClick={this.props.click} to='/leisure'>Ocio</Link>
 					</li>
 					<li>
-						<Link onClick={this.props.click} to='/other_services'>Otros</Link>
+						<Link onClick={this.props.click} to='/premium'>Premium</Link>
 					</li>
 				</div>
 				<div style={{flex:'1', display:'flex', justifyContent:'flex-end', alignItems:'center'}}>

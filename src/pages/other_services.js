@@ -33,9 +33,15 @@ export default class RoomService extends React.Component {
     //console.log('Ready to receive a color command.');
 	}
 
+  
 	changeState = (temp) =>{
 		this.setState({receivedtext: temp});
 	}
+
+  comprobachioni= () => {
+    console.log(this.state.receivedtext)
+  }
+
 
   render() {
 
@@ -54,9 +60,11 @@ export default class RoomService extends React.Component {
 				//mb add something
 	  }
 
+
+
     return (
       <div>
-        <h1 className='subtitulo'>Otros servicios</h1>
+        <h1 className='subtitulo'>Premium</h1>
         <hr style={{ color: 'gray', width: '70%', border: '2px solid' }} />
 
         {/*OTRAS PETICIONES*/} 
@@ -82,14 +90,15 @@ export default class RoomService extends React.Component {
                   <div style={{margin:'10px 0px'}}>Introduzca su petición aquí:</div>  
                 </div>
             </div>
+
             <form className='formularioGrande_container'>
-              <input id='inputGrande' type='text' value={this.state.receivedtext}></input>
+              <input id='inputGrande' type="text" value={this.state.receivedtext || '' } onChange = {(e)=> this.changeState(e.target.value)}/>
               <div className='formulario'>
-                <input id="form_submit" type="submit" value="Enviar" style={{marginBottom:'30px'}}/>
+                <input id="form_submit" type="submit" value="Enviar" style={{marginBottom:'30px'}} />
               </div>
             </form>
+            
           </div>
-          
         </div>
         <Footer/>
         
@@ -97,3 +106,8 @@ export default class RoomService extends React.Component {
     );
   }
 }
+
+// COMENTARIO DE INTERÉS:
+
+// form ya incluye que el botón se pulse cuando se pulsa intro y por tanto this.state.receivedtext = ''
+// cuando metamos lógica habrá que anticiparnos a esto, probablemente enviando el this.state.receivedtext haciendo uso de onClick()
