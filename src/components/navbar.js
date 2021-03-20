@@ -9,7 +9,7 @@ export default class NavBar extends React.Component {
 	render() {
 		return(
 			<nav id="navbar">
-				<div style={{flex:'1'}}>
+				<div style={{flex:'1.4'}}>
 					<li id='none' style={{display:'flex', alignItems: 'center', justifyContent:'flex-start', marginLeft:'30px',fontSize:'50px'}}>
 						<Diamond color={'#c0b4b4'}/>
 						<Link onClick={this.props.click} style={{marginLeft:'5px',paddingLeft:'20px', paddingRight:'20px'}} to='/'>Hotel</Link>
