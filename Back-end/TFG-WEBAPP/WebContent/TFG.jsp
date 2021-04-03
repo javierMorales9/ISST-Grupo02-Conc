@@ -12,7 +12,7 @@
 
 	<c:if test="${tfg.status < 3}">
 	
-		<h2>Esperado aceptación del tutor</h2>
+		<h2>Probando commits</h2>
 	
 	</c:if>
 
