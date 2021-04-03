@@ -1,0 +1,30 @@
+.datos{
+	margin-top: 10px;
+	font-family: Habibi;
+	font-style: normal;
+	font-weight: normal;
+	align-items: center;
+	color: #000000;
+}
+
+.profile_actions{
+	background: #503000;
+	width: 200px;
+	padding: 9px;
+	margin-top: 12.5px;
+	transition-duration: 0.4s;
+	border: 1px solid black;
+	font-family: Asul;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	align-items: center;
+	text-align: center;
+	color: #FAF4EB;
+}
+
+.profile_actions:hover{
+	color: #000000;
+	background: #F1D874;
+	box-shadow: black;
+}
