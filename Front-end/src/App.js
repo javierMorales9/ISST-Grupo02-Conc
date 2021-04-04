@@ -27,7 +27,10 @@ class App extends React.Component {
 
   componentDidMount(){
     let url = 'https://acallejasz.github.io' + process.env.PUBLIC_URL + '/';
-    let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL;
+    let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
+
+    console.log(url_localHost);
+    console.log(window.location.href);
 
     if(window.location.href === url_localHost){
       this.setState({primer_componente:<NavbarInicio click={this.updateNavBar}/>})

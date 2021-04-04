@@ -6,7 +6,15 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 export default class NavBarInicio extends React.Component {
 	render() {
-	   return(
+        let view;
+        let profile = <Link onClick={this.props.click} className='link_profile' to='/profile'> <img src={default_profile} className='image'/></Link>
+        let noprofile =<Link onClick={this.props.click} className='link_profile' to='/login'>Login</Link>
+        if(true){
+            view=noprofile;
+        }else{
+            view=profile
+        }
+	    return(
             <nav id='navbar_main'>
                 <div className='no-background'>
                     <div style={{display:'flex', justifyContent: 'center'}}>
@@ -22,9 +30,7 @@ export default class NavBarInicio extends React.Component {
 						    <Link onClick={this.props.click} className='link_titulo' to='/premium'>Premium</Link>
                         </div>
                         <div style={{flex:'1', display: 'flex', justifyContent: 'flex-end'}}>
-                            <Link onClick={this.props.click} className='link_profile' to='/profile'>
-                                <img src={default_profile} className='image'/>
-                            </Link>
+                            {view}
                         </div>
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
