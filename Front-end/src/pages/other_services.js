@@ -36,8 +36,9 @@ export default class RoomService extends React.Component {
 	}
 
   render() {
-    
-    if (window.hasOwnProperty('webkitSpeechRecognition')){
+    let t = window.hasOwnProperty('webkitSpeechRecognition')
+    console.log(t)
+    if (t){
       recognition.onresult = (event)=>{
         var temp = event.results[0][0].transcript;   
         this.changeState(temp)
@@ -46,7 +47,7 @@ export default class RoomService extends React.Component {
       recognition.onspeechend = function() {
         recognition.stop();
       }
-
+    }
       return (
         <div>
           <h1 className='subtitulo'>Premium</h1>
@@ -61,7 +62,7 @@ export default class RoomService extends React.Component {
             <div className='formularioGrande_container'>
               <div className='formularioSolicitud'>
                   <div style={{display:'flex', flexDirection:'column'}}> 
-                    <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent: 'center'}}>
+                    {t ? <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent: 'center'}}>
                       <div style={{margin:'10px 0px'}}>Pulse para introducir por voz:</div>
                       <div>
                         <button style={{marginLeft:'10px'}} onClick={this.recordvoice}>
@@ -71,7 +72,8 @@ export default class RoomService extends React.Component {
                           </svg>
                         </button>
                       </div>    
-                    </div>
+                    </div> 
+                    : <div></div>}
                     <div style={{margin:'10px 0px'}}>Introduzca su petición aquí:</div>  
                   </div>
               </div>
@@ -89,40 +91,7 @@ export default class RoomService extends React.Component {
           
         </div>
       );
-    } else {
-        return (
-          <div>
-            <h1 className='subtitulo'>Premium</h1>
-            <hr style={{ color: 'gray', width: '70%', border: '2px solid' }} />
-    
-            {/*OTRAS PETICIONES*/} 
-            <div className='otros_container'>
-              <div id='id_otros'>
-              <div className='sin-background'>Otras peticiones</div>
-              </div>
-    
-              <div className='formularioGrande_container'>
-                <div className='formularioSolicitud'>
-                    <div style={{display:'flex', flexDirection:'column'}}> 
-                      <div style={{margin:'10px 0px'}}>Introduzca su petición aquí:</div>  
-                    </div>
-                </div>
-    
-                <form className='formularioGrande_container'>
-                  <input id='inputGrande' type="text" value={this.state.receivedtext || '' } onChange = {(e)=> this.changeState(e.target.value)}/>
-                  <div className='formulario'>
-                    <input id="form_submit" type="submit" value="Enviar" style={{marginBottom:'30px'}} />
-                  </div>
-                </form>
-                
-              </div>
-            </div>
-            <Footer/>
-            
-          </div>
-        );
-    }
-  }
+      }
 }
 
 // COMENTARIO DE INTERÉS:
