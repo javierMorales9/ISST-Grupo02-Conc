@@ -19,7 +19,8 @@ export default class RoomService extends React.Component {
   constructor(props){
 		super(props);
 		this.state = {
-			receivedtext: ""
+			receivedtext: "",
+      upload: false
 		}
 	}
 
@@ -68,7 +69,6 @@ export default class RoomService extends React.Component {
 
   render() {
     let t = window.hasOwnProperty('webkitSpeechRecognition')
-    console.log(t)
     if (t){
       recognition.onresult = (event)=>{
         var temp = event.results[0][0].transcript;   
@@ -112,9 +112,10 @@ export default class RoomService extends React.Component {
               <form className='formularioGrande_container'>
                 <input id='inputGrande' type="text" value={this.state.receivedtext || '' } onChange = {(e)=> this.changeState(e.target.value)}/>
                 <div className='formulario'>
-                  <input id="form_submit" type="submit" value="Enviar" style={{marginBottom:'30px'}} />
                 </div>
               </form>
+
+              <button id="form_submit" onClick={()=>this.setState({upload:true})}>Enviar</button>
               
             </div>
           </div>
