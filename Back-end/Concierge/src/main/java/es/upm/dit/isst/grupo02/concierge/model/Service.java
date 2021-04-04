@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+
 @Entity(name="Service")
 public class Service implements Serializable {
 
@@ -20,8 +21,8 @@ public class Service implements Serializable {
 		private int id;
 		private int numero_usuarios;
 		@ManyToOne
-		@JoinColumn(name = "habitacion")
-		private Room room;
+		@JoinColumn(name = "habitacion", referencedColumnName = "id")
+		private Room habitacion;
 		private Date fecha_inicio;
 		private Date fecha_fin;
 		private String tipo;
@@ -40,11 +41,11 @@ public class Service implements Serializable {
 		public void setNumero_usuarios(int numero_usuarios) {
 			this.numero_usuarios = numero_usuarios;
 		}
-		public Room getRoom() {
-			return room;
+		public Room getHabitacion() {
+			return habitacion;
 		}
-		public void setRoom(Room room) {
-			this.room = room;
+		public void setHabitacion(Room habitacion) {
+			this.habitacion = habitacion;
 		}
 		public Date getFecha_inicio() {
 			return fecha_inicio;

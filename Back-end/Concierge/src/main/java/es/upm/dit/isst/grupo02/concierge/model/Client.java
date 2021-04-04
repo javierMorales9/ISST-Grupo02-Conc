@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 @Entity(name="Client")
 public class Client implements Serializable {
@@ -20,7 +19,7 @@ public class Client implements Serializable {
 		private String apellidos;
 		private String DNI;
 		private String email;
-		private String contraseña;
+		private String contrasena;
 		private String tipo;
 		private String metodo_pago;
 		private double coste;
@@ -56,11 +55,11 @@ public class Client implements Serializable {
 		public void setEmail(String email) {
 			this.email = email;
 		}
-		public String getContraseña() {
-			return contraseña;
+		public String getContrasena() {
+			return contrasena;
 		}
-		public void setContraseña(String contraseña) {
-			this.contraseña = contraseña;
+		public void setContrasena(String contrasena) {
+			this.contrasena = contrasena;
 		}
 		public String getTipo() {
 			return tipo;

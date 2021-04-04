@@ -8,11 +8,13 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 
 import es.upm.dit.isst.grupo02.concierge.dao.ServiceDAOImplementation;
 import es.upm.dit.isst.grupo02.concierge.model.Service;
@@ -25,9 +27,10 @@ public class ServiceResource {
 	    return ServiceDAOImplementation.getInstancia().readAll();
 	}
 	
-	@POST
+	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(Service cnew) throws URISyntaxException {
+		System.out.println(cnew.getHabitacion());
 		Service c = ServiceDAOImplementation.getInstancia().create(cnew);
 	    if (c != null) {
 	        URI uri = new URI("/Concierge/rest/service/" + c.getId());
@@ -53,6 +56,7 @@ public class ServiceResource {
 	@Path("tipos/{tipo}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Service> readAll(String tipo) {
+	
 	    return ServiceDAOImplementation.getInstancia().readAll(tipo);
 	}
 	

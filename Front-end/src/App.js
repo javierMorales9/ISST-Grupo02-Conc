@@ -34,6 +34,9 @@ class App extends React.Component {
     }else{
       this.setState({primer_componente:<Navbar click={this.updateNavBar}/>})
     }
+
+    
+
   }
 
   updateNavBar(e){

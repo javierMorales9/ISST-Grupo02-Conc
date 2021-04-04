@@ -35,6 +35,37 @@ export default class RoomService extends React.Component {
     this.setState({receivedtext: temp});
 	}
 
+
+	async componentDidUpdate () { 
+
+		console.log(this.state.upload);
+		if (this.state.upload){
+			
+			let habitacion = await fetch("http://localhost:8080/Concierge/rest/room/2").then(res=>res.json());
+
+			let data = {
+				disponibilidad:true,
+				fecha_inicio:"2021-02-02",
+				fecha_fin:"2021-02-03",
+				numero_usuarios:1,
+				precio:20.1,
+				solicitud: this.state.receivedtext,
+				tipo: "ocio",
+				habitacion: habitacion,
+			     };
+
+			console.log(data);
+			await fetch("http://localhost:8080/Concierge/rest/service",{
+				method:'PUT', 
+				mode: 'cors',
+				headers:{"Content-Type":"application/json"},
+				body:JSON.stringify(data)
+			}).then(res =>console.log(res));
+			this.setState({upload:false, receivedtext:"" });
+
+		}
+	}
+
   render() {
     let t = window.hasOwnProperty('webkitSpeechRecognition')
     console.log(t)
