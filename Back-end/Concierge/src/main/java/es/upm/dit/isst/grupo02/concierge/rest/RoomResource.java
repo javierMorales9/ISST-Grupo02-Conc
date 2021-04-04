@@ -28,9 +28,9 @@ public class RoomResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(Room cnew) throws URISyntaxException {
-		Room c = RoomDAOImplementation.getInstancia().create(cnew);
-	    if (c != null) {
-	        URI uri = new URI("/Concierge/rest/Room/" + c.getId());
+		Room r = RoomDAOImplementation.getInstancia().create(cnew);
+	    if (r != null) {
+	        URI uri = new URI("/Concierge/rest/Room/" + r.getId());
 	        return Response.created(uri).build();
 	    }
 	    return Response.status(Response.Status.NOT_FOUND).build();
@@ -41,12 +41,12 @@ public class RoomResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	
 	public Response read(@PathParam("id") int id) {
-	    Room c = RoomDAOImplementation.getInstancia().read(id);
+	    Room r = RoomDAOImplementation.getInstancia().read(id);
 	
-	    if (c == null)
+	    if (r == null)
 	      return Response.status(Response.Status.NOT_FOUND).build();
 	
-	    return Response.ok(c, MediaType.APPLICATION_JSON).build();
+	    return Response.ok(r, MediaType.APPLICATION_JSON).build();
 	 }        
 	
 	// Revisar por posibles errores en el if
@@ -54,16 +54,16 @@ public class RoomResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("{id}")
 	
-	public Response update(@PathParam("id") int id, Room c) {
+	public Response update(@PathParam("id") int id, Room r) {
 	
-		System.out.println("Update request for" + id + " " + c.toString());
+		System.out.println("Update request for" + id + " " + r.toString());
 		
 		Room told = RoomDAOImplementation.getInstancia().read(id);
 		
-		if ((told == null) || ( told.getId() != c.getId()))
+		if ((told == null) || ( told.getId() != r.getId()))
 		  return Response.notModified().build();
 		
-		RoomDAOImplementation.getInstancia().update(c);
+		RoomDAOImplementation.getInstancia().update(r);
 		
 		return Response.ok().build();                
 	 }

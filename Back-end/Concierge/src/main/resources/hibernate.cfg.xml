@@ -5,7 +5,7 @@
 <hibernate-configuration>
         <session-factory>
                 <property name="connection.driver_class">org.h2.Driver</property>
-                <property name="connection.url">jdbc:h2:tcp://localhost/~/concierge</property>
+                <property name="connection.url">jdbc:h2:tcp://localhost/~/Escritorio/ISST-Grupo02-Conc/Back-end/Concierge/bbdd/concierge</property>
                 <property name="connection.username">sa</property>
                 <property name="connection.pool_size">5</property>
                 <property name="dialect">org.hibernate.dialect.H2Dialect</property>
@@ -14,5 +14,6 @@
                 <property name="hbm2ddl.auto">update</property>
                 <mapping class="es.upm.dit.isst.grupo02.concierge.model.Client"/>
                 <mapping class="es.upm.dit.isst.grupo02.concierge.model.Room"/>
+                <mapping class="es.upm.dit.isst.grupo02.concierge.model.Service"/>
         </session-factory>
 </hibernate-configuration>
