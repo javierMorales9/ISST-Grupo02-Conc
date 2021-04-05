@@ -1,0 +1,11 @@
+.usr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form_login{
+    width: 350px;
+    margin-bottom: 20px;
+}

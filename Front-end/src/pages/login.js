@@ -1,14 +1,7 @@
 import React from 'react';
-import NavBarInicio from '../components/navbar.js';
 import Footer from '../components/footer.js';
-import Tarjeta from '../components/tarjeta.js';
-import Habitacion from '../media/habitacion.png';
-import Confort from '../media/confort.jpg';
-import Transporte from '../media/avion.jpg';
-import Ocio from '../media/spa.png';
-import Otros from '../media/otros.jpg';
 import '../public/main_styles.css';
-import { withRouter } from 'react-router-dom';
+import '../public/login.css';
 
 
 export default class Login extends React.Component {
@@ -59,22 +52,24 @@ export default class Login extends React.Component {
 	render() {
 		return (
 			<div>
+				<h1 className="subtitulo">Login</h1>
+				<hr className="raya_titulo"/>
 				
-		<form className='form_login' onSubmit={() => {this.handleClick()}} >
-		      <label>
-			      Usuario:
-			      <input id="login_user" type="text" name="user"/>
-		      </label>
+				<div className="container" style={{marginTop:"150px",marginBottom:"200px"}}>
+					<form className='form_login' onSubmit={() => {this.handleClick()}} >
+						<label className="usr">
+							Usuario:
+							<input id="login_user" type="text" name="user"/>
+						</label>
 
-		      <label>
-			      Constraseña:
-			      <input id="login_password" type="text" name="password"/>
-		      </label>
-		
-              </form>
-
-		    <button onClick={() => { this.handleClick();}}> Enviar </button>
-		    {this.state.error}
+						<label className="usr">
+							Constraseña:
+							<input id="login_password" type="password" name="password"/>
+						</label>
+					</form>
+					<button onClick={() => { this.handleClick();}}> Enviar </button>
+					{this.state.error}
+				</div>	
 
 				<Footer/>
 
