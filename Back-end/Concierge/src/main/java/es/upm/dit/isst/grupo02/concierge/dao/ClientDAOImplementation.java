@@ -82,11 +82,33 @@ public class ClientDAOImplementation implements ClientDAO{
 		
 		List<Client> client = null;
 		
-		client = session.createQuery("from Client").list();
+		String query = "FROM Client";
+		client = session.createQuery(query).list();
 		session.getTransaction().commit();
 		session.close();
 	
 		return client;
+	}
+
+	@Override
+	public boolean checkLogin(String user, String password) {
+
+		Session session = SessionFactoryService.get().openSession();
+		session.beginTransaction();
+		
+		List<Client> clients = null;
+		
+		clients = session.createQuery("from Client").list();
+
+		session.getTransaction().commit();
+		session.close();
+
+		for (Client c: clients) {
+			if(c.getNombre().equals(user) && c.getContrasena().equals(password))
+				return true;
+		}
+		
+		return false;
 	}
 
 }

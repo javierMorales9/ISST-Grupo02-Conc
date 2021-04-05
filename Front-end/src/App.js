@@ -4,6 +4,7 @@ import {BrowserRouter as Router,Switch,Route, Link} from "react-router-dom";
 import Inicio from './pages/inicio';
 import Booking from './pages/booking';
 import Leisure from './pages/leisure';
+import Login from './pages/login';
 import OtherService from './pages/other_services';
 import Profile from './pages/profile';
 import RoomService from './pages/room_service';
@@ -21,35 +22,38 @@ class App extends React.Component {
     super(props);
     this.updateNavBar = this.updateNavBar.bind(this);
     this.state = {
-      primer_componente:<NavbarInicio/>,
+      primer_componente:<NavbarInicio login={false}/>,
+      login: false,
     }
+
+    this.loginUpdate = this.loginUpdate.bind(this);
   }
 
   componentDidMount(){
     let url = 'https://acallejasz.github.io' + process.env.PUBLIC_URL + '/';
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
 
-    console.log(url_localHost);
-    console.log(window.location.href);
-
     if(window.location.href === url_localHost){
-      this.setState({primer_componente:<NavbarInicio click={this.updateNavBar}/>})
+      this.setState({primer_componente:<NavbarInicio login={this.state.login} click={this.updateNavBar}/>})
     }else{
-      this.setState({primer_componente:<Navbar click={this.updateNavBar}/>})
+      this.setState({primer_componente:<Navbar login={this.state.login} click={this.updateNavBar}/>})
     }
 
-    
-
   }
+	
+	loginUpdate(logini) {
+		this.setState({login:logini});
+		document.getElementById("a_pinchar").click();
+	}
 
   updateNavBar(e){
     let url = 'https://acallejasz.github.io' + process.env.PUBLIC_URL + '/';
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
 
     if(e.target.href === url_localHost){
-      this.setState({primer_componente:<NavbarInicio click={this.updateNavBar}/>})
+      this.setState({primer_componente:<NavbarInicio login={this.state.login} click={this.updateNavBar}/>})
     }else{
-      this.setState({primer_componente:<Navbar click={this.updateNavBar}/>})
+      this.setState({primer_componente:<Navbar login={this.state.login} click={this.updateNavBar}/>})
     }
   }
 
@@ -99,6 +103,12 @@ class App extends React.Component {
               <div>
                 {this.state.primer_componente}
                 <Transport/>
+              </div>
+            </Route>
+            <Route path="/login">
+              <div>
+                {this.state.primer_componente}
+                <Login loginUpdate = {this.loginUpdate}/>
               </div>
             </Route>
           </Switch>
