@@ -10,7 +10,7 @@ export default class NavBar extends React.Component {
 
 		let view;
 		let profile = <Link onClick={this.props.click} to='/profile' style={{display:'flex', justifyContent:'center', alignItems:'center'}}><img src={default_profile} className='image'/></Link>
-	    let noprofile = <Link onClick={this.props.click} to='/login'>Login</Link>;
+	    let noprofile = <Link onClick={this.props.click} to='/login'>Acceso</Link>;
 
  		if(this.props.login)
             view = profile;

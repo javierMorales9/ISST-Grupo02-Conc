@@ -52,7 +52,7 @@ export default class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1 className="subtitulo">Login</h1>
+				<h1 className="subtitulo">Acceso clientes</h1>
 				<hr className="raya_titulo"/>
 				
 				<div className="container" style={{marginTop:"150px",marginBottom:"200px"}}>

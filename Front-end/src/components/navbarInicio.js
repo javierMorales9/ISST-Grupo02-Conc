@@ -9,7 +9,7 @@ export default class NavBarInicio extends React.Component {
 
         let view;
         let profile = <Link onClick={this.props.click} className='link_profile' to='/profile'><img src={default_profile} className='image'/></Link>
-        let noprofile =<Link onClick={this.props.click} className='link_titulo' to='/login'>Login</Link>
+        let noprofile =<Link onClick={this.props.click} className='link_titulo' to='/login'>Acceso</Link>
         
         if(this.props.login)
             view = profile;
