@@ -42,7 +42,7 @@ export default class RoomService extends React.Component {
 		console.log(this.state.upload);
 		if (this.state.upload){
 			
-			let habitacion = await fetch("http://localhost:8080/Concierge/rest/room/2").then(res=>res.json());
+			let habitacion = await fetch("http://localhost:8080/Concierge/rest/room/1").then(res=>res.json());
 
 			let data = {
 				disponibilidad:true,

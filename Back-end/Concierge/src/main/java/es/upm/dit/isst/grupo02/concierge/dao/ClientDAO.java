@@ -9,4 +9,5 @@ public interface ClientDAO {
 	public Client update(Client client);
 	public Client delete(Client client);
 	public List<Client> readAll();
+	public boolean checkLogin(String DNI, String password);
 }

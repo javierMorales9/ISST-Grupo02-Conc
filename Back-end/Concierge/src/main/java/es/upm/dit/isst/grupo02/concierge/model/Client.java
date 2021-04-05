@@ -19,7 +19,7 @@ public class Client implements Serializable {
 		private String apellidos;
 		private String DNI;
 		private String email;
-		private String contrasena;
+		private String password;
 		private String tipo;
 		private String metodo_pago;
 		private double coste;
@@ -55,11 +55,11 @@ public class Client implements Serializable {
 		public void setEmail(String email) {
 			this.email = email;
 		}
-		public String getContrasena() {
-			return contrasena;
+		public String getPassword() {
+			return password;
 		}
-		public void setContrasena(String contrasena) {
-			this.contrasena = contrasena;
+		public void setPassword(String password) {
+			this.password = password;
 		}
 		public String getTipo() {
 			return tipo;

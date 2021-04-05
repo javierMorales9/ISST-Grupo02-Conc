@@ -6,14 +6,16 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 export default class NavBarInicio extends React.Component {
 	render() {
+
         let view;
-        let profile = <Link onClick={this.props.click} className='link_profile' to='/profile'> <img src={default_profile} className='image'/></Link>
-        let noprofile =<Link onClick={this.props.click} className='link_profile' to='/login'>Login</Link>
-        if(true){
-            view=noprofile;
-        }else{
-            view=profile
-        }
+        let profile = <Link onClick={this.props.click} className='link_profile' to='/profile'><img src={default_profile} className='image'/></Link>
+        let noprofile =<Link onClick={this.props.click} className='link_titulo' to='/login'>Login</Link>
+        
+        if(this.props.login)
+            view = profile;
+        else
+            view = noprofile
+        
 	    return(
             <nav id='navbar_main'>
                 <div className='no-background'>
