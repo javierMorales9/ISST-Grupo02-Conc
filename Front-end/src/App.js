@@ -27,6 +27,13 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    //localStorage - persistence
+    const lg = localStorage.getItem('sthg')
+    this.setState({
+      primer_componente:<NavbarInicio login={lg}/>,
+      login: lg,
+    })
+
     let url = 'https://acallejasz.github.io' + process.env.PUBLIC_URL + '/';
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL;
 
@@ -39,6 +46,7 @@ class App extends React.Component {
 
   /*Revisar si se puede cambiar el nombre*/
   loginUpdate(logini) {
+    localStorage.setItem('sthg', logini)
     this.setState({login:logini});
     document.getElementById("a_pinchar").click();
   }
