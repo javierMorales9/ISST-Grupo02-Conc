@@ -18,7 +18,11 @@ export default class Booking extends React.Component {
 		let f = await fetch("http://localhost:8080/Concierge/rest/service/clients/" + this.props.id_cliente).then(res => res.json());
 		this.setState({f})
 	}
-
+	async componentDidUpdate(){
+		if (this.state.f.length === 0){
+			let f = await fetch("http://localhost:8080/Concierge/rest/service/clients/" + this.props.id_cliente).then(res => res.json());
+			this.setState({f})}
+	}
 
     render() {
 		
