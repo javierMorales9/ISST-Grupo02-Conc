@@ -5,7 +5,24 @@ import Footer from '../components/footer.js';
 import '../public/booking.css';
 
 export default class Booking extends React.Component {
+
+	constructor(props){
+		super(props);
+		this.state = {
+			f:[],
+		};
+	}
+
+	async componentDidMount(){
+
+		let f = await fetch("http://localhost:8080/Concierge/rest/service/clients/" + this.props.id_cliente).then(res => res.json());
+		this.setState({f})
+	}
+
+
     render() {
+		
+	
         return (
           <div>
 
@@ -29,8 +46,21 @@ export default class Booking extends React.Component {
             <h2 className="category">Mis reservas</h2>
 
             <div>
-                <TarjetaReserva/>
-                <TarjetaReserva/>
+		
+		    {this.state.f.map((el,id) =>{
+		    return <TarjetaReserva 
+		    n_habitacion = {el.cliente.numeroHabitacion}
+		    fecha_inicio = {el.fecha_inicio}
+		    fecha_fin = {el.fecha_fin}
+		    tipo = {el.tipo}
+		    solicitud = {el.solicitud}
+		    disponibilidad = {el.disponibilidad}
+		    id = {el.id}
+	   	     />;
+		    })
+
+		    }
+		
             </div>                
             
             <Footer/>

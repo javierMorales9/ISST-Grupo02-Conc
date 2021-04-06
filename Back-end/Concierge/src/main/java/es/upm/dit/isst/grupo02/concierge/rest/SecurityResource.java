@@ -1,5 +1,6 @@
 package es.upm.dit.isst.grupo02.concierge.rest;
 
+import java.io.Serializable;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -20,6 +21,13 @@ import es.upm.dit.isst.grupo02.concierge.dao.ServiceDAOImplementation;
 import es.upm.dit.isst.grupo02.concierge.model.Client;
 import es.upm.dit.isst.grupo02.concierge.model.Service;
 
+	class LoginInfo implements Serializable{
+	
+		private static final long serialVersionUID = 1L;
+		
+		public String user;
+		public String password;
+	}
 
 @Path("/security")
 public class SecurityResource {
@@ -29,15 +37,15 @@ public class SecurityResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response login(Client client){
+		Client client_login;
 		
-		System.out.println(client);
+		client_login = ClientDAOImplementation.getInstancia().checkLogin(client.getDNI(),client.getPassword());
 		
-		boolean login = ClientDAOImplementation.getInstancia().checkLogin(client.getDNI(),client.getPassword());
-		System.out.println(login);
+		System.out.println(client_login);
+		if(client_login == null)
+			return Response.ok(false, MediaType.APPLICATION_JSON).build();  
 		
-		JsonObject json = Json.createObjectBuilder().add("login",login).build();
+		return Response.ok(client_login, MediaType.APPLICATION_JSON).build();                
 
-		
-		return Response.ok(login, MediaType.APPLICATION_JSON).build();                
 	 }
 }

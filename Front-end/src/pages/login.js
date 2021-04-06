@@ -20,16 +20,14 @@ export default class Login extends React.Component {
 
 	async componentDidUpdate(){
 		
-		//Comentario de interés
-		//No lo he hecho porque es un poco lio. Pero en la respuesta desde el java habría que meterle la info del cliente y desde react 
-		//almacenarla en el redux.
 		
 		if(this.state.updated){
 
 			let data ={ 
 				dni:document.getElementById("login_user").value,
 				password:document.getElementById("login_password").value
-			}
+			};
+
 			
 			let login = await fetch("http://localhost:8080/Concierge/rest/security/login",{
 				method: "POST",
@@ -38,13 +36,17 @@ export default class Login extends React.Component {
 				body:JSON.stringify(data)
 			}).then(res => res.json());
 
+
 			this.setState({updated:false});
 			
-			if(login == true){
-				this.props.loginUpdate(login);
+			if(login !== false){
+				this.props.login_info(true,login.id)
+				this.props.loginUpdate();
 				this.setState({error : <div/>});
 			} else
-				this.setState({error : <p>Credenciales Incorrectas</p>});
+				window.alert("Credenciales Incorrectas")
+				//this.setState({error : <p>Credenciales Incorrectas</p>});
+
 						
 		}
 	}

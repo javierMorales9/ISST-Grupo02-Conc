@@ -12,14 +12,15 @@ export default function TarjetaReserva(props){
             <div className="booking_smallcontainer">
                 <div className='first_group'>
                     <div>
-                        <img src={Habitacion} height='100%' width='300px' style={{minHeight:'200px', minWidth:'275px'}}/>
+                        <img src={Habitacion} height='240px' width='300px' style={{minHeight:'200px', paddingTop:'23px', minWidth:'275px'}}/>
                     </div>       
                     <div className='tb'>
-                        <div>
-                            <p>Nº de habitación: 114 </p>
-                            <p>Fecha de entrada: 12/09/2025</p>
-                            <p>Fecha de salida: 15/09/2025</p>
-                            <p>Tipo de habitación: premium</p>
+			    <div>
+                            <p>Nº de habitación: {props.n_habitacion}</p>
+                            <p>Fecha de entrada: {props.fecha_inicio} </p>
+                            <p>Fecha de salida: {props.fecha_fin}</p>
+                            <p>Tipo de Servicio: {props.tipo}</p>
+			    <p>Solicitud: {props.solicitud} </p>
                         </div>
                         <div className='buttons_container'>
                             <button className='booking_buttons' style={{marginRight:'40px'}}>Modifcar Reserva</button>

@@ -2,6 +2,7 @@ package es.upm.dit.isst.grupo02.concierge.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -30,8 +31,8 @@ public class ServiceResource {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(Service cnew) throws URISyntaxException {
-		System.out.println(cnew.getHabitacion());
 		Service c = ServiceDAOImplementation.getInstancia().create(cnew);
+		
 	    if (c != null) {
 	        URI uri = new URI("/Concierge/rest/service/" + c.getId());
 	        return Response.created(uri).build();
@@ -42,7 +43,6 @@ public class ServiceResource {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	
 	public Response read(@PathParam("id") int id) {
 	    Service s = ServiceDAOImplementation.getInstancia().read(id);
 	
@@ -52,19 +52,11 @@ public class ServiceResource {
 	    return Response.ok(s, MediaType.APPLICATION_JSON).build();
 	 }  
 	
-	@GET
-	@Path("tipos/{tipo}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Service> readAll(String tipo) {
-	
-	    return ServiceDAOImplementation.getInstancia().readAll(tipo);
-	}
 	
 	// Revisar por posibles errores en el if
 	@POST 
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("{id}")
-	
 	public Response update(@PathParam("id") int id, Service s) {
 	
 		System.out.println("Update request for" + id + " " + s.toString());
@@ -93,4 +85,19 @@ public class ServiceResource {
 			
 		return Response.ok().build();
 	 }
+	 
+	 @GET
+	 @Path("/clients/{id}")
+	 @Produces(MediaType.APPLICATION_JSON)
+	 public Response getClientServicies(@PathParam("id") int id) {
+		List<Service> services = ServiceDAOImplementation.getInstancia().readAll();
+		List<Service> services_client = new ArrayList<Service>();
+		for(Service s : services) {
+			if(s.getCliente().getId() == id)
+				services_client.add(s);
+		}
+		
+		return Response.ok(services_client.toArray(), MediaType.APPLICATION_JSON).build();
+	}  
+	 
 }

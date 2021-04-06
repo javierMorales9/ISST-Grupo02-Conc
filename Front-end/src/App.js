@@ -12,6 +12,7 @@ import Navbar from './components/navbar.js';
 import NavbarInicio from './components/navbarInicio.js';
 import Login from './pages/login.js';
 import './public/navbar.css';
+import {loginAction} from './redux/actions.js';
 
 
 class App extends React.Component {
@@ -22,8 +23,8 @@ class App extends React.Component {
     this.loginUpdate = this.loginUpdate.bind(this);
     this.state = {
       primer_componente:<NavbarInicio login={false}/>,
-      login: false,
     }
+
   }
 
   componentDidMount(){
@@ -31,15 +32,15 @@ class App extends React.Component {
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL;
 
     if(window.location.href === url_localHost){
-      this.setState({primer_componente:<NavbarInicio login={this.state.login} click={this.updateNavBar}/>})
+      this.setState({primer_componente:<NavbarInicio login={this.props.login} click={this.updateNavBar}/>})
     }else{
-      this.setState({primer_componente:<Navbar login={this.state.login} click={this.updateNavBar}/>})
+      this.setState({primer_componente:<Navbar login={this.props.login} click={this.updateNavBar}/>})
     }
+
   }
 
   /*Revisar si se puede cambiar el nombre*/
-  loginUpdate(logini) {
-    this.setState({login:logini});
+  loginUpdate() {
     document.getElementById("a_pinchar").click();
   }
 
@@ -49,14 +50,17 @@ class App extends React.Component {
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
 
     if(e.target.href === url_localHost){
-      this.setState({primer_componente:<NavbarInicio login={this.state.login} click={this.updateNavBar}/>})
+      this.setState({primer_componente:<NavbarInicio login={this.props.login} click={this.updateNavBar}/>})
     }else{
-      this.setState({primer_componente:<Navbar login={this.state.login} click={this.updateNavBar}/>})
+      this.setState({primer_componente:<Navbar login={this.props.login} click={this.updateNavBar}/>})
     }
   }
 
   render(){
     window.scrollTo(0,0);
+    console.log(this.props.login);
+    console.log(this.props.id_cliente);
+
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div>
@@ -76,13 +80,13 @@ class App extends React.Component {
             <Route path="/booking">
               <div>
                 {this.state.primer_componente}
-                <Booking/>
+                <Booking id_cliente={this.props.id_cliente} />
               </div>
             </Route>
             <Route path="/premium">
               <div>
                 {this.state.primer_componente}
-                <OtherService/>
+                <OtherService  id_cliente={this.props.id_cliente} />
               </div>
             </Route>
             <Route path="/profile">
@@ -106,7 +110,11 @@ class App extends React.Component {
             <Route path="/login">
               <div>
                 {this.state.primer_componente}
-                <Login loginUpdate = {this.loginUpdate}/>
+		      <Login  login_info = {(login,id) => {
+		      		this.props.dispatch(loginAction(login,id));
+		      	     }}  
+			     loginUpdate = {this.loginUpdate}
+	      />
               </div>
             </Route>
           </Switch>

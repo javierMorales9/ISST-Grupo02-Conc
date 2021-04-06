@@ -21,14 +21,16 @@ public class Service implements Serializable {
 		private int id;
 		private int numero_usuarios;
 		@ManyToOne
-		@JoinColumn(name = "habitacion", referencedColumnName = "id")
-		private Room habitacion;
+		@JoinColumn(name = "cliente", referencedColumnName = "id")
+		private Client cliente;
 		private Date fecha_inicio;
 		private Date fecha_fin;
 		private String tipo;
 		private String solicitud;
 		private double precio;
 		private boolean disponibilidad;
+		
+		
 		public int getId() {
 			return id;
 		}
@@ -41,11 +43,12 @@ public class Service implements Serializable {
 		public void setNumero_usuarios(int numero_usuarios) {
 			this.numero_usuarios = numero_usuarios;
 		}
-		public Room getHabitacion() {
-			return habitacion;
+		
+		public Client getCliente() {
+			return cliente;
 		}
-		public void setHabitacion(Room habitacion) {
-			this.habitacion = habitacion;
+		public void setCliente(Client cliente) {
+			this.cliente = cliente;
 		}
 		public Date getFecha_inicio() {
 			return fecha_inicio;
