@@ -29,7 +29,7 @@ export default class ProgressBar extends React.Component {
 */
 	}
 	getRandomWorker= () => {
-		const employees = ["Juan","María", "Marta", "Claudia", "Ongombo", "Eren Jaeger"];
+		const employees = ["Juan","María", "Marta", "Claudia", "Pedro", "Touré", "Débora"];
 		const max = employees.length;
 		return employees[parseInt(Math.random()* max)];
 
@@ -40,6 +40,7 @@ export default class ProgressBar extends React.Component {
 	if (this.state.completed === 4) {
     	clearInterval(this.state.interval);
     	this.setState({interval:null});
+    	this.props.disable_cancel();
     }
     else {
 	    this.setState({tiemporestante: this.state.tiemporestante-1});   
@@ -72,7 +73,7 @@ export default class ProgressBar extends React.Component {
 
   	const fillerStyles = {
 	    height: '100%',
-	    width: `${this.state.completed*100/4}%`,
+	    width: `${this.	state.completed*100/4}%`,
 	    backgroundColor: bgcolor,
 	    borderRadius: 'inherit',
 	    textAlign: 'right'
@@ -89,6 +90,7 @@ export default class ProgressBar extends React.Component {
 	    //width: '70%',
 	    //overflow: 'hidden',
 	    whiteSpace: 'nowrap',
+	    alignSelf: 'flex-start'
 	}
 		return (
 		    <div style ={containerStyles}>

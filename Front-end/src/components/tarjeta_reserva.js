@@ -6,14 +6,39 @@ import Chatbot from '../components/chatbot.js'
 export default class TarjetaReserva extends React.Component{
     constructor(props){
         super(props);
+        this.handleCancelation = this.handleCancelation.bind(this)
         this.state = {
-            chat: false
+            chat: false,
+            cancel_allowed: false
         }
     }
     changeState = (temp) =>{
     this.setState({receivedtext: temp});
     }
+        
+    /********************************
+    *   REALIZACIÓN CANCELACIÓN     *
+    ********************************/
 
+    async handleCancelation(){
+        var dele = await fetch('http://localhost:8080/Concierge/rest/service/'+this.props.id, {
+             method: 'DELETE',
+        }).then(res => res.text()) // or res.json()
+        .then(res => console.log(res))
+
+        alert("La reserva "+ this.props.solicitud+ ' fué anulada exitosamente.')    
+        window.location.href = "http://localhost:3000"+ process.env.PUBLIC_URL + "/booking"
+        //this.props.forceUpdt()
+
+    }
+    
+    /*******************************
+    *   INHABILITA CANCELACIÓN     *
+    ********************************/
+
+    disable_cancel = () => {
+        this.setState({cancel_allowed: true})
+    }
 
     contactoPremium = (type) => {
         if(type != 'Premium'){
@@ -47,13 +72,13 @@ export default class TarjetaReserva extends React.Component{
                 <div className='first_group'>
                     <div>
                         <img src={Habitacion} height='100px' width='300px' style={{minHeight:'200px', paddingTop:'23px', minWidth:'275px'}}/>
-                            {this.props.tipo === "Premium" ? <div>
-                        <ProgressBar idres = {this.props.id}/>
-            </div>:<div></div>}
+                        {this.props.tipo === "Premium" ? <div>
+                                <ProgressBar idres = {this.props.id} disable_cancel= {this.disable_cancel}/>
+                            </div>:<div></div>}
         
                     </div>       
                     <div className='tb'>
-                <div>
+                        <div>
                             <p>Nº de habitación: {this.props.n_habitacion}</p>
                             <p>Nº de usuarios: {this.props.n_user}</p>
                             <p>Fecha de entrada: {this.props.fecha_inicio} </p>
@@ -63,7 +88,7 @@ export default class TarjetaReserva extends React.Component{
                         </div>
                         <div className='buttons_container'>
                             <button className='booking_buttons' style={{marginRight:'40px'}}>Modificar Reserva</button>
-                            <button className='booking_buttons'>Cancelar Reserva</button>
+                            <button className='booking_buttons' disabled = {this.state.cancel_allowed} onClick={this.handleCancelation}>Cancelar Reserva</button>
                         </div>                
                     </div>
                 </div>

@@ -8,6 +8,7 @@ export default class Booking extends React.Component {
 
 	constructor(props){
 		super(props);
+
 		this.state = {
 			f:[],
 		};
@@ -19,10 +20,15 @@ export default class Booking extends React.Component {
 		this.setState({f})
 	}
 	async componentDidUpdate(){
-		if (this.state.f.length === 0){
+		console.log("dlkeww")
+		if (this.state.f.length === 0 ){
 			let f = await fetch("http://localhost:8080/Concierge/rest/service/clients/" + this.props.id_cliente).then(res => res.json());
-			this.setState({f})}
+			this.setState({f,forceUpdateflag:false})}
+			console.log("wpqeopwq")
 	}
+		
+	
+
 
     render() {
 		
@@ -46,6 +52,7 @@ export default class Booking extends React.Component {
 			    disponibilidad = {el.disponibilidad}
 			    id = {el.id}
 			    key = {el.id}
+			    
 	   	     />;
 		    })
 

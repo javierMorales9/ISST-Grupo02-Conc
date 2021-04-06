@@ -30,10 +30,14 @@ export default class Chatbot extends React.Component {
 
   componentDidMount() {
     addResponseMessage("Tu solicitud: " + this.props.solicitud + " está en proceso. Haznos saber si necesitas algo más por aquí, o bien ve a la sección premium a pedir algo nuevo");
+  	console.log("otrobot")
+	addLinkSnippet({title: 'Mira esto mientras te llega el pedido!', link: ''})
+    
   }
 
   componentDidUpdate(){
-  	addLinkSnippet({title: 'Mira esto mientras te llega el pedido!', link: ''})
-  }
+  	console.log("updatebot")
+  	
+  	}
 
 }
