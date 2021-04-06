@@ -1,21 +1,31 @@
 import { combineReducers } from 'redux';
 
 
+function loginReducer (state = [], action){
+	switch(action.type){
+		case 'LOGIN':
+			console.log("reducer");
+			console.log(action.payload.login);
+			return action.payload.login;
+
+		default:
+			return state;
+	}
+}
+
+function idClientReducer (state = [], action){
+	switch(action.type){
+		case 'LOGIN':
+			return action.payload.id_client;
+		default:
+			return state;
+	}
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-const GlobalState = (combineReducers({}));
+const GlobalState = (combineReducers({
+	login:loginReducer,
+	id_cliente: idClientReducer
+}));
 export default GlobalState;

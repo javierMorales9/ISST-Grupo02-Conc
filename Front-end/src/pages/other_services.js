@@ -42,7 +42,7 @@ export default class RoomService extends React.Component {
 		console.log(this.state.upload);
 		if (this.state.upload){
 			
-			let habitacion = await fetch("http://localhost:8080/Concierge/rest/room/1").then(res=>res.json());
+			let cliente = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente).then(res=>res.json());
 
 			let data = {
 				disponibilidad:true,
@@ -51,8 +51,8 @@ export default class RoomService extends React.Component {
 				numero_usuarios:1,
 				precio:20.1,
 				solicitud: this.state.receivedtext,
-				tipo: "ocio",
-				habitacion: habitacion,
+				tipo: "Premium",
+				cliente: cliente,
 			     };
 
 			console.log(data);
@@ -87,7 +87,7 @@ export default class RoomService extends React.Component {
           {/*OTRAS PETICIONES*/} 
           <div className='otros_container'>
             <div id='id_otros'>
-            <div className='sin-background'>Otras peticiones</div>
+            <div className='sin-background'>Peticion abierta</div>
             </div>
   
             <div className='formularioGrande_container'>

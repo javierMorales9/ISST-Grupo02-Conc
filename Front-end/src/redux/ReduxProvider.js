@@ -8,7 +8,11 @@ import App from '../App';
 export default class ReduxProvider extends React.Component {
 	constructor(props) {
 		super(props);
-		this.initialState = { };
+		this.initialState = {
+			id_cliente:0, 
+			login: false
+		};
+		console.log("Provider")
 		this.store = this.configureStore();
 }
 render() {

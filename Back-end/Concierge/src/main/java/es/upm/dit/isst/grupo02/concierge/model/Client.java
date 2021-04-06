@@ -18,6 +18,7 @@ public class Client implements Serializable {
 		private String nombre;
 		private String apellidos;
 		private String DNI;
+		private int numeroHabitacion;
 		private String email;
 		private String password;
 		private String tipo;
@@ -84,6 +85,12 @@ public class Client implements Serializable {
 		}
 		public void setPrograma_fidelizacion(boolean programa_fidelizacion) {
 			this.programa_fidelizacion = programa_fidelizacion;
+		}
+		public int getNumeroHabitacion() {
+			return numeroHabitacion;
+		}
+		public void setNumeroHabitacion(int numeroHabitacion) {
+			this.numeroHabitacion = numeroHabitacion;
 		}		
 
 }

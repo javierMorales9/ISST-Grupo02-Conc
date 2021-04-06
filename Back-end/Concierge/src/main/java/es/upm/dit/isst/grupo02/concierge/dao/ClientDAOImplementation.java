@@ -91,7 +91,7 @@ public class ClientDAOImplementation implements ClientDAO{
 	}
 
 	@Override
-	public boolean checkLogin(String DNI, String password) {
+	public Client checkLogin(String DNI, String password) {
 
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
@@ -104,11 +104,12 @@ public class ClientDAOImplementation implements ClientDAO{
 		session.close();
 
 		for (Client c: clients) {
-			if(c.getDNI().equals(DNI) && c.getPassword().equals(password))
-				return true;
+			if(c.getDNI()!=null && c.getPassword()!=null && (c.getDNI().equals(DNI) && c.getPassword().equals(password)
+					|| String.valueOf(c.getNumeroHabitacion()).equals(DNI) && c.getPassword().equals(password) ))
+				return c;
 		}
 		
-		return false;
+		return null;
 	}
 
 }

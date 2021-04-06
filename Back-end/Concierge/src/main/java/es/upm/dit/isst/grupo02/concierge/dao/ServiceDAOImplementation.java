@@ -87,6 +87,7 @@ public class ServiceDAOImplementation implements ServiceDAO{
 		return service;
 	}
 	
+	//Arreglar. 
 	@Override
 	public List<Service> readAll(String tipo) {
 		Session session = SessionFactoryService.get().openSession();
