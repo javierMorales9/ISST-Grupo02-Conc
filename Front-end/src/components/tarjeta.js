@@ -4,6 +4,19 @@ import {BrowserRouter as Router,Switch,Route, Link} from "react-router-dom";
 
 export default class Tarjeta extends React.Component {
 	render() {
+
+        let view;
+        if(this.props.login){
+            view = <div>
+                        <Link onClick={this.props.onClick} className='button' to={this.props.navigate}>Saber más</Link>
+                    </div>;
+        } else{
+            view = <div>
+                        <Link onClick={this.props.onClick} className='button' to="/login">Saber más</Link>
+                    </div>;
+        }
+
+
 		return (
 			<div className='tarjeta'>
                 <div style={{display: 'grid', alignItems: 'center', justifyContent: 'center'}}>
@@ -14,13 +27,13 @@ export default class Tarjeta extends React.Component {
                     </div>
                     <div style={{display: 'flex', alignItems: 'center', justifyContent:'space-around'}}>
                         <img src={this.props.foto} style={{width: '300px'}}/>
-                        <Link onClick={this.props.onClick} className='button' to={this.props.navigate}>Saber Más</Link>
+                        {view}
                     </div>
-                    <div style={{width:'100%', paddingTop:'20px'}}>
+                    <div style={{width:'100%', paddingTop:'20px', paddingBottom:'15px',textAlign:"justify",textJustify:"inter-word"}}>
                         <span className='descripcion_servicio'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum, ipsum morbi turpis feugiat eros enim. 
-                            Nec nulla orci sed vitae nulla nam luctus mattis pellentesque. Amet elit tellus dolor fermentum felis. 
-                            Nisi, enim vitae orci fames nunc mauris sagittis facilisis eu. Gravida sed purus placerat ultricies morbi. 
+                            En esta sección de {this.props.titulo} podrá encontrar distinta información relacionada con 
+                            el {this.props.titulo} ofrecido por nuestro hotel a usted como cliente. Además, podrá gestionar 
+                            nuevas opciones en función de su categoria de cliente y contactar con el personal.
                         </span>
                     </div>
                 </div>

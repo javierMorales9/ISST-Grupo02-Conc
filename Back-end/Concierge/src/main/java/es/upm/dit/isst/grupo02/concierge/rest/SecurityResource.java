@@ -39,7 +39,7 @@ public class SecurityResource {
 	public Response login(Client client){
 		Client client_login;
 		
-		client_login = ClientDAOImplementation.getInstancia().checkLogin(client.getDNI(),client.getPassword());
+		client_login = ClientDAOImplementation.getInstancia().checkLogin(client.getDNI(),client.getNumeroHabitacion());
 		
 		System.out.println(client_login);
 		if(client_login == null)

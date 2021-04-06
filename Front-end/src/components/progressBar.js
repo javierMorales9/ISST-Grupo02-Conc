@@ -44,7 +44,7 @@ export default class ProgressBar extends React.Component {
     }
     else {
 	    this.setState({tiemporestante: this.state.tiemporestante-1});   
-	    const estados_pedido = ["Pedido realizado.","Su pedido ha sido aceptado.","Su pedido está de camino, lo trae " + this.getRandomWorker() + ".", "Su pedido ya está en el hotel, en breve lo recibirá.", "Pedido entregado correctamente." ] 
+	    const estados_pedido = ["Pedido realizado.","Su pedido ha sido aceptado.","Su pedido lo trae " + this.getRandomWorker() + ".", "Su pedido ya está en el hotel", "Pedido entregado correctamente." ] 
 	    
 
 	    this.setState({currentOrderState: estados_pedido[this.state.completed+1]})
@@ -65,7 +65,6 @@ export default class ProgressBar extends React.Component {
 		//iner css style
     const containerStyles = {
 	    height: 20,
-	    width: '90%',
 	    backgroundColor: "#e0e0de",
 	    borderRadius: 50,
 	    margin: 20
@@ -86,9 +85,7 @@ export default class ProgressBar extends React.Component {
   	}
   	
   	const forceDiv = {
-  		//border: '1px solid black',
-	    //width: '70%',
-	    //overflow: 'hidden',
+		marginTop: '10px',
 	    whiteSpace: 'nowrap',
 	    alignSelf: 'flex-start'
 	}

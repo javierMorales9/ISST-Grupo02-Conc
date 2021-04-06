@@ -60,7 +60,6 @@
     border: solid 1px;
     padding: 30px 30px 0px 30px;
     margin: 30px;
-    width: 760px;
 }
 
 .first_group{
@@ -111,9 +110,6 @@
     flex-direction: row;
     align-self: center;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 30px;
 }
 
 .chat_button{
@@ -152,8 +148,4 @@ p {
     font-style: normal;
     font-weight: normal;
     font-size: 17px;
-}
-
-.rcw-conversation-container > .rcw-header {
-  background-color: brown;
 }

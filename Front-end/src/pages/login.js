@@ -25,7 +25,7 @@ export default class Login extends React.Component {
 
 			let data ={ 
 				dni:document.getElementById("login_user").value,
-				password:document.getElementById("login_password").value
+				numeroHabitacion:document.getElementById("login_password").value
 			};
 
 			
@@ -44,10 +44,7 @@ export default class Login extends React.Component {
 				this.props.loginUpdate();
 				this.setState({error : <div/>});
 			} else
-				window.alert("Credenciales Incorrectas")
-				//this.setState({error : <p>Credenciales Incorrectas</p>});
-
-						
+				alert("Credenciales Incorrectas");						
 		}
 	}
 
@@ -60,13 +57,13 @@ export default class Login extends React.Component {
 				<div className="container" style={{marginTop:"150px",marginBottom:"200px"}}>
 					<form className='form_login' onSubmit={() => {this.handleClick()}} >
 						<label className="usr">
-							Usuario:
+							DNI:
 							<input id="login_user" type="text" name="user"/>
 						</label>
 
 						<label className="usr">
-							Constraseña:
-							<input id="login_password" type="password" name="password"/>
+							Habitacion:
+							<input id="login_password" type="text" name="password"/>
 						</label>
 					</form>
 					<button onClick={() => { this.handleClick();}}> Enviar </button>

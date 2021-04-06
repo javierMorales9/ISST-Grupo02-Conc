@@ -17,7 +17,7 @@ export default class RoomService extends React.Component {
             {/*CAFETERIA*/}
             <div className='room_container'>
               <div  id="id_cafeteria">
-                <div className='sin-background'>Cafetería</div>  
+                <div className='sin-background'>Cafeteria</div>  
               </div>
               <div>
                 <ul>
@@ -50,7 +50,7 @@ export default class RoomService extends React.Component {
         {/*Lavanderia*/}
         <div className='laundry_container'>
           <div id="id_lavanderia">
-            <div className='sin-background'>Lavandería</div>  
+            <div className='sin-background'>Lavanderia</div>  
           </div>
 
           <form className='formulario_container'>

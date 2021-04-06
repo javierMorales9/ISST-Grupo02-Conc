@@ -20,7 +20,8 @@ export default class RoomService extends React.Component {
 		super(props);
 		this.state = {
 			receivedtext: "",
-      upload: false
+      upload: false,
+      tipo: ""
 		}
 	}
 
@@ -36,10 +37,20 @@ export default class RoomService extends React.Component {
     this.setState({receivedtext: temp});
 	}
 
+  async componentDidMount(){   
+
+    if(this.props.login){
+        let client = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente,{
+            method: "GET",
+            mode:'cors',
+        }).then(res => res.json());
+        this.setState({tipo:client.tipo})
+
+    }
+}
 
 	async componentDidUpdate () { 
 
-		console.log(this.state.upload);
 		if (this.state.upload){
 			
 			let cliente = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente).then(res=>res.json());
@@ -55,15 +66,15 @@ export default class RoomService extends React.Component {
 				cliente: cliente,
 			     };
 
-			console.log(data);
+			
 			await fetch("http://localhost:8080/Concierge/rest/service",{
 				method:'PUT', 
 				mode: 'cors',
 				headers:{"Content-Type":"application/json"},
 				body:JSON.stringify(data)
-			}).then(res =>console.log(res));
-			this.setState({upload:false, receivedtext:"" });
+			})
 
+			this.setState({upload:false, receivedtext:"" });
 		}
 	}
 
@@ -78,7 +89,21 @@ export default class RoomService extends React.Component {
       recognition.onspeechend = function() {
         recognition.stop();
       }
-    }
+    } 
+
+    if (this.state.tipo!="Premium"){
+      return (
+          <div>
+               <h1 className='subtitulo'>Premium</h1>
+               <hr style={{ color: 'gray', width: '70%', border: '2px solid' }} />
+
+              <div className='container' style={{marginTop:"200px",marginBottom:"280px",fontSize:"30px",color:"red"}}>
+                  SU NIVEL DE USUARIO NO TIENE PERMITIDO EL ACCESO A ESTE SERVICIO
+              </div>
+              <Footer/>
+          </div>
+      );
+    } else {
       return (
         <div>
           <h1 className='subtitulo'>Premium</h1>
@@ -87,7 +112,7 @@ export default class RoomService extends React.Component {
           {/*OTRAS PETICIONES*/} 
           <div className='otros_container'>
             <div id='id_otros'>
-            <div className='sin-background'>Petición abierta</div>
+            <div className='sin-background'>Peticion abierta</div>
             </div>
   
             <div className='formularioGrande_container'>
@@ -114,7 +139,7 @@ export default class RoomService extends React.Component {
                 <div className='formulario'>
                 </div>
               </form>
-
+  
               <button id="form_submit" onClick={()=>this.setState({upload:true})}>Enviar</button>
               
             </div>
@@ -123,7 +148,8 @@ export default class RoomService extends React.Component {
           
         </div>
       );
-      }
+    }
+  }
 }
 
 // COMENTARIO DE INTERÉS:

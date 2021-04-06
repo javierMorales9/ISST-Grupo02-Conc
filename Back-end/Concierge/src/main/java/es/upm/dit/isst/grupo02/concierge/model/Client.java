@@ -20,7 +20,6 @@ public class Client implements Serializable {
 		private String DNI;
 		private int numeroHabitacion;
 		private String email;
-		private String password;
 		private String tipo;
 		private String metodo_pago;
 		private double coste;
@@ -55,12 +54,6 @@ public class Client implements Serializable {
 		}
 		public void setEmail(String email) {
 			this.email = email;
-		}
-		public String getPassword() {
-			return password;
-		}
-		public void setPassword(String password) {
-			this.password = password;
 		}
 		public String getTipo() {
 			return tipo;

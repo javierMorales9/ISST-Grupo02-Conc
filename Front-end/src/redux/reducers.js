@@ -4,8 +4,6 @@ import { combineReducers } from 'redux';
 function loginReducer (state = [], action){
 	switch(action.type){
 		case 'LOGIN':
-			console.log("reducer");
-			console.log(action.payload.login);
 			return action.payload.login;
 
 		default:

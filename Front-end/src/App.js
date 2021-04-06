@@ -37,16 +37,16 @@ class App extends React.Component {
     this.props.dispatch(loginAction(isLoged,id));
 
     if(window.location.href+"/" === url_localHost || window.location.href === url_localHost){
-      this.setState({primer_componente:<NavbarInicio login={isLoged} click={this.updateNavBar}/>})
+      this.setState({primer_componente:<NavbarInicio login={isLoged} id={id} click={this.updateNavBar}/>})
     }else{
-      this.setState({primer_componente:<Navbar login={isLoged} click={this.updateNavBar}/>})
+      this.setState({primer_componente:<Navbar login={isLoged} id={id} click={this.updateNavBar}/>})
     }
 
   }
     
   /*Revisar si se puede cambiar el nombre*/
   loginUpdate() {
-    document.getElementById("a_pinchar").click();
+    window.location.href='http://localhost:3000' + process.env.PUBLIC_URL + '/';
     sessionStorage.setItem("login",true);
     sessionStorage.setItem("cliente",this.props.id_cliente);
   }
@@ -61,11 +61,13 @@ class App extends React.Component {
   updateNavBar(e){
     let url = 'https://acallejasz.github.io' + process.env.PUBLIC_URL + '/';
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
+    const isLoged = sessionStorage.getItem("login");
+    const id = sessionStorage.getItem("cliente");
 
     if(e.target.href === url_localHost){
-      this.setState({primer_componente:<NavbarInicio login={this.props.login} click={this.updateNavBar}/>})
+      this.setState({primer_componente:<NavbarInicio login={isLoged} id={id} click={this.updateNavBar}/>})
     }else{
-      this.setState({primer_componente:<Navbar login={this.props.login} click={this.updateNavBar}/>})
+      this.setState({primer_componente:<Navbar login={isLoged} id={id} click={this.updateNavBar}/>})
     }
   }
 
@@ -79,43 +81,43 @@ class App extends React.Component {
             <Route exact path="/">
               <div>
                 {this.state.primer_componente}
-                <Inicio click={this.updateNavBar}/>
+                <Inicio login={this.props.login} id_cliente={this.props.id_cliente} click={this.updateNavBar}/>
               </div>
             </Route>
             <Route path="/leisure">
               <div>
                 {this.state.primer_componente}
-                <Leisure/>
+                <Leisure login={this.props.login} id_cliente={this.props.id_cliente}/>
               </div>
             </Route>
             <Route path="/booking">
               <div>
                 {this.state.primer_componente}
-                <Booking id_cliente={this.props.id_cliente} />
+                <Booking login={this.props.login} id_cliente={this.props.id_cliente} />
               </div>
             </Route>
             <Route path="/premium">
               <div>
                 {this.state.primer_componente}
-                <OtherService  id_cliente={this.props.id_cliente} />
+                <OtherService  login={this.props.login} id_cliente={this.props.id_cliente} />
               </div>
             </Route>
             <Route path="/profile">
               <div>
                 {this.state.primer_componente}
-                <Profile logOut={this.logedOut}/>
+                <Profile login={this.props.login} id_cliente={this.props.id_cliente} logOut={this.logedOut}/>
               </div>
             </Route>
             <Route path="/room_service">
               <div>
                 {this.state.primer_componente}
-                <RoomService/>
+                <RoomService login={this.props.login} id_cliente={this.props.id_cliente}/>
               </div>
             </Route>
             <Route path="/transport">
               <div>
                 {this.state.primer_componente}
-                <Transport/>
+                <Transport login={this.props.login} id_cliente={this.props.id_cliente}/>
               </div>
             </Route>
             <Route path="/login">
