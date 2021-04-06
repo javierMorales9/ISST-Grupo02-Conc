@@ -22,7 +22,7 @@ export default class NavBarInicio extends React.Component {
                     <div style={{display:'flex', justifyContent: 'center'}}>
                         <div style={{flex:1, display: 'flex', alignItems:'center',padding:'10px 30px'}}>
                             <Diamond color={'#51351B'}/>
-                            <Link onClick={this.props.click} className='link_hotel' to='/'>Hotel</Link>
+                            <Link onClick={this.props.click} id="1" className='link_hotel' to='/'>Hotel</Link>
                         </div>
                         <div style={{flex:'4', display: 'flex', justifyContent: 'center'}}>
                             <Link onClick={this.props.click} className='link_titulo' to='/booking'>Reservas</Link>

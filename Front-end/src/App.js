@@ -21,6 +21,7 @@ class App extends React.Component {
     super(props);
     this.updateNavBar = this.updateNavBar.bind(this);
     this.loginUpdate = this.loginUpdate.bind(this);
+    this.logedOut = this.logedOut.bind(this);
     this.state = {
       primer_componente:<NavbarInicio login={false}/>,
     }
@@ -31,10 +32,14 @@ class App extends React.Component {
     let url = 'https://acallejasz.github.io' + process.env.PUBLIC_URL + '/';
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
 
-    if(window.location.href === url_localHost){
-      this.setState({primer_componente:<NavbarInicio login={this.props.login} click={this.updateNavBar}/>})
+    const isLoged = sessionStorage.getItem("login");
+    const id = sessionStorage.getItem("cliente");
+    this.props.dispatch(loginAction(isLoged,id));
+
+    if(window.location.href+"/" === url_localHost || window.location.href === url_localHost){
+      this.setState({primer_componente:<NavbarInicio login={isLoged} click={this.updateNavBar}/>})
     }else{
-      this.setState({primer_componente:<Navbar login={this.props.login} click={this.updateNavBar}/>})
+      this.setState({primer_componente:<Navbar login={isLoged} click={this.updateNavBar}/>})
     }
 
   }
@@ -42,6 +47,14 @@ class App extends React.Component {
   /*Revisar si se puede cambiar el nombre*/
   loginUpdate() {
     document.getElementById("a_pinchar").click();
+    sessionStorage.setItem("login",true);
+    sessionStorage.setItem("cliente",this.props.id_cliente);
+  }
+
+  logedOut(){
+    sessionStorage.removeItem("login");
+    sessionStorage.removeItem("cliente");
+    window.location.href='http://localhost:3000' + process.env.PUBLIC_URL + '/';
   }
 
 
@@ -58,8 +71,6 @@ class App extends React.Component {
 
   render(){
     window.scrollTo(0,0);
-    console.log(this.props.login);
-    console.log(this.props.id_cliente);
 
     return (
       <Router basename={process.env.PUBLIC_URL}>
@@ -92,7 +103,7 @@ class App extends React.Component {
             <Route path="/profile">
               <div>
                 {this.state.primer_componente}
-                <Profile/>
+                <Profile logOut={this.logedOut}/>
               </div>
             </Route>
             <Route path="/room_service">
@@ -110,11 +121,7 @@ class App extends React.Component {
             <Route path="/login">
               <div>
                 {this.state.primer_componente}
-		      <Login  login_info = {(login,id) => {
-		      		this.props.dispatch(loginAction(login,id));
-		      	     }}  
-			     loginUpdate = {this.loginUpdate}
-	      />
+                <Login  login_info = {(login,id) => {this.props.dispatch(loginAction(login,id));}} loginUpdate = {this.loginUpdate}/>
               </div>
             </Route>
           </Switch>

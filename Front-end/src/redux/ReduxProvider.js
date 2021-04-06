@@ -12,6 +12,7 @@ export default class ReduxProvider extends React.Component {
 			id_cliente:0, 
 			login: false
 		};
+		console.log("Provider")
 		this.store = this.configureStore();
 }
 render() {
