@@ -18,11 +18,10 @@ export default class ProgressBar extends React.Component {
 		   currentOrderState: "Pedido realizado.",
 		   completed: 0
   		};
-		const initialState = JSON.parse(sessionStorage.getItem("reserva"+this.props.idres)) || default_state
+		const initialState = JSON.parse(localStorage.getItem("reserva"+this.props.idres)) || default_state
   		console.log(initialState)
   		this.setState(initialState)
 /*		
-		const isLoged = sessionStorage.getItem("login");
 
 		this.setState({})
 		this.setState({interval: } );
@@ -50,7 +49,7 @@ export default class ProgressBar extends React.Component {
 	    this.setState({currentOrderState: estados_pedido[this.state.completed+1]})
 	    this.setState({completed: this.state.completed+1})
 	    console.log(this.state.completed)
-	    sessionStorage.setItem("reserva"+this.props.idres,JSON.stringify(this.state));
+	    localStorage.setItem("reserva"+this.props.idres,JSON.stringify(this.state));
     }
     //document.getElementById("tmr").innerText = "Tiempo restante: "+this.state.tiemporestante+" segundos";
     
