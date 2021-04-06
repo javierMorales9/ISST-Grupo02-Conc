@@ -29,7 +29,7 @@ class App extends React.Component {
 
   componentDidMount(){
     let url = 'https://acallejasz.github.io' + process.env.PUBLIC_URL + '/';
-    let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL;
+    let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
 
     if(window.location.href === url_localHost){
       this.setState({primer_componente:<NavbarInicio login={this.props.login} click={this.updateNavBar}/>})
@@ -38,7 +38,7 @@ class App extends React.Component {
     }
 
   }
-
+    
   /*Revisar si se puede cambiar el nombre*/
   loginUpdate() {
     document.getElementById("a_pinchar").click();

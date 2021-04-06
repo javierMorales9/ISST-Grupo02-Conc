@@ -12,11 +12,12 @@ export default function TarjetaReserva(props){
             <div className="booking_smallcontainer">
                 <div className='first_group'>
                     <div>
-                        <img src={Habitacion} height='240px' width='300px' style={{minHeight:'200px', paddingTop:'23px', minWidth:'275px'}}/>
+                        <img src={Habitacion} height='100px' width='300px' style={{minHeight:'200px', paddingTop:'23px', minWidth:'275px'}}/>
                     </div>       
                     <div className='tb'>
 			    <div>
                             <p>Nº de habitación: {props.n_habitacion}</p>
+                            <p>Nº de usuarios: {props.n_user}</p>
                             <p>Fecha de entrada: {props.fecha_inicio} </p>
                             <p>Fecha de salida: {props.fecha_fin}</p>
                             <p>Tipo de Servicio: {props.tipo}</p>

@@ -87,7 +87,7 @@ export default class RoomService extends React.Component {
           {/*OTRAS PETICIONES*/} 
           <div className='otros_container'>
             <div id='id_otros'>
-            <div className='sin-background'>Otras peticiones</div>
+            <div className='sin-background'>Peticion abierta</div>
             </div>
   
             <div className='formularioGrande_container'>

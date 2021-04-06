@@ -28,23 +28,7 @@ export default class Booking extends React.Component {
 
             <h1 className="subtitulo">Gestión de Reserva</h1> 
             <hr className="raya_titulo"/>
-
-            <h2 className="category">Reservar</h2>
-
-            <div id='container'> 
-                <div id="imagen_reserva">
-                    <h2 id='text_foto_top' >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                        In sagittis nulla turpis urna, gravida. Mattis mauris sagittis.
-                    </h2>
-                    <a href='https://booking.com/' target='_blank'  id='reservar_container'>
-                        <p id ='span_butt'>RESERVAR</p>
-                    </a> 
-                </div>
-            </div>
-            
-            <h2 className="category">Mis reservas</h2>
-
+    
             <div>
 		
 		    {this.state.f.map((el,id) =>{
@@ -53,6 +37,7 @@ export default class Booking extends React.Component {
 		    fecha_inicio = {el.fecha_inicio}
 		    fecha_fin = {el.fecha_fin}
 		    tipo = {el.tipo}
+            n_user = {el.numero_usuarios}
 		    solicitud = {el.solicitud}
 		    disponibilidad = {el.disponibilidad}
 		    id = {el.id}
