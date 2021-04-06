@@ -1,6 +1,7 @@
 import React from 'react';
 import Habitacion from '../media/habitacion.png'
 import '../public/booking.css'
+import ProgressBar from './progressBar';
 
 export default function TarjetaReserva(props){
     return(
@@ -13,6 +14,10 @@ export default function TarjetaReserva(props){
                 <div className='first_group'>
                     <div>
                         <img src={Habitacion} height='100px' width='300px' style={{minHeight:'200px', paddingTop:'23px', minWidth:'275px'}}/>
+                            {props.tipo === "Premium" ? <div>
+                        <ProgressBar idres = {props.id}/>
+            </div>:<div></div>}
+        
                     </div>       
                     <div className='tb'>
 			    <div>
@@ -41,7 +46,9 @@ export default function TarjetaReserva(props){
                     <p>hotels.com</p>
                 </div>                
             </div>
+        
         </div>
+
 
     )
 }

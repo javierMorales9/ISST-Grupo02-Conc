@@ -31,16 +31,17 @@ export default class Booking extends React.Component {
     
             <div>
 		
-		    {this.state.f.map((el,id) =>{
+		    {this.state.f.map(el =>{
 		    return <TarjetaReserva 
-		    n_habitacion = {el.cliente.numeroHabitacion}
-		    fecha_inicio = {el.fecha_inicio}
-		    fecha_fin = {el.fecha_fin}
-		    tipo = {el.tipo}
-            n_user = {el.numero_usuarios}
-		    solicitud = {el.solicitud}
-		    disponibilidad = {el.disponibilidad}
-		    id = {el.id}
+			    n_habitacion = {el.cliente.numeroHabitacion}
+			    fecha_inicio = {el.fecha_inicio}
+			    fecha_fin = {el.fecha_fin}
+			    tipo = {el.tipo}
+	            n_user = {el.numero_usuarios}
+			    solicitud = {el.solicitud}
+			    disponibilidad = {el.disponibilidad}
+			    id = {el.id}
+			    key = {el.id}
 	   	     />;
 		    })
 
