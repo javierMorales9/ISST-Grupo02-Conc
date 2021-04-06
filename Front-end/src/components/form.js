@@ -25,7 +25,7 @@ export default class Form extends React.Component {
                     <div className="formulario_reserva">
                         <form>
                             <label id="form_hab">
-                                Nº habitacion: <input type="text" name="name"/>
+                                Nº habitación: <input type="text" name="name"/>
                             </label>
                             <label id="form_tipo">
                                 Tipo de transporte: 
@@ -33,7 +33,7 @@ export default class Form extends React.Component {
                                     <option selected value="none">--None--</option>
                                     <option value="uber">Uber</option>
                                     <option value="taxi">Taxi</option>
-                                    <option value="avion">Avion</option>
+                                    <option value="avion">Avión</option>
                                     <option value="tren">Tren</option>
                                 </select>
                             </label>
@@ -51,7 +51,7 @@ export default class Form extends React.Component {
                     <div className="formulario_reserva">
                         <form>
                             <label id="form_hab">
-                                Nº habitacion: <input type="text" name="name"/>
+                                Nº habitación: <input type="text" name="name"/>
                             </label>
                             <div style={{marginBottom:'10px'}}>
                                 <label id="form_tipo" for="date">Fecha:</label>
