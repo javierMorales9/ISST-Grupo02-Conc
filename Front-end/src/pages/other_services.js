@@ -20,10 +20,11 @@ export default class RoomService extends React.Component {
 		super(props);
 		this.state = {
 			receivedtext: "",
-      upload: false,
-      tipo: "",
+      //upload: false,
+      //tipo: "",
       //not_authorized_to_paint: true
 		}
+    this.updateServiceRequest = this.updateServiceRequest.bind(this)
 	}
 
   recordvoice = () => {
@@ -41,45 +42,61 @@ export default class RoomService extends React.Component {
   async componentDidMount(){   
     console.log("printed")
     if(this.props.login){
+      //let l = JSON.parse(this.props.entire_client)
+      console.log()
+    /*
         let client = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente,{
             method: "GET",
             mode:'cors',
         }).then(res => res.json());
-        this.setState({tipo:client.tipo})
+    */
+        //this.setState({tipo:this.props.entire_client.tipo})
 
     }
     //paint now:
     //this.setState({not_authorized_to_paint: false})
 }
+  async updateServiceRequest() {
+    
+    let data = {
+      disponibilidad:true,
+      fecha_inicio:"2021-02-02",
+      fecha_fin:"2021-02-03",
+      numero_usuarios:1,
+      precio:20.1,
+      solicitud: this.state.receivedtext,
+      tipo: "Premium",
+      cliente: this.props.entire_client,
+         };
+
+    await fetch("http://localhost:8080/Concierge/rest/service",{
+      method:'PUT', 
+      mode: 'cors',
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(data)
+    })
+
+    this.setState({receivedtext:""});
+  }
  	async componentDidUpdate () { 
-   	if (this.state.upload || (this.state.tipo==="" && this.props.login)){
+    //console.log("antwwwwwes" + this.state.tipo === "")
+    //console.log("antes" + this.state.tipo === "Premium")
+   	if (this.state.upload || (this.state.tipo!=="Premium" && this.props.login)){
 			
-			let cliente = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente).then(res=>res.json());
-
+      //let cliente = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente).then(res=>res.json());
+      //console.log("dentro")
+      //console.log(cliente)
+      //console.log(cliente.tipo)
+      //console.log(this.state)
       //update client - still premium?
-      this.setState({tipo:cliente.tipo})
 
-			let data = {
-				disponibilidad:true,
-				fecha_inicio:"2021-02-02",
-				fecha_fin:"2021-02-03",
-				numero_usuarios:1,
-				precio:20.1,
-				solicitud: this.state.receivedtext,
-				tipo: "Premium",
-				cliente: cliente,
-			     };
+      
+			
 
 			
-			await fetch("http://localhost:8080/Concierge/rest/service",{
-				method:'PUT', 
-				mode: 'cors',
-				headers:{"Content-Type":"application/json"},
-				body:JSON.stringify(data)
-			})
+		
 
-
-			this.setState({upload:false, receivedtext:"" });
+			
 		}
     //if (this.state.tipo!="" && this.state.not_authorized_to_paint === true)
       //        this.setState({not_authorized_to_paint: false})
@@ -98,12 +115,13 @@ export default class RoomService extends React.Component {
       }
     } 
 
-      console.log(this.state.tipo)
+      //console.log("state en render: " + this.state.tipo)
+      console.log(this.props)
       return (
         <div>
           
-        {this.state.tipo==="" ? <div></div> : 
-        this.state.tipo!="Premium" ? 
+        {this.props.entire_client.tipo==="" ? <div></div> : 
+        this.props.entire_client.tipo!="Premium" ? 
             <div>
                <h1 className='subtitulo'>Premium</h1>
                <hr style={{ color: 'gray', width: '70%', border: '2px solid' }} />
@@ -149,8 +167,8 @@ export default class RoomService extends React.Component {
                     <div className='formulario'>
                     </div>
                   </form>
-      
-                  <button id="form_submit" onClick={()=>this.setState({upload:true})}>Enviar</button>
+                  <button id="form_submit" onClick={this.updateServiceRequest}>Enviar</button>
+
                   
                 </div>
               </div>
@@ -172,3 +190,7 @@ export default class RoomService extends React.Component {
 
 // form ya incluye que el botón se pulse cuando se pulsa intro y por tanto this.state.receivedtext = ''
 // cuando metamos lógica habrá que anticiparnos a esto, probablemente enviando el this.state.receivedtext haciendo uso de onClick()
+
+
+
+//                   <button id="form_submit" onClick={()=>this.setState({upload:true})}>Enviar</button>

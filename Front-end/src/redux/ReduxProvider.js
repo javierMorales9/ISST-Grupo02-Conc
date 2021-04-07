@@ -10,11 +10,13 @@ export default class ReduxProvider extends React.Component {
 		super(props);
 		this.initialState = {
 			id_cliente:0, 
-			login: false
+			login: false,
+			entire_client: ""
 		};
 		this.store = this.configureStore();
 }
 render() {
+
 	return (
 		<Provider store={ this.store }>
 			<div style={{ height: '100%' }} >

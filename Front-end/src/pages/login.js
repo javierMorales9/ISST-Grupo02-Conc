@@ -35,12 +35,19 @@ export default class Login extends React.Component {
 				headers:{"Content-Type":"application/json"},
 				body:JSON.stringify(data)
 			}).then(res => res.json());
+			
+			let entire_client = await fetch("http://localhost:8080/Concierge/rest/client/"+login.id,{
+            method: "GET",
+            mode:'cors',
+        }).then(res => res.json());
+			console.log(entire_client)
 
-
+			 
 			this.setState({updated:false});
 			
 			if(login !== false){
 				this.props.login_info(true,login.id)
+				this.props.savetheuser(entire_client)
 				this.props.loginUpdate();
 				this.setState({error : <div/>});
 			} else

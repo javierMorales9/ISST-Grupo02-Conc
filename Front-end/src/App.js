@@ -12,7 +12,7 @@ import Navbar from './components/navbar.js';
 import NavbarInicio from './components/navbarInicio.js';
 import Login from './pages/login.js';
 import './public/navbar.css';
-import {loginAction} from './redux/actions.js';
+import {loginAction, savetheclient} from './redux/actions.js';
 
 
 class App extends React.Component {
@@ -34,7 +34,15 @@ class App extends React.Component {
 
     const isLoged = sessionStorage.getItem("login");
     const id = sessionStorage.getItem("cliente");
+    //const entire_client = JSON.parse(sessionStorage.getItem("entire_client"));
+    let entire_client = sessionStorage.getItem("entire_client")
+    if (entire_client != null)
+       entire_client = JSON.parse(entire_client)
+    console.log(entire_client)
+    console.log(":)")
     this.props.dispatch(loginAction(isLoged,id));
+    this.props.dispatch(savetheclient(entire_client))
+    
 
     if(window.location.href+"/" === url_localHost || window.location.href === url_localHost){
       this.setState({primer_componente:<NavbarInicio login={isLoged} id={id} click={this.updateNavBar}/>})
@@ -49,11 +57,14 @@ class App extends React.Component {
     window.location.href='http://localhost:3000' + process.env.PUBLIC_URL + '/';
     sessionStorage.setItem("login",true);
     sessionStorage.setItem("cliente",this.props.id_cliente);
+    sessionStorage.setItem("entire_client",JSON.stringify(this.props.entire_client))
+    console.log(this.entire_client, JSON.stringify(this.props.entire_client))
   }
 
   logedOut(){
     sessionStorage.removeItem("login");
     sessionStorage.removeItem("cliente");
+    sessionStorage.removeItem("entire_client")
     window.location.href='http://localhost:3000' + process.env.PUBLIC_URL + '/';
   }
 
@@ -63,6 +74,7 @@ class App extends React.Component {
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
     const isLoged = sessionStorage.getItem("login");
     const id = sessionStorage.getItem("cliente");
+    
 
     if(e.target.href === url_localHost){
       this.setState({primer_componente:<NavbarInicio login={isLoged} id={id} click={this.updateNavBar}/>})
@@ -73,7 +85,7 @@ class App extends React.Component {
 
   render(){
     window.scrollTo(0,0);
-
+    console.log(this.props.entire_client)
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div>
@@ -99,7 +111,7 @@ class App extends React.Component {
             <Route path="/premium">
               <div>
                 {this.state.primer_componente}
-                <OtherService  login={this.props.login} id_cliente={this.props.id_cliente} />
+                <OtherService  login={this.props.login} id_cliente={this.props.id_cliente} entire_client={this.props.entire_client} />
               </div>
             </Route>
             <Route path="/profile">
@@ -123,7 +135,7 @@ class App extends React.Component {
             <Route path="/login">
               <div>
                 {this.state.primer_componente}
-                <Login  login_info = {(login,id) => {this.props.dispatch(loginAction(login,id));}} loginUpdate = {this.loginUpdate}/>
+                <Login  savetheuser = {(entire_client)=>{this.props.dispatch(savetheclient(entire_client));}} login_info = {(login,id) => {this.props.dispatch(loginAction(login,id));}} loginUpdate = {this.loginUpdate}/>
               </div>
             </Route>
           </Switch>
