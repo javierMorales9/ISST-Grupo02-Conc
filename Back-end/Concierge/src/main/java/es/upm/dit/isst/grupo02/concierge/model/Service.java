@@ -30,7 +30,6 @@ public class Service implements Serializable {
 		private double precio;
 		private boolean disponibilidad;
 		
-		
 		public int getId() {
 			return id;
 		}

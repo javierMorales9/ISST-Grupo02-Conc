@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {BrowserRouter as Router,Switch,Route, Link} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Inicio from './pages/inicio';
 import Booking from './pages/booking';
 import Leisure from './pages/leisure';
@@ -34,12 +34,9 @@ class App extends React.Component {
 
     const isLoged = sessionStorage.getItem("login");
     const id = sessionStorage.getItem("cliente");
-    //const entire_client = JSON.parse(sessionStorage.getItem("entire_client"));
     let entire_client = sessionStorage.getItem("entire_client")
     if (entire_client != null)
        entire_client = JSON.parse(entire_client)
-    console.log(entire_client)
-    console.log(":)")
     this.props.dispatch(loginAction(isLoged,id));
     this.props.dispatch(savetheclient(entire_client))
     
@@ -85,7 +82,6 @@ class App extends React.Component {
 
   render(){
     window.scrollTo(0,0);
-    console.log(this.props.entire_client)
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div>
@@ -99,13 +95,13 @@ class App extends React.Component {
             <Route path="/leisure">
               <div>
                 {this.state.primer_componente}
-                <Leisure login={this.props.login} id_cliente={this.props.id_cliente}/>
+                <Leisure login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
               </div>
             </Route>
             <Route path="/booking">
               <div>
                 {this.state.primer_componente}
-                <Booking login={this.props.login} id_cliente={this.props.id_cliente} />
+                <Booking login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente} />
               </div>
             </Route>
             <Route path="/premium">
@@ -123,13 +119,13 @@ class App extends React.Component {
             <Route path="/room_service">
               <div>
                 {this.state.primer_componente}
-                <RoomService login={this.props.login} id_cliente={this.props.id_cliente}/>
+                <RoomService login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
               </div>
             </Route>
             <Route path="/transport">
               <div>
                 {this.state.primer_componente}
-                <Transport login={this.props.login} id_cliente={this.props.id_cliente}/>
+                <Transport login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
               </div>
             </Route>
             <Route path="/login">

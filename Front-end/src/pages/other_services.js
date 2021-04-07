@@ -12,17 +12,12 @@ if (window.hasOwnProperty('webkitSpeechRecognition')){
   recognition.maxAlternatives = 1;
 };
 
-
-
 export default class RoomService extends React.Component {
 
   constructor(props){
 		super(props);
 		this.state = {
 			receivedtext: "",
-      //upload: false,
-      //tipo: "",
-      //not_authorized_to_paint: true
 		}
     this.updateServiceRequest = this.updateServiceRequest.bind(this)
 	}
@@ -39,23 +34,6 @@ export default class RoomService extends React.Component {
     this.setState({receivedtext: temp});
 	}
 
-  async componentDidMount(){   
-    console.log("printed")
-    if(this.props.login){
-      //let l = JSON.parse(this.props.entire_client)
-      console.log()
-    /*
-        let client = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente,{
-            method: "GET",
-            mode:'cors',
-        }).then(res => res.json());
-    */
-        //this.setState({tipo:this.props.entire_client.tipo})
-
-    }
-    //paint now:
-    //this.setState({not_authorized_to_paint: false})
-}
   async updateServiceRequest() {
     if (this.state.receivedtext==="")
       alert("Introduce una petición antes de enviarla ")
@@ -79,49 +57,23 @@ export default class RoomService extends React.Component {
       })
   
       this.setState({receivedtext:""});
+      alert("La petición ha sido completada")
+      window.location.href='http://localhost:3000' + process.env.PUBLIC_URL + '/booking';
     
     }
-    }
- 	/*  OLD
-   async componentDidUpdate () { 
-    //console.log("antwwwwwes" + this.state.tipo === "")
-    //console.log("antes" + this.state.tipo === "Premium")
-   	//if (this.state.upload || (this.state.tipo!=="Premium" && this.props.login)){
-			
-      //let cliente = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente).then(res=>res.json());
-      //console.log("dentro")
-      //console.log(cliente)
-      //console.log(cliente.tipo)
-      //console.log(this.state)
-      //update client - still premium?
-
-      
-			
-
-			
-		
-
-			
-		//}
-    //if (this.state.tipo!="" && this.state.not_authorized_to_paint === true)
-      //        this.setState({not_authorized_to_paint: false})
-	}
-*/
+  }
   render() {
-    let t = window.hasOwnProperty('webkitSpeechRecognition')
-    if (t){
-      recognition.onresult = (event)=>{
-        var temp = event.results[0][0].transcript;   
-        this.changeState(temp)
-      }
-  
-      recognition.onspeechend = function() {
-        recognition.stop();
-      }
-    } 
-
-      //console.log("state en render: " + this.state.tipo)
-      console.log(this.props)
+      let t = window.hasOwnProperty('webkitSpeechRecognition')
+      if (t){
+        recognition.onresult = (event)=>{
+          var temp = event.results[0][0].transcript;   
+          this.changeState(temp)
+        }
+    
+        recognition.onspeechend = function() {
+          recognition.stop();
+        }
+      } 
       return (
         <div>
           
@@ -191,17 +143,6 @@ export default class RoomService extends React.Component {
       </div>
         
       );
-    
-    
-  //envuelve hasta aquí
   }
 }
 
-// COMENTARIO DE INTERÉS:
-
-// form ya incluye que el botón se pulse cuando se pulsa intro y por tanto this.state.receivedtext = ''
-// cuando metamos lógica habrá que anticiparnos a esto, probablemente enviando el this.state.receivedtext haciendo uso de onClick()
-
-
-
-//                   <button id="form_submit" onClick={()=>this.setState({upload:true})}>Enviar</button>

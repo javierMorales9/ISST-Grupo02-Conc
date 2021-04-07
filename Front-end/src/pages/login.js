@@ -40,9 +40,7 @@ export default class Login extends React.Component {
             method: "GET",
             mode:'cors',
         }).then(res => res.json());
-			console.log(entire_client)
-
-			 
+		
 			this.setState({updated:false});
 			
 			if(login !== false){

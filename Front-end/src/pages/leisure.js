@@ -5,40 +5,9 @@ import TarjetaOcio from '../components/tarjeta_ocio.js';
 import '../public/leisure.css';
 
 export default class Leisure extends React.Component {
-
-    constructor(props){
-        super(props);
-        this.state = {
-            tipo: ""
-        }
-    }
-
-    async componentDidMount(){
-
-        if(this.props.login){
-            let client = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente,{
-                method: "GET",
-                mode:'cors',
-            }).then(res => res.json());
-            this.setState({tipo:client.tipo})
-        }
-	}
-
-
-    async componentDidUpdate(){
-
-        if(this.props.login){
-            let client = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente,{
-                method: "GET",
-                mode:'cors',
-            }).then(res => res.json());
-            this.setState({tipo:client.tipo})
-        }
-	}
-
     render() {
 
-        if (this.state.tipo=="Estandar"){
+        if (this.props.cliente.tipo=="Estandar"){
             return (
                 <div>
                     <h1 className='subtitulo'>Ocio</h1>
