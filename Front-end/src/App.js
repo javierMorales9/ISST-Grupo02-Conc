@@ -131,7 +131,7 @@ class App extends React.Component {
             <Route path="/login">
               <div>
                 {this.state.primer_componente}
-                <Login  savetheuser = {(entire_client)=>{this.props.dispatch(savetheclient(entire_client));}} login_info = {(login,id) => {this.props.dispatch(loginAction(login,id));}} loginUpdate = {this.loginUpdate}/>
+                <Login  login={this.props.login} savetheuser = {(entire_client)=>{this.props.dispatch(savetheclient(entire_client));}} login_info = {(login,id) => {this.props.dispatch(loginAction(login,id));}} loginUpdate = {this.loginUpdate}/>
               </div>
             </Route>
           </Switch>

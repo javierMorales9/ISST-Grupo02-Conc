@@ -20,7 +20,6 @@ export default class Login extends React.Component {
 
 	async componentDidUpdate(){
 		
-		
 		if(this.state.updated){
 
 			let data ={ 
@@ -34,16 +33,15 @@ export default class Login extends React.Component {
 				mode:'cors',
 				headers:{"Content-Type":"application/json"},
 				body:JSON.stringify(data)
-			}).then(res => res.json());
-			
-			let entire_client = await fetch("http://localhost:8080/Concierge/rest/client/"+login.id,{
-            method: "GET",
-            mode:'cors',
-        }).then(res => res.json());
+			}).then(res => res.json());			
 		
 			this.setState({updated:false});
 			
 			if(login !== false){
+				let entire_client = await fetch("http://localhost:8080/Concierge/rest/client/"+login.id,{
+					method: "GET",
+					mode:'cors',
+				}).then(res => res.json());
 				this.props.login_info(true,login.id)
 				this.props.savetheuser(entire_client)
 				this.props.loginUpdate();
@@ -56,29 +54,29 @@ export default class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1 className="subtitulo">Acceso clientes</h1>
-				<hr className="raya_titulo"/>
-				
-				<div className="container" style={{marginTop:"150px",marginBottom:"200px"}}>
-					<form className='form_login' onSubmit={() => {this.handleClick()}} >
-						<label className="usr">
-							DNI:
-							<input id="login_user" type="text" name="user"/>
-						</label>
+				<div className='fondo'>
+					<div className="login_container">
+						<div className="wrapper">
+							<h1 className="subtitulo">Acceso clientes</h1>
+							<hr className="raya_titulo"/>
+							<form className='form_login' onSubmit={() => {this.handleClick()}} >
+								<label className="usr">
+									<input placeholder="DNI" id="login_user" className='login_input' type="text" name="user"/>
+								</label>
 
-						<label className="usr">
-							Habitacion:
-							<input id="login_password" type="text" name="password"/>
-						</label>
-					</form>
-					<button onClick={() => { this.handleClick();}}> Enviar </button>
-					{this.state.error}
-				</div>	
+								<label className="usr">
+									<input placeholder="Habitación" id="login_password" className='login_input' type="text" name="password"/>
+								</label>
+							</form>
+							<button className="spinner" onClick={() => { this.handleClick();}}><span className="state">Enviar</span></button>
+							{this.state.error}
+						</div>
+					</div>	
+				</div>
 
 				<Footer/>
 
 			</div>
-
 		);
 	}
 }
