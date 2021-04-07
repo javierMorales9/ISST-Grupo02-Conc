@@ -57,31 +57,36 @@ export default class RoomService extends React.Component {
     //this.setState({not_authorized_to_paint: false})
 }
   async updateServiceRequest() {
+    if (this.state.receivedtext==="")
+      alert("Introduce una petición antes de enviarla ")
+    else{
+      let data = {
+        disponibilidad:true,
+        fecha_inicio:"2021-02-02",
+        fecha_fin:"2021-02-03",
+        numero_usuarios:1,
+        precio:20.1,
+        solicitud: this.state.receivedtext,
+        tipo: "Premium",
+        cliente: this.props.entire_client,
+           };
+  
+      await fetch("http://localhost:8080/Concierge/rest/service",{
+        method:'PUT', 
+        mode: 'cors',
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(data)
+      })
+  
+      this.setState({receivedtext:""});
     
-    let data = {
-      disponibilidad:true,
-      fecha_inicio:"2021-02-02",
-      fecha_fin:"2021-02-03",
-      numero_usuarios:1,
-      precio:20.1,
-      solicitud: this.state.receivedtext,
-      tipo: "Premium",
-      cliente: this.props.entire_client,
-         };
-
-    await fetch("http://localhost:8080/Concierge/rest/service",{
-      method:'PUT', 
-      mode: 'cors',
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify(data)
-    })
-
-    this.setState({receivedtext:""});
-  }
- 	async componentDidUpdate () { 
+    }
+    }
+ 	/*  OLD
+   async componentDidUpdate () { 
     //console.log("antwwwwwes" + this.state.tipo === "")
     //console.log("antes" + this.state.tipo === "Premium")
-   	if (this.state.upload || (this.state.tipo!=="Premium" && this.props.login)){
+   	//if (this.state.upload || (this.state.tipo!=="Premium" && this.props.login)){
 			
       //let cliente = await fetch("http://localhost:8080/Concierge/rest/client/"+this.props.id_cliente).then(res=>res.json());
       //console.log("dentro")
@@ -97,11 +102,11 @@ export default class RoomService extends React.Component {
 		
 
 			
-		}
+		//}
     //if (this.state.tipo!="" && this.state.not_authorized_to_paint === true)
       //        this.setState({not_authorized_to_paint: false})
 	}
-
+*/
   render() {
     let t = window.hasOwnProperty('webkitSpeechRecognition')
     if (t){
@@ -140,7 +145,7 @@ export default class RoomService extends React.Component {
               {/*OTRAS PETICIONES*/} 
               <div className='otros_container'>
                 <div id='id_otros'>
-                <div className='sin-background'>Peticion abierta</div>
+                <div className='sin-background'>Petición abierta</div>
                 </div>
       
                 <div className='formularioGrande_container'>
@@ -162,13 +167,19 @@ export default class RoomService extends React.Component {
                       </div>
                   </div>
       
-                  <form className='formularioGrande_container'>
-                    <input id='inputGrande' type="text" value={this.state.receivedtext || '' } onChange = {(e)=> this.changeState(e.target.value)}/>
+                  <div className='formularioGrande_container' >
+                    <input id='inputGrande' type="text" value={this.state.receivedtext || '' } onChange = {(e)=> this.changeState(e.target.value)}
+                    onKeyUp = {key => {
+                      if (key.keyCode === 13){this.updateServiceRequest()}
+                    }}
+                    />
                     <div className='formulario'>
-                    </div>
-                  </form>
-                  <button id="form_submit" onClick={this.updateServiceRequest}>Enviar</button>
+                      <button id="form_submit" onClick = {this.updateServiceRequest}>Enviar</button>
 
+                    </div>
+                  </div>
+                
+                  
                   
                 </div>
               </div>
