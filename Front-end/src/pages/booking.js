@@ -13,20 +13,28 @@ export default class Booking extends React.Component {
 		};
 	}
 
-	async componentDidMount(){
-
-		let f = await fetch("http://localhost:8080/Concierge/rest/service/clients/" + this.props.id_cliente).then(res => res.json());
-		this.setState({f:f})
+	componentDidMount(){
+		this.fetchData();
 	}
 
-	async componentDidUpdate(){
+	fetchData = () => {
 
-		let f = await fetch("http://localhost:8080/Concierge/rest/service/clients/" + this.props.id_cliente).then(res => res.json());
-		this.setState({f:f})
+		fetch("http://localhost:8080/Concierge/rest/service/clients/" + sessionStorage.getItem('cliente')) 
+			.then(res => res.json())
+			.then( (f) =>{
+				this.setState({f:f})
+
+			});
 	}
+
 
 
     render() {
+
+    if (sessionStorage.getItem('login') == null){
+   	 window.location.href = 'http://localhost:3000' + process.env.PUBLIC_URL + '/login';
+       	 return <div/>;
+	}
 		
         let view;
         if(this.state.f.length==0){

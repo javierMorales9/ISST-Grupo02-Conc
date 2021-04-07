@@ -7,6 +7,11 @@ import '../public/leisure.css';
 export default class Leisure extends React.Component {
     render() {
 
+	if (this.props.cliente == null){
+	    window.location.href = 'http://localhost:3000' + process.env.PUBLIC_URL + '/login';
+	    return <div/>;
+	}
+
         if (this.props.cliente.tipo=="Estandar"){
             return (
                 <div>

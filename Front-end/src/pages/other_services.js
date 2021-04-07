@@ -63,6 +63,13 @@ export default class RoomService extends React.Component {
     }
   }
   render() {
+
+    if (this.props.entire_client == null){
+   	 window.location.href = 'http://localhost:3000' + process.env.PUBLIC_URL + '/login';
+       	 return <div/>;
+	}
+
+
       let t = window.hasOwnProperty('webkitSpeechRecognition')
       if (t){
         recognition.onresult = (event)=>{

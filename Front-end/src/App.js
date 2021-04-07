@@ -32,6 +32,8 @@ class App extends React.Component {
     let url = 'https://acallejasz.github.io' + process.env.PUBLIC_URL + '/';
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
 
+    this.setState({first_charge:true});
+
     const isLoged = sessionStorage.getItem("login");
     const id = sessionStorage.getItem("cliente");
     let entire_client = sessionStorage.getItem("entire_client")
@@ -46,7 +48,7 @@ class App extends React.Component {
     }else{
       this.setState({primer_componente:<Navbar login={isLoged} id={id} click={this.updateNavBar}/>})
     }
-
+	
   }
     
   /*Revisar si se puede cambiar el nombre*/
@@ -82,6 +84,7 @@ class App extends React.Component {
 
   render(){
     window.scrollTo(0,0);
+
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div>

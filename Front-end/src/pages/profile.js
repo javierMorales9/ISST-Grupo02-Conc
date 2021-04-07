@@ -8,6 +8,12 @@ import '../public/main_styles.css';
 
 export default class Profile extends React.Component {
     render() {
+
+    if (sessionStorage.getItem('login') == null){
+   	 window.location.href = 'http://localhost:3000' + process.env.PUBLIC_URL + '/login';
+       	 return <div/>;
+	}
+
         return (
         	<div>
 				<h1 className='subtitulo'>Profile</h1>

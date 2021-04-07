@@ -12,16 +12,16 @@ export default class NavBar extends React.Component {
 		let view;
 		let view2;
 		let profile = <Link onClick={this.props.click} to='/profile' style={{display:'flex', justifyContent:'center', alignItems:'center'}}><img src={default_profile} className='image'/></Link>
-	    let noprofile = <Link onClick={this.props.click} to='/login'>Acceso</Link>;
+	    let noprofile = <Link id="login_button" onClick={this.props.click} to='/login'>Acceso</Link>;
 
         if(this.props.login){
             view = profile;
             view2 = <div style={{flex:'4', display:'flex', justifyContent:'center', alignItems:'center'}}>
 						<li>
-							<Link onClick={this.props.click} to='/booking'>Reservas</Link>
+							<Link id="booking" onClick={this.props.click} to='/booking'>Reservas</Link>
 						</li>
 						<li>
-							<Link onClick={this.props.click} to='/room_service'>RoomService</Link>
+							<Link id="room_service" onClick={this.props.click} to='/room_service'>RoomService</Link>
 						</li>
 						<li>
 							<Link onClick={this.props.click} to='/transport'>Transportes</Link>

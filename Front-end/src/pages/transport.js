@@ -9,7 +9,13 @@ import '../public/main_styles.css';
 export default class Transport extends React.Component {
 
     render() {
-        if (this.props.cliente.tipo=="Estandar"){
+
+	if (this.props.cliente == null){
+	    window.location.href = 'http://localhost:3000' + process.env.PUBLIC_URL + '/login';
+	    return <div/>;
+	   }
+	
+ 	if(this.props.cliente.tipo == "Estandar"){
             return (
                 <div>
                     <h1 className="subtitulo">Transporte</h1>

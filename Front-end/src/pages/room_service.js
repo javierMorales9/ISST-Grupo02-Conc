@@ -6,6 +6,12 @@ import '../public/room_service.css';
 
 export default class RoomService extends React.Component {
   render() {
+
+    if (sessionStorage.getItem("login") == null){
+   	 window.location.href = 'http://localhost:3000' + process.env.PUBLIC_URL + '/login';
+       	 return <div/>;
+	}
+
     return (
       <div>
         <h1 className='subtitulo'>Room Service</h1>
