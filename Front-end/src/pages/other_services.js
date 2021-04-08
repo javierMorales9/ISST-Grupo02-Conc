@@ -90,9 +90,10 @@ export default class RoomService extends React.Component {
                <h1 className='subtitulo'>Premium</h1>
                <hr style={{ color: 'gray', width: '70%', border: '2px solid' }} />
 
-              <div className='container' style={{marginTop:"200px",marginBottom:"280px",fontSize:"30px",color:"red"}}>
-                  SU NIVEL DE USUARIO NO TIENE PERMITIDO EL ACCESO A ESTE SERVICIO
-              </div>
+               <div className='container' style={{marginTop:"150px",marginBottom:"220px",fontSize:"30px",color:"red"}}>
+                    <span>SU NIVEL DE USUARIO NO TIENE AUTORIZACIÓN AL ACCESO DE ESTE SERVICIO</span>
+                    <span style={{marginTop:"20px"}}>AUMENTE SU NIVEL A CLIENTE PREMIUM PARA DISFRUTAR DEL SERVICIO</span>
+                </div>
               <Footer/>
             </div>
 

@@ -30,11 +30,11 @@ export default class Profile extends React.Component {
 	async updateClientRequest() {
 		let data = {
 			id: this.props.entire_client.id,
-			nombre: this.state.nombre,
-			apellidos: this.state.apellidos,
-			email: this.state.email,
-			metodo_pago: this.state.metodoPago,
-			dni: this.state.dni,
+			nombre: this.state.nombre=="" ? this.props.entire_client.nombre:this.state.nombre,
+			apellidos: this.state.apellidos=="" ? this.props.entire_client.apellidos:this.state.apellidos,
+			email: this.state.email=="" ? this.props.entire_client.email:this.state.email,
+			metodo_pago: this.state.metodoPago=="" ? this.props.entire_client.metodo_pago:this.state.metodoPago,
+			dni: this.state.dni=="" ? this.props.entire_client.dni:this.state.dni,
 
 			coste: this.props.entire_client.coste,
 			tipo: this.props.entire_client.tipo,
@@ -62,6 +62,7 @@ export default class Profile extends React.Component {
 		alert("La petición ha sido completada")
 		this.setState({ modificar: false });
 
+		this.setState({nombre: "", apellidos: "", metodoPago: "", email: "",dni: ""});
 
 	}
 
@@ -89,7 +90,7 @@ export default class Profile extends React.Component {
 
 					<div style={{ height: '1000px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '50px 0px 50px 0px' }}>
 						<div style={{ flex: '1', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '950px' }}>
-							<div style={{ flex: '1' }}>
+							<div style={{ flex: '1', paddingTop: "24px"}}>
 								<img src={default_profile} style={{}} width='525px' />
 							</div>
 							<div style={{ flex: '1', padding: '10px 10px 10px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start' }}>
@@ -138,7 +139,7 @@ export default class Profile extends React.Component {
 
 					<div style={{ height: '1000px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '50px 0px 50px 0px' }}>
 						<div style={{ flex: '1', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '950px' }}>
-							<div style={{ flex: '1' }}>
+							<div style={{ flex: '1', paddingTop: "24px"}}>
 								<img src={default_profile} style={{}} width='525px' />
 							</div>
 							<div style={{ flex: '1', padding: '10px 10px 10px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
