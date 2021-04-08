@@ -116,7 +116,7 @@ class App extends React.Component {
             <Route path="/profile">
               <div>
                 {this.state.primer_componente}
-                <Profile login={this.props.login} id_cliente={this.props.id_cliente} logOut={this.logedOut}/>
+                <Profile login={this.props.login} savetheuser = {(entire_client)=>{this.props.dispatch(savetheclient(entire_client));}} entire_client={this.props.entire_client} id_cliente={this.props.id_cliente} logOut={this.logedOut}/>
               </div>
             </Route>
             <Route path="/room_service">
