@@ -10,7 +10,9 @@ export default class TarjetaReserva extends React.Component {
         this.handleCancelation = this.handleCancelation.bind(this)
         this.state = {
             chat: false,
-            cancel_allowed: false
+            cancel_allowed: false,
+            alert: "anulada",
+            cancel_button: "Cancelar"
         }
     }
     changeState = (temp) => {
@@ -27,7 +29,7 @@ export default class TarjetaReserva extends React.Component {
         }).then(res => res.text()) // or res.json()
         .then(res => console.log(res))
 
-        alert("La reserva "+ this.props.solicitud+ ' fué anulada exitosamente.')    
+        alert("La reserva "+ this.props.solicitud+ ' fué '+ this.state.alert +' exitosamente.')    
         window.location.href = "http://localhost:3000"+ process.env.PUBLIC_URL + "/booking"
         //this.props.forceUpdt()
 
@@ -38,7 +40,9 @@ export default class TarjetaReserva extends React.Component {
     ********************************/
 
     disable_cancel = () => {
-        this.setState({cancel_allowed: true})
+        //this.setState({cancel_allowed: true})
+        this.setState({cancel_button:"Eliminar"})
+        this.setState({alert:"eliminada"});
     }
 
     contactoPremium = (type) => {
@@ -69,31 +73,28 @@ export default class TarjetaReserva extends React.Component {
                         <div>
                             {this.props.tipo === "Premium" ? <img src={Habitacion} height='100px' width='300px' style={{minHeight:'200px', paddingTop:'23px', minWidth:'275px'}}/>:
                             <img src={Habitacion} height='220px' width='300px' style={{minHeight:'200px', paddingTop:'50px', minWidth:'275px'}}/>}
-                            {this.props.tipo === "Premium" ? <div><ProgressBar idres = {this.props.id} disable_cancel= {this.disable_cancel}/></div>:<div></div>}
+                            {this.props.tipo === "Premium" ? <div><ProgressBar text={this.state.cancel_button} idres = {this.props.id} disable_cancel= {this.disable_cancel}/></div>:<div></div>}
                         </div>       
                         <div className='tb'>
                             <div>
                                 <p>Nº de habitación: {this.props.n_habitacion}</p>
                                 <p>Nº de usuarios: {this.props.n_user}</p>
-                                <p>Fecha de entrada: {this.props.fecha_inicio} </p>
-                                <p>Fecha de salida: {this.props.fecha_fin}</p>
+                                <p>Fecha de entrada: 2021-02-02 </p>
+                                <p>Fecha de salida: 2021-02-03</p>
                                 <p>Tipo de Servicio: {this.props.tipo}</p>
                                 <p>Solicitud: {this.props.solicitud} </p>
                             </div>              
                         </div>
                     </div>
                     
-                    <div className="second_container">
+                    <div className="second_container" style={{marginBottom:"20px"}}>
                         {this.contactoPremium(this.props.tipo)}
                         <button className='booking_buttons' style={{marginLeft:'40px',marginRight:'40px'}}>Modifcar Reserva</button>
-                        <button className='booking_buttons' disabled = {this.state.cancel_allowed} onClick={this.handleCancelation}>Cancelar Reserva</button>    
+                        <button className='booking_buttons' disabled = {this.state.cancel_allowed} onClick={this.handleCancelation}>{this.state.cancel_button}</button>    
                     </div>
 
                     {chat ? <Chatbot n_habitacion={this.props.n_habitacion} solicitud={this.props.solicitud}/> : <span></span>}
-    
-                    <div className='third_container'>
-                        <p>hotels.com</p>
-                    </div>                
+                 
                 </div>
             </div>
     

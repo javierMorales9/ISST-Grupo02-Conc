@@ -2,31 +2,29 @@ import React from 'react';
 
 export default class ProgressBar extends React.Component {
 	constructor(props){
-	  super(props);
-	  this.state = {
-	   initialtiemporestante: 60, tiemporestante: this.initialtiemporestante,
-	   intervall: null,
-	   currentOrderState: "Pedido realizado.",
-	   completed: 0
+		super(props);
+		this.state = {
+			initialtiemporestante: 60, tiemporestante: this.initialtiemporestante,
+			intervall: null,
+			currentOrderState: "Pedido realizado.",
+			completed: 0,
   		}
   	}
 
 	componentDidMount(){
+		
 		const default_state = {
 		   initialtiemporestante: 60, tiemporestante: this.initialtiemporestante,
 		   intervall:setInterval(this.manejadortemp,6000*Math.random()),
 		   currentOrderState: "Pedido realizado.",
 		   completed: 0
   		};
-		const initialState = JSON.parse(localStorage.getItem("reserva"+this.props.idres)) || default_state
-  		console.log(initialState)
-  		this.setState(initialState)
-/*		
-
-		this.setState({})
-		this.setState({interval: } );
-		this.setState({count: 0})
-*/
+  
+		const initialState = JSON.parse(sessionStorage.getItem("reserva"+this.props.idres)) || default_state
+		
+		if(JSON.parse(sessionStorage.getItem("reserva"+this.props.idres))!=null && JSON.parse(sessionStorage.getItem("reserva"+this.props.idres)).completed==4){this.props.disable_cancel();}
+  		
+		this.setState(initialState)
 	}
 	getRandomWorker= () => {
 		const employees = ["Juan","María", "Marta", "Claudia", "Pedro", "Touré", "Débora"];
@@ -49,46 +47,43 @@ export default class ProgressBar extends React.Component {
 
 	    this.setState({currentOrderState: estados_pedido[this.state.completed+1]})
 	    this.setState({completed: this.state.completed+1})
-	    console.log(this.state.completed)
-	    localStorage.setItem("reserva"+this.props.idres,JSON.stringify(this.state));
+	    
+	    sessionStorage.setItem("reserva"+this.props.idres,JSON.stringify(this.state));
     }
-    //document.getElementById("tmr").innerText = "Tiempo restante: "+this.state.tiemporestante+" segundos";
-    
-
   }
 
 
 	
 	render(){	
-	const bgcolor = 'blue'
-	
-		//iner css style
-    const containerStyles = {
-	    height: 20,
-	    backgroundColor: "#e0e0de",
-	    borderRadius: 50,
-	    margin: 20
-  	}
+		const bgcolor = 'blue'
+		
+			//iner css style
+		const containerStyles = {
+			height: 20,
+			backgroundColor: "#e0e0de",
+			borderRadius: 50,
+			margin: 20
+		}
 
-  	const fillerStyles = {
-	    height: '100%',
-	    width: `${this.	state.completed*100/4}%`,
-	    backgroundColor: bgcolor,
-	    borderRadius: 'inherit',
-	    textAlign: 'right'
-  	}
+		const fillerStyles = {
+			height: '100%',
+			width: `${this.	state.completed*100/4}%`,
+			backgroundColor: bgcolor,
+			borderRadius: 'inherit',
+			textAlign: 'right'
+		}
 
-  	const labelStyles = {
-	    padding: 5,
-	    color: 'white',
-	    fontWeight: 'bold'
-  	}
-  	
-  	const forceDiv = {
-		marginTop: '10px',
-	    whiteSpace: 'nowrap',
-	    alignSelf: 'flex-start'
-	}
+		const labelStyles = {
+			padding: 5,
+			color: 'white',
+			fontWeight: 'bold'
+		}
+		
+		const forceDiv = {
+			marginTop: '10px',
+			whiteSpace: 'nowrap',
+			alignSelf: 'flex-start'
+		}
 		return (
 		    <div style ={containerStyles}>
 		      <div style ={fillerStyles}>
@@ -96,6 +91,8 @@ export default class ProgressBar extends React.Component {
 		        <div style = {forceDiv} >&#10026;{this.state.currentOrderState}</div>
 		      </div>
 		    </div>
-	  	);}
+	  	);
+	
 	}
+}
 	

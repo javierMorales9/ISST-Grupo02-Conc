@@ -38,9 +38,9 @@ export default class Booking extends React.Component {
 		
         let view;
         if(this.state.f.length==0){
-            view=<h2 className="category" style={{marginBottom:"380px"}}>Mis reservas</h2>
+            view=<div style={{textAlign:"center",fontSize:"20px",marginTop:"200px",marginBottom:"200px"}}>Actualmente no tiene ninguna reserva</div>
         }else{
-            view=<h2 className="category">Mis reservas</h2>
+            view=<h2></h2>
         }
 
 	
