@@ -3,10 +3,11 @@ import NavBar from '../components/navbar.js';
 import Footer from '../components/footer.js';
 import Calendar from '../components/calendar.js';
 import default_profile from '../media/default_profile.jpeg';
+import { withAlert } from "react-alert";
 import '../public/profile.css';
 import '../public/main_styles.css';
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
 
 
 	constructor(props) {
@@ -58,8 +59,8 @@ export default class Profile extends React.Component {
 		this.props.savetheuser(entire_client)
 		sessionStorage.setItem("entire_client",JSON.stringify(entire_client))
 
-
-		alert("La petición ha sido completada")
+		this.props.alert.show("La petición ha sido completada",{closeCopy: "Aceptar",});
+		
 		this.setState({ modificar: false });
 
 		this.setState({nombre: "", apellidos: "", metodoPago: "", email: "",dni: ""});
@@ -171,10 +172,4 @@ export default class Profile extends React.Component {
 	}
 }
 
-/*
-<span className='datos'>Nombre: <input type="text" name="nombre" value={this.state.nombre} placeholder={this.props.entire_client.nombre} onChange={this.handleChange} /></span>
-							<span className='datos'>Apellidos: <input type="text" name="apellidos" value={this.state.apellidos} placeholder={this.props.entire_client.apellidos} onChange={this.handleChange} /></span>	
-							<span className='datos'>Email: <input type="text" name="email" value={this.state.email} placeholder={this.props.entire_client.email} onChange={this.handleChange} /></span>	
-							<span className='datos'>DNI: <input type="text" name="dni" value={this.state.dni} placeholder={this.props.entire_client.dni} onChange={this.handleChange} />s</span>	
-							<span className='datos'>Metodo de pago: <input type="text" name="metodoPago" value={this.state.metodoPago} placeholder={this.props.entire_client.metodo_pago} onChange={this.handleChange} /></span>
-							*/	
+export default withAlert()(Profile);

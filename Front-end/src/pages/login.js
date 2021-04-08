@@ -1,10 +1,11 @@
 import React from 'react';
 import Footer from '../components/footer.js';
+import { withAlert } from "react-alert";
 import '../public/main_styles.css';
 import '../public/login.css';
 
 
-export default class Login extends React.Component {
+class Login extends React.Component {
 
 	constructor(props){
 		super(props);
@@ -47,7 +48,7 @@ export default class Login extends React.Component {
 				this.props.loginUpdate();
 				this.setState({error : <div/>});
 			} else
-				alert("Credenciales Incorrectas");						
+				this.props.alert.show("Credenciales Incorrectas",{timeout:0,closeCopy: "Reintentar",});
 		}
 	}
 
@@ -65,7 +66,7 @@ export default class Login extends React.Component {
 								</label>
 
 								<label className="usr">
-									<input placeholder="Habitación" id="login_password" className='login_input' type="text" name="password"/>
+									<input placeholder="Habitación" id="login_password" className='login_input' type="number" name="password"/>
 								</label>
 							</form>
 							<button className="spinner" onClick={() => { this.handleClick();}}><span className="state">Enviar</span></button>
@@ -81,3 +82,4 @@ export default class Login extends React.Component {
 	}
 }
 
+export default withAlert()(Login);

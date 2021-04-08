@@ -13,6 +13,9 @@ import NavbarInicio from './components/navbarInicio.js';
 import Login from './pages/login.js';
 import './public/navbar.css';
 import {loginAction, savetheclient} from './redux/actions.js';
+import { positions, Provider } from "react-alert";
+import AlertMUITemplate from "react-alert-template-mui";
+import AlertTemplate from "react-alert-template-basic";
 
 
 class App extends React.Component {
@@ -84,62 +87,68 @@ class App extends React.Component {
 
   render(){
     window.scrollTo(0,0);
+    const options = {
+      timeout: 3000,
+      position: positions.MIDDLE
+    };
 
     return (
-      <Router basename={process.env.PUBLIC_URL}>
-        <div>
-          <Switch>
-            <Route exact path="/">
-              <div>
-                {this.state.primer_componente}
-                <Inicio login={this.props.login} id_cliente={this.props.id_cliente} click={this.updateNavBar}/>
-              </div>
-            </Route>
-            <Route path="/leisure">
-              <div>
-                {this.state.primer_componente}
-                <Leisure login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
-              </div>
-            </Route>
-            <Route path="/booking">
-              <div>
-                {this.state.primer_componente}
-                <Booking login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente} />
-              </div>
-            </Route>
-            <Route path="/premium">
-              <div>
-                {this.state.primer_componente}
-                <OtherService  login={this.props.login} id_cliente={this.props.id_cliente} entire_client={this.props.entire_client} />
-              </div>
-            </Route>
-            <Route path="/profile">
-              <div>
-                {this.state.primer_componente}
-                <Profile login={this.props.login} savetheuser = {(entire_client)=>{this.props.dispatch(savetheclient(entire_client));}} entire_client={this.props.entire_client} id_cliente={this.props.id_cliente} logOut={this.logedOut}/>
-              </div>
-            </Route>
-            <Route path="/room_service">
-              <div>
-                {this.state.primer_componente}
-                <RoomService login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
-              </div>
-            </Route>
-            <Route path="/transport">
-              <div>
-                {this.state.primer_componente}
-                <Transport login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
-              </div>
-            </Route>
-            <Route path="/login">
-              <div>
-                {this.state.primer_componente}
-                <Login  login={this.props.login} savetheuser = {(entire_client)=>{this.props.dispatch(savetheclient(entire_client));}} login_info = {(login,id) => {this.props.dispatch(loginAction(login,id));}} loginUpdate = {this.loginUpdate}/>
-              </div>
-            </Route>
-          </Switch>
-        </div>
-      </Router>  
+      <Provider template={AlertMUITemplate} {...options}>
+        <Router basename={process.env.PUBLIC_URL}>
+          <div>
+            <Switch>
+              <Route exact path="/">
+                <div>
+                  {this.state.primer_componente}
+                  <Inicio login={this.props.login} id_cliente={this.props.id_cliente} click={this.updateNavBar}/>
+                </div>
+              </Route>
+              <Route path="/leisure">
+                <div>
+                  {this.state.primer_componente}
+                  <Leisure login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
+                </div>
+              </Route>
+              <Route path="/booking">
+                <div>
+                  {this.state.primer_componente}
+                  <Booking login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente} />
+                </div>
+              </Route>
+              <Route path="/premium">
+                <div>
+                  {this.state.primer_componente}
+                  <OtherService  login={this.props.login} id_cliente={this.props.id_cliente} entire_client={this.props.entire_client} />
+                </div>
+              </Route>
+              <Route path="/profile">
+                <div>
+                  {this.state.primer_componente}
+                  <Profile login={this.props.login} savetheuser = {(entire_client)=>{this.props.dispatch(savetheclient(entire_client));}} entire_client={this.props.entire_client} id_cliente={this.props.id_cliente} logOut={this.logedOut}/>
+                </div>
+              </Route>
+              <Route path="/room_service">
+                <div>
+                  {this.state.primer_componente}
+                  <RoomService login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
+                </div>
+              </Route>
+              <Route path="/transport">
+                <div>
+                  {this.state.primer_componente}
+                  <Transport login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
+                </div>
+              </Route>
+              <Route path="/login">
+                <div>
+                  {this.state.primer_componente}
+                  <Login  login={this.props.login} savetheuser = {(entire_client)=>{this.props.dispatch(savetheclient(entire_client));}} login_info = {(login,id) => {this.props.dispatch(loginAction(login,id));}} loginUpdate = {this.loginUpdate}/>
+                </div>
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </Provider>  
     );
   }
 }

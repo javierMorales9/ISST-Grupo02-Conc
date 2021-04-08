@@ -2,9 +2,10 @@ import React from 'react';
 import Habitacion from '../media/habitacion.png';
 import ProgressBar from '../components/progressBar.js';
 import Chatbot from '../components/chatbot.js';
+import { withAlert } from "react-alert";
 import '../public/booking.css';
 
-export default class TarjetaReserva extends React.Component {
+class TarjetaReserva extends React.Component {
     constructor(props){
         super(props);
         this.handleCancelation = this.handleCancelation.bind(this)
@@ -26,13 +27,9 @@ export default class TarjetaReserva extends React.Component {
      async handleCancelation(){
         var dele = await fetch('http://localhost:8080/Concierge/rest/service/'+this.props.id, {
              method: 'DELETE',
-        }).then(res => res.text()) // or res.json()
+        }).then(res => res.text())
         .then(res => console.log(res))
-
-        alert("La reserva "+ this.props.solicitud+ ' fué '+ this.state.alert +' exitosamente.')    
-        window.location.href = "http://localhost:3000"+ process.env.PUBLIC_URL + "/booking"
-        //this.props.forceUpdt()
-
+        this.props.alert.show("La reserva "+ this.props.solicitud+ ' fué '+ this.state.alert +' exitosamente.',{timeout:0,closeCopy: "Aceptar",onClose: () => {window.location.href='http://localhost:3000' + process.env.PUBLIC_URL + '/booking';}});
     }
     
     /*******************************
@@ -102,3 +99,5 @@ export default class TarjetaReserva extends React.Component {
     }
     
 }
+
+export default withAlert()(TarjetaReserva);

@@ -1,5 +1,6 @@
 import React from 'react';
 import Footer from '../components/footer.js';
+import { withAlert } from "react-alert";
 import '../public/main_styles.css';
 
 if (window.hasOwnProperty('webkitSpeechRecognition')){
@@ -12,7 +13,7 @@ if (window.hasOwnProperty('webkitSpeechRecognition')){
   recognition.maxAlternatives = 1;
 };
 
-export default class RoomService extends React.Component {
+class Premium extends React.Component {
 
   constructor(props){
 		super(props);
@@ -35,9 +36,9 @@ export default class RoomService extends React.Component {
 	}
 
   async updateServiceRequest() {
-    if (this.state.receivedtext==="")
-      alert("Introduce una petición antes de enviarla ")
-    else{
+    if (this.state.receivedtext===""){
+        this.props.alert.show("Introduce una petición antes de enviarla",{closeCopy: "Aceptar",});
+    }else{
       let data = {
         disponibilidad:true,
         fecha_inicio:"2021-02-02",
@@ -57,9 +58,7 @@ export default class RoomService extends React.Component {
       })
   
       this.setState({receivedtext:""});
-      alert("La petición ha sido completada")
-      window.location.href='http://localhost:3000' + process.env.PUBLIC_URL + '/booking';
-    
+      this.props.alert.show("La petición ha sido completada",{timeout:0,closeCopy: "Aceptar",onClose: () => {window.location.href='http://localhost:3000' + process.env.PUBLIC_URL + '/booking';}});
     }
   }
   render() {
@@ -135,7 +134,6 @@ export default class RoomService extends React.Component {
                     />
                     <div className='formulario'>
                       <button id="form_submit" onClick = {this.updateServiceRequest}>Enviar</button>
-
                     </div>
                   </div>
                 
@@ -154,3 +152,4 @@ export default class RoomService extends React.Component {
   }
 }
 
+export default withAlert()(Premium);
