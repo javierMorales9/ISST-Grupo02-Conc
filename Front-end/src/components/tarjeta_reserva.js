@@ -1,103 +1,376 @@
-import React from 'react';
-import Habitacion from '../media/habitacion.png';
-import ProgressBar from '../components/progressBar.js';
-import Chatbot from '../components/chatbot.js';
+import React from "react";
+import Habitacion from "../media/habitacion.png";
+import ProgressBar from "../components/progressBar.js";
+import Chatbot from "../components/chatbot.js";
 import { withAlert } from "react-alert";
-import '../public/booking.css';
+import "../public/booking.css";
 
 class TarjetaReserva extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleCancelation = this.handleCancelation.bind(this)
-        this.state = {
-            chat: false,
-            cancel_allowed: false,
-            alert: "anulada",
-            cancel_button: "Cancelar"
-        }
+  constructor(props) {
+    super(props);
+    this.handleCancelation = this.handleCancelation.bind(this);
+    let fecha_fin = new Date(this.props.fecha_fin);
+    let fecha_inicio = new Date(this.props.fecha_inicio);
+    this.state = {
+      edit: false,
+      n_habitacion: this.props.n_habitacion,
+      n_user: this.props.n_user,
+      tipo: this.props.tipo,
+      solicitud: this.props.solicitud,
+      fecha_fin: fecha_fin,
+      fecha_inicio: fecha_inicio,
+      chat: false,
+      cancel_allowed: false,
+      alert: "anulada",
+      cancel_button: "Cancelar",
+    };
+  }
+  changeState = (temp) => {
+    this.setState({ receivedtext: temp });
+  };
+
+  /********************************
+   *   REALIZACIÓN CANCELACIÓN     *
+   ********************************/
+
+  async handleCancelation() {
+    var dele = await fetch(
+      "http://localhost:8080/Concierge/rest/service/" + this.props.id,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((res) => res.text())
+      .then((res) => console.log(res));
+    this.props.alert.show(
+      "La reserva " +
+        this.props.solicitud +
+        " fué " +
+        this.state.alert +
+        " exitosamente.",
+      {
+        timeout: 0,
+        closeCopy: "Aceptar",
+        onClose: () => {
+          window.location.href =
+            "http://localhost:3000" + process.env.PUBLIC_URL + "/booking";
+        },
+      }
+    );
+  }
+
+  /*******************************
+   *   INHABILITA CANCELACIÓN     *
+   ********************************/
+
+  disable_cancel = () => {
+    //this.setState({cancel_allowed: true})
+    this.setState({ cancel_button: "Eliminar" });
+    this.setState({ alert: "eliminada" });
+  };
+
+  contactoPremium = (type) => {
+    if (type != "Premium" && !this.state.edit) {
+      return (
+        <button
+          className="booking_buttons"
+          style={{ marginLeft: "40px", marginRight: "40px" }}
+          onClick={() => this.setState({ edit: true })}
+        >
+          Modifcar Reserva
+        </button>
+      );
+    } else if (!this.state.edit) {
+      return (
+        <div>
+          <button
+            className="booking_buttons"
+            style={{ marginRight: "40px" }}
+            onClick={() => this.setState({ chat: true })}
+          >
+            Habla con nosotros
+          </button>
+        </div>
+      );
     }
-    changeState = (temp) => {
-    this.setState({receivedtext: temp});
-    }
+  };
+  //para guardar en la bbdd la fecha en el formato correcto
+  toTimestamp(date) {
+    var datum = new Date(
+      Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate(), 0, 0, 0)
+    );
+    return datum.getTime();
+  }
 
-    /********************************
-    *   REALIZACIÓN CANCELACIÓN     *
-    ********************************/
+  async updateService() {
+    let data = {
+      id: this.props.id,
+      numero_usuarios:
+        this.state.n_user == "" ? this.props.n_user : this.state.n_user,
+      tipo: this.state.tipo == "" ? this.props.tipo : this.state.tipo,
+      solicitud:
+        this.state.solicitud == ""
+          ? this.props.solicitud
+          : this.state.solicitud,
+      cliente: JSON.parse(sessionStorage.getItem("entire_client")),
+      fecha_inicio: this.toTimestamp(this.state.fecha_inicio),
+      fecha_fin: this.toTimestamp(this.state.fecha_fin),
+      precio: this.props.precio,
+      disponibilidad: this.props.disponibilidad,
+    };
 
-     async handleCancelation(){
-        var dele = await fetch('http://localhost:8080/Concierge/rest/service/'+this.props.id, {
-             method: 'DELETE',
-        }).then(res => res.text())
-        .then(res => console.log(res))
-        this.props.alert.show("La reserva "+ this.props.solicitud+ ' fué '+ this.state.alert +' exitosamente.',{timeout:0,closeCopy: "Aceptar",onClose: () => {window.location.href='http://localhost:3000' + process.env.PUBLIC_URL + '/booking';}});
-    }
-    
-    /*******************************
-    *   INHABILITA CANCELACIÓN     *
-    ********************************/
+    console.log(JSON.stringify(data));
+    console.log(this.state);
 
-    disable_cancel = () => {
-        //this.setState({cancel_allowed: true})
-        this.setState({cancel_button:"Eliminar"})
-        this.setState({alert:"eliminada"});
-    }
+    await fetch(
+      "http://localhost:8080/Concierge/rest/service/" + this.props.id,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }
+    );
+    this.props.alert.show(
+      "La reserva " + this.state.solicitud + " fué modificada exitosamente.",
+      {
+        timeout: 0,
+        closeCopy: "Aceptar",
+        onClose: () => {
+          window.location.href =
+            "http://localhost:3000" + process.env.PUBLIC_URL + "/booking";
+        },
+      }
+    );
+    this.setState({ edit: false });
+    //this.setState({ n_habitacion: "", n_user: "", tipo: "", solicitud: "" });
+  }
 
-    contactoPremium = (type) => {
-        if(type != 'Premium'){
-            return(
-                    <div> </div>
-                ); 
-        }
-        else{
-            return(
-                    <div>
-                        <button className='booking_buttons' onClick={() => this.setState({chat: true})}>Habla con nosotros</button> 
-                    </div>
-            ); 
-        }
-    }
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+    //console.log(this.state);
+  };
 
-    render(){
-        const chat = this.state.chat
-        return(
+  handleDateChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: new Date(value) });
+  };
 
-            //el texto no varia, siempre es mod reserva o cancelar reserva,
-            //pero el link variará en función de la reserva.   
-            
-            <div className="booking_container">
-                <div className="booking_smallcontainer">
-                    <div className='first_group'>
-                        <div>
-                            {this.props.tipo === "Premium" ? <img src={Habitacion} height='100px' width='300px' style={{minHeight:'200px', paddingTop:'23px', minWidth:'275px'}}/>:
-                            <img src={Habitacion} height='220px' width='300px' style={{minHeight:'200px', paddingTop:'50px', minWidth:'275px'}}/>}
-                            {this.props.tipo === "Premium" ? <div><ProgressBar text={this.state.cancel_button} idres = {this.props.id} disable_cancel= {this.disable_cancel}/></div>:<div></div>}
-                        </div>       
-                        <div className='tb'>
-                            <div>
-                                <p>Nº de habitación: {this.props.n_habitacion}</p>
-                                <p>Nº de usuarios: {this.props.n_user}</p>
-                                <p>Fecha de entrada: 2021-02-02 </p>
-                                <p>Fecha de salida: 2021-02-03</p>
-                                <p>Tipo de Servicio: {this.props.tipo}</p>
-                                <p>Solicitud: {this.props.solicitud} </p>
-                            </div>              
-                        </div>
-                    </div>
-                    
-                    <div className="second_container" style={{marginBottom:"20px"}}>
-                        {this.contactoPremium(this.props.tipo)}
-                        <button className='booking_buttons' style={{marginLeft:'40px',marginRight:'40px'}}>Modifcar Reserva</button>
-                        <button className='booking_buttons' disabled = {this.state.cancel_allowed} onClick={this.handleCancelation}>{this.state.cancel_button}</button>    
-                    </div>
+  render() {
+    const chat = this.state.chat;
 
-                    {chat ? <Chatbot n_habitacion={this.props.n_habitacion} solicitud={this.props.solicitud}/> : <span></span>}
-                 
+    if (this.state.edit) {
+      return (
+        //el texto no varia, siempre es mod reserva o cancelar reserva,
+        //pero el link variará en función de la reserva.
+
+        <div className="booking_container">
+          <div className="booking_smallcontainer">
+            <div className="first_group">
+              <div>
+                {this.props.tipo === "Premium" ? (
+                  <img
+                    src={Habitacion}
+                    height="100px"
+                    width="300px"
+                    style={{
+                      minHeight: "200px",
+                      paddingTop: "23px",
+                      minWidth: "275px",
+                    }}
+                  />
+                ) : (
+                  <img
+                    src={Habitacion}
+                    height="220px"
+                    width="300px"
+                    style={{
+                      minHeight: "200px",
+                      paddingTop: "50px",
+                      minWidth: "275px",
+                    }}
+                  />
+                )}
+                {this.props.tipo === "Premium" ? (
+                  <div>
+                    <ProgressBar
+                      text={this.state.cancel_button}
+                      idres={this.props.id}
+                      disable_cancel={this.disable_cancel}
+                    />
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+              <div className="tb">
+                <div>
+                  <p style={{ margin: "10px 0px 10px 0px" }}>
+                    Nº de usuarios:{" "}
+                  </p>
+                  <input
+                    type="text"
+                    name="n_user"
+                    style={{ width: "163px" }}
+                    placeholder={this.props.n_user}
+                    onChange={this.handleChange}
+                  />
+                  <p style={{ margin: "10px 0px 10px 0px" }}>
+                    Fecha de entrada:{" "}
+                  </p>
+                  <input
+                    type="date"
+                    name="fecha_inicio"
+                    placeholder={this.props.fecha_inicio}
+                    onChange={this.handleDateChange}
+                  ></input>
+                  <p style={{ margin: "10px 0px 10px 0px" }}>
+                    Fecha de salida:{" "}
+                  </p>
+                  <input
+                    type="date"
+                    name="fecha_fin"
+                    placeholder={this.props.fecha_fin}
+                    onChange={this.handleDateChange}
+                  ></input>
+                  <p style={{ margin: "10px 0px 10px 0px" }}>Solicitud: </p>
+                  <input
+                    type="text"
+                    name="solicitud"
+                    style={{ marginBottom: "20px" }}
+                    placeholder={this.props.solicitud}
+                    onChange={this.handleChange}
+                  ></input>
                 </div>
+              </div>
             </div>
-    
-        );
+
+            <div className="second_container" style={{ marginBottom: "20px" }}>
+              {this.contactoPremium(this.props.tipo)}
+              <button
+                className="booking_buttons"
+                style={{ marginLeft: "40px", marginRight: "40px" }}
+                onClick={() => {
+                  this.updateService();
+                }}
+              >
+                Confirmar
+              </button>
+              <button
+                className="booking_buttons"
+                disabled={this.state.cancel_allowed}
+                onClick={() => this.setState({ edit: false })}
+              >
+                {this.state.cancel_button}
+              </button>
+            </div>
+
+            {chat ? (
+              <Chatbot
+                n_habitacion={this.props.n_habitacion}
+                solicitud={this.props.solicitud}
+              />
+            ) : (
+              <span></span>
+            )}
+          </div>
+        </div>
+      );
+    } else {
+      //console.log(this.state);
+      return (
+        //el texto no varia, siempre es mod reserva o cancelar reserva,
+        //pero el link variará en función de la reserva.
+
+        <div className="booking_container">
+          <div className="booking_smallcontainer">
+            <div className="first_group">
+              <div>
+                {this.props.tipo === "Premium" ? (
+                  <img
+                    src={Habitacion}
+                    height="100px"
+                    width="300px"
+                    style={{
+                      minHeight: "200px",
+                      paddingTop: "23px",
+                      minWidth: "275px",
+                    }}
+                  />
+                ) : (
+                  <img
+                    src={Habitacion}
+                    height="220px"
+                    width="300px"
+                    style={{
+                      minHeight: "200px",
+                      paddingTop: "50px",
+                      minWidth: "275px",
+                    }}
+                  />
+                )}
+                {this.props.tipo === "Premium" ? (
+                  <div>
+                    <ProgressBar
+                      text={this.state.cancel_button}
+                      idres={this.props.id}
+                      disable_cancel={this.disable_cancel}
+                    />
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+              <div className="tb">
+                <div>
+                  <p>Nº de habitación: {this.state.n_habitacion}</p>
+                  <p>Nº de usuarios: {this.state.n_user}</p>
+                  <p>
+                    Fecha de entrada: {this.state.fecha_inicio.getDate()}
+                    {"-"}
+                    {this.state.fecha_inicio.getMonth() + 1}
+                    {"-"}
+                    {this.state.fecha_inicio.getFullYear()}
+                  </p>
+                  <p>
+                    Fecha de salida: {this.state.fecha_fin.getDate()}
+                    {"-"}
+                    {this.state.fecha_fin.getMonth() + 1}
+                    {"-"}
+                    {this.state.fecha_fin.getFullYear()}
+                  </p>
+                  <p>Tipo de Servicio: {this.state.tipo}</p>
+                  <p>Solicitud: {this.state.solicitud} </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="second_container" style={{ marginBottom: "20px" }}>
+              {this.contactoPremium(this.props.tipo)}
+
+              <button
+                className="booking_buttons"
+                disabled={this.state.cancel_allowed}
+                onClick={this.handleCancelation}
+              >
+                {this.state.cancel_button}
+              </button>
+            </div>
+
+            {chat ? (
+              <Chatbot
+                n_habitacion={this.props.n_habitacion}
+                solicitud={this.props.solicitud}
+              />
+            ) : (
+              <span></span>
+            )}
+          </div>
+        </div>
+      );
     }
-    
+  }
 }
 
 export default withAlert()(TarjetaReserva);
