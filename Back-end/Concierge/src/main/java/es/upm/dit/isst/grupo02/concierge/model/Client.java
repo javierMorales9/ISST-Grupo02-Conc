@@ -1,7 +1,6 @@
 package es.upm.dit.isst.grupo02.concierge.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
