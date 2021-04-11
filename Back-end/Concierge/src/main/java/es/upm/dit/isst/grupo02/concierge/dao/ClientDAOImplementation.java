@@ -6,8 +6,6 @@ import org.hibernate.Session;
 
 import es.upm.dit.isst.grupo02.concierge.model.Client;
 
-
-
 public class ClientDAOImplementation implements ClientDAO{
 
 	private static ClientDAOImplementation clientDAO;
