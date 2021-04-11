@@ -21,14 +21,6 @@ import es.upm.dit.isst.grupo02.concierge.dao.ServiceDAOImplementation;
 import es.upm.dit.isst.grupo02.concierge.model.Client;
 import es.upm.dit.isst.grupo02.concierge.model.Service;
 
-	class LoginInfo implements Serializable{
-	
-		private static final long serialVersionUID = 1L;
-		
-		public String user;
-		public String password;
-	}
-
 @Path("/security")
 public class SecurityResource {
 	
