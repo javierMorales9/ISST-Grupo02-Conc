@@ -3,6 +3,7 @@ package es.upm.dit.isst.grupo02.concierge.dao;
 import java.util.List;
 import es.upm.dit.isst.grupo02.concierge.model.Client;
 
+
 public interface ClientDAO {
 	public Client create(Client client);
 	public Client read(int id);
