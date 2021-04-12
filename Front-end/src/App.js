@@ -78,7 +78,7 @@ class App extends React.Component {
     const id = sessionStorage.getItem("cliente");
     
 
-    if(e.target.href === url_localHost){
+    if(e.target.href === url_localHost || e.target.href + '/' === url_localHost){
       this.setState({primer_componente:<NavbarInicio login={isLoged} id={id} click={this.updateNavBar}/>})
     }else{
       this.setState({primer_componente:<Navbar login={isLoged} id={id} click={this.updateNavBar}/>})

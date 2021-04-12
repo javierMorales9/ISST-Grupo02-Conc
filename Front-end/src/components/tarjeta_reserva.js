@@ -97,7 +97,7 @@ class TarjetaReserva extends React.Component {
   //para guardar en la bbdd la fecha en el formato correcto
   toTimestamp(date) {
     var datum = new Date(
-      Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate(), 0, 0, 0)
+      Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
     );
     return datum.getTime();
   }
@@ -118,9 +118,6 @@ class TarjetaReserva extends React.Component {
       precio: this.props.precio,
       disponibilidad: this.props.disponibilidad,
     };
-
-    console.log(JSON.stringify(data));
-    console.log(this.state);
 
     await fetch(
       "http://localhost:8080/Concierge/rest/service/" + this.props.id,
@@ -143,13 +140,11 @@ class TarjetaReserva extends React.Component {
       }
     );
     this.setState({ edit: false });
-    //this.setState({ n_habitacion: "", n_user: "", tipo: "", solicitud: "" });
   }
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    //console.log(this.state);
   };
 
   handleDateChange = (e) => {
@@ -234,7 +229,8 @@ class TarjetaReserva extends React.Component {
                     placeholder={this.props.fecha_fin}
                     onChange={this.handleDateChange}
                   ></input>
-                  <p style={{ margin: "10px 0px 10px 0px" }}>Solicitud: </p>
+                  <p style={{ margin: "10px 0px 10px 0px" }}>
+                    Solicitud: </p>
                   <input
                     type="text"
                     name="solicitud"

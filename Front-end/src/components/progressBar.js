@@ -15,7 +15,7 @@ export default class ProgressBar extends React.Component {
 		
 		const default_state = {
 		   initialtiemporestante: 60, tiemporestante: this.initialtiemporestante,
-		   intervall:setInterval(this.manejadortemp,6000*Math.random()),
+		   intervall:setInterval(this.manejadortemp,3000),
 		   currentOrderState: "Pedido realizado.",
 		   completed: 0
   		};
