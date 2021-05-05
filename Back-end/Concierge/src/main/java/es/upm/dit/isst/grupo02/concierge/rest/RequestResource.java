@@ -2,6 +2,7 @@ package es.upm.dit.isst.grupo02.concierge.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -16,24 +17,24 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
-import es.upm.dit.isst.grupo02.concierge.dao.ServiceDAOImplementation;
-import es.upm.dit.isst.grupo02.concierge.model.Service;
+import es.upm.dit.isst.grupo02.concierge.dao.RequestDAOImplementation;
+import es.upm.dit.isst.grupo02.concierge.model.Request;
 
-@Path("/service")
-public class ServiceResource {
+@Path("/request")
+public class RequestResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Service> readAll () {
-	    return ServiceDAOImplementation.getInstancia().readAll();
+	public List<Request> readAll () {
+	    return RequestDAOImplementation.getInstancia().readAll();
 	}
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(Service cnew) throws URISyntaxException {
-		Service c = ServiceDAOImplementation.getInstancia().create(cnew);
+	public Response create(Request cnew) throws URISyntaxException {
+		Request c = RequestDAOImplementation.getInstancia().create(cnew);
 		
 	    if (c != null) {
-	        URI uri = new URI("/Concierge/rest/service/" + c.getId());
+	        URI uri = new URI("/Concierge/rest/request/" + c.getId());
 	        return Response.created(uri).build();
 	    }
 	    return Response.status(Response.Status.NOT_FOUND).build();
@@ -43,7 +44,7 @@ public class ServiceResource {
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response read(@PathParam("id") int id) {
-	    Service s = ServiceDAOImplementation.getInstancia().read(id);
+	    Request s = RequestDAOImplementation.getInstancia().read(id);
 	
 	    if (s == null)
 	      return Response.status(Response.Status.NOT_FOUND).build();
@@ -56,16 +57,16 @@ public class ServiceResource {
 	@POST 
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("{id}")
-	public Response update(@PathParam("id") int id, Service s) {
+	public Response update(@PathParam("id") int id, Request s) {
 	
-		System.out.println("Update service for" + id + " " + s.toString());
+		System.out.println("Update request for" + id + " " + s.toString());
 		
-		Service told = ServiceDAOImplementation.getInstancia().read(id);
+		Request told = RequestDAOImplementation.getInstancia().read(id);
 		
 		if ((told == null) || ( told.getId() != s.getId()))
 		  return Response.notModified().build();
 		
-		ServiceDAOImplementation.getInstancia().update(s);
+		RequestDAOImplementation.getInstancia().update(s);
 		
 		return Response.ok().build();                
 	 }
@@ -75,14 +76,28 @@ public class ServiceResource {
 	
 	 public Response delete(@PathParam("id") int id) {
 	
-		Service rold = ServiceDAOImplementation.getInstancia().read(id);
+		Request rold = RequestDAOImplementation.getInstancia().read(id);
 			
 		if (rold == null)	
 			return Response.notModified().build();
 			
-		ServiceDAOImplementation.getInstancia().delete(rold);
+		RequestDAOImplementation.getInstancia().delete(rold);
 			
 		return Response.ok().build();
 	 }
+	 
+	 @GET
+	 @Path("/clients/{id}")
+	 @Produces(MediaType.APPLICATION_JSON)
+	 public Response getClientServicies(@PathParam("id") int id) {
+		List<Request> requests = RequestDAOImplementation.getInstancia().readAll();
+		List<Request> requests_client = new ArrayList<Request>();
+		for(Request s : requests) {
+			if(s.getCliente().getId() == id)
+				requests_client.add(s);
+		}
+		
+		return Response.ok(requests_client.toArray(), MediaType.APPLICATION_JSON).build();
+	}  
 	 
 }

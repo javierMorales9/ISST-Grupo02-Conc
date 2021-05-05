@@ -1,4 +1,4 @@
-2021-04-06 23:40:34 jdbc[11]: null
+2021-05-05 10:59:33 jdbc[6]: null
 org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
 The connection was not closed by the application and is garbage collected [90018-197]
 	at org.h2.message.DbException.get(DbException.java:179)
@@ -19,7 +19,7 @@ Caused by: org.h2.jdbc.JdbcSQLException: La conexión no fue cerrada por la apli
 The connection was not closed by the application and is garbage collected [90018-197]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
 	... 14 more
-2021-04-06 23:44:33 jdbc[15]: null
+2021-05-05 11:01:14 jdbc[8]: null
 org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
 The connection was not closed by the application and is garbage collected [90018-197]
 	at org.h2.message.DbException.get(DbException.java:179)
@@ -40,22 +40,43 @@ Caused by: org.h2.jdbc.JdbcSQLException: La conexión no fue cerrada por la apli
 The connection was not closed by the application and is garbage collected [90018-197]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
 	... 14 more
-2021-04-06 23:45:15 jdbc[15]: exception
-org.h2.jdbc.JdbcSQLException: Error de Sintaxis en sentencia SQL "DELETE *[*] FROM SERVICE "; se esperaba "identifier"
-Syntax error in SQL statement "DELETE *[*] FROM SERVICE "; expected "identifier"; SQL statement:
-DELETE * FROM service [42001-197]
-2021-04-07 00:52:42 jdbc[19]: exception
-org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'a' (CLIENT: PROGRAMA_FIDELIZACION BOOLEAN NOT NULL)"
-Data conversion error converting "'a' (CLIENT: PROGRAMA_FIDELIZACION BOOLEAN NOT NULL)"; SQL statement:
-INSERT INTO "PUBLIC"."CLIENT"("ID","DNI","APELLIDOS","COSTE","EMAIL","METODO_PAGO","NOMBRE","NUMEROHABITACION","PROGRAMA_FIDELIZACION","TIPO")VALUES(?,?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10) [22018-197]
-2021-04-07 00:52:42 jdbc[19]: exception
-org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'a' (CLIENT: PROGRAMA_FIDELIZACION BOOLEAN NOT NULL)"
-Data conversion error converting "'a' (CLIENT: PROGRAMA_FIDELIZACION BOOLEAN NOT NULL)"; SQL statement:
-INSERT INTO "PUBLIC"."CLIENT"("ID","DNI","APELLIDOS","COSTE","EMAIL","METODO_PAGO","NOMBRE","NUMEROHABITACION","PROGRAMA_FIDELIZACION","TIPO")VALUES(?,?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10) [22018-197]
-2021-04-07 01:25:57 jdbc[20]: exception
-org.h2.jdbc.JdbcSQLException: Imposible interpretar la constante "TIMESTAMP" "1"
-Cannot parse "TIMESTAMP" constant "1"; SQL statement:
-INSERT INTO "PUBLIC"."SERVICE"("ID","DISPONIBILIDAD","FECHA_FIN","FECHA_INICIO","NUMERO_USUARIOS","PRECIO","SOLICITUD","TIPO","CLIENTE")VALUES(?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9) [22007-197]
+2021-05-05 11:01:42 jdbc[10]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:100)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:138)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+
+org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:197)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:137)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.h2.jdbc.JdbcSQLException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 14 more
+2021-05-05 11:05:19 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLException: Imposible interpretar la constante "TIMESTAMP" "17-05-2021"
+Cannot parse "TIMESTAMP" constant "17-05-2021"; SQL statement:
+INSERT INTO "PUBLIC"."REQUEST"("ID","FECHA_FIN","FECHA_INICIO","NUMERO_USUARIOS","CLIENTE","SERVICE")VALUES(?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6) [22007-197]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
 	at org.h2.message.DbException.get(DbException.java:168)
 	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:147)
@@ -75,15 +96,15 @@ INSERT INTO "PUBLIC"."SERVICE"("ID","DISPONIBILIDAD","FECHA_FIN","FECHA_INICIO",
 	at org.h2.server.web.WebThread.process(WebThread.java:134)
 	at org.h2.server.web.WebThread.run(WebThread.java:90)
 	at java.lang.Thread.run(Thread.java:748)
-Caused by: java.lang.IllegalArgumentException: 1
-	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:345)
+Caused by: java.lang.IllegalArgumentException: 17-5-2021
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:351)
 	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:460)
 	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:145)
 	... 16 more
-2021-04-07 01:25:57 jdbc[20]: exception
-org.h2.jdbc.JdbcSQLException: Imposible interpretar la constante "TIMESTAMP" "1"
-Cannot parse "TIMESTAMP" constant "1"; SQL statement:
-INSERT INTO "PUBLIC"."SERVICE"("ID","DISPONIBILIDAD","FECHA_FIN","FECHA_INICIO","NUMERO_USUARIOS","PRECIO","SOLICITUD","TIPO","CLIENTE")VALUES(?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9) [22007-197]
+2021-05-05 11:05:19 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLException: Imposible interpretar la constante "TIMESTAMP" "17-05-2021"
+Cannot parse "TIMESTAMP" constant "17-05-2021"; SQL statement:
+INSERT INTO "PUBLIC"."REQUEST"("ID","FECHA_FIN","FECHA_INICIO","NUMERO_USUARIOS","CLIENTE","SERVICE")VALUES(?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6) [22007-197]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
 	at org.h2.message.DbException.get(DbException.java:168)
 	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:147)
@@ -103,16 +124,107 @@ INSERT INTO "PUBLIC"."SERVICE"("ID","DISPONIBILIDAD","FECHA_FIN","FECHA_INICIO",
 	at org.h2.server.web.WebThread.process(WebThread.java:134)
 	at org.h2.server.web.WebThread.run(WebThread.java:90)
 	at java.lang.Thread.run(Thread.java:748)
-Caused by: java.lang.IllegalArgumentException: 1
-	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:345)
+Caused by: java.lang.IllegalArgumentException: 17-5-2021
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:351)
 	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:460)
 	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:145)
 	... 16 more
-2021-04-07 17:28:56 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'flase' (CLIENT: PROGRAMA_FIDELIZACION BOOLEAN NOT NULL)"
-Data conversion error converting "'flase' (CLIENT: PROGRAMA_FIDELIZACION BOOLEAN NOT NULL)"; SQL statement:
-INSERT INTO "PUBLIC"."CLIENT"("ID","DNI","APELLIDOS","COSTE","EMAIL","METODO_PAGO","NOMBRE","NUMEROHABITACION","PROGRAMA_FIDELIZACION","TIPO")VALUES(?,?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10) [22018-197]
-2021-04-07 17:28:56 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'flase' (CLIENT: PROGRAMA_FIDELIZACION BOOLEAN NOT NULL)"
-Data conversion error converting "'flase' (CLIENT: PROGRAMA_FIDELIZACION BOOLEAN NOT NULL)"; SQL statement:
-INSERT INTO "PUBLIC"."CLIENT"("ID","DNI","APELLIDOS","COSTE","EMAIL","METODO_PAGO","NOMBRE","NUMEROHABITACION","PROGRAMA_FIDELIZACION","TIPO")VALUES(?,?,?,?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10) [22018-197]
+2021-05-05 11:27:31 jdbc[13]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:100)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:138)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+
+org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:197)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:137)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.h2.jdbc.JdbcSQLException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 14 more
+2021-05-05 11:50:31 jdbc[22]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:100)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:138)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+
+org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:197)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:137)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.h2.jdbc.JdbcSQLException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 14 more
+2021-05-05 12:18:56 jdbc[25]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:100)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:138)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+
+org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:197)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:137)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.h2.jdbc.JdbcSQLException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 14 more

@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../components/navbar.js";
 import TarjetaReserva from "../components/tarjeta_reserva";
 import Footer from "../components/footer.js";
 import "../public/booking.css";
@@ -9,6 +8,7 @@ export default class Booking extends React.Component {
     super(props);
     this.state = {
       f: [],
+      open: [],
     };
   }
 
@@ -18,14 +18,24 @@ export default class Booking extends React.Component {
 
   fetchData = () => {
     fetch(
-      "http://localhost:8080/Concierge/rest/service/clients/" +
+      "http://localhost:8080/Concierge/rest/request/clients/" +
         sessionStorage.getItem("cliente")
     )
       .then((res) => res.json())
       .then((f) => {
         this.setState({ f: f });
       });
+
+    fetch(
+      "http://localhost:8080/Concierge/rest/openPetition/clients/" +
+        sessionStorage.getItem("cliente")
+    )
+      .then((res) => res.json())
+      .then((open) => {
+        this.setState({ open: open });
+      });  
   };
+
 
   render() {
     if (sessionStorage.getItem("login") == null) {
@@ -35,7 +45,7 @@ export default class Booking extends React.Component {
     }
 
     let view;
-    if (this.state.f.length == 0) {
+    if (this.state.f.length == 0 && this.state.open.length == 0) {
       view = (
         <div
           style={{
@@ -60,7 +70,7 @@ export default class Booking extends React.Component {
         {view}
 
         <div>
-          {this.state.f.map((el, id) => {
+          {this.state.open.reverse().map((el, id) => {
             return (
               <TarjetaReserva
                 n_habitacion={el.cliente.numeroHabitacion}
@@ -71,6 +81,24 @@ export default class Booking extends React.Component {
                 n_user={el.numero_usuarios}
                 solicitud={el.solicitud}
                 disponibilidad={el.disponibilidad}
+                id={el.id}
+                key={el.id}
+                open={true}
+              />
+            );
+          })}
+          {this.state.f.reverse().map((el, id) => {
+            return (
+              <TarjetaReserva
+                n_habitacion={el.cliente.numeroHabitacion}
+                fecha_inicio={el.fecha_inicio}
+                fecha_fin={el.fecha_fin}
+                tipo={el.service.tipo}
+                precio={el.service.precio}
+                n_user={el.numero_usuarios}
+                solicitud={el.service.solicitud}
+                disponibilidad={el.service.disponibilidad}
+                service_id={el.service.id}
                 id={el.id}
                 key={el.id}
               />

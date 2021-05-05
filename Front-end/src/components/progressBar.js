@@ -20,9 +20,9 @@ export default class ProgressBar extends React.Component {
 		   completed: 0
   		};
   
-		const initialState = JSON.parse(localStorage.getItem("reserva"+this.props.idres)) || default_state
+		const initialState = JSON.parse(sessionStorage.getItem("reserva"+this.props.idres)) || default_state
 		
-		if(JSON.parse(localStorage.getItem("reserva"+this.props.idres))!=null && JSON.parse(localStorage.getItem("reserva"+this.props.idres)).completed==4){this.props.disable_cancel();}
+		if(JSON.parse(sessionStorage.getItem("reserva"+this.props.idres))!=null && JSON.parse(sessionStorage.getItem("reserva"+this.props.idres)).completed==4){this.props.disable_cancel();}
   		
 		this.setState(initialState)
 	}
@@ -48,7 +48,7 @@ export default class ProgressBar extends React.Component {
 	    this.setState({currentOrderState: estados_pedido[this.state.completed+1]})
 	    this.setState({completed: this.state.completed+1})
 	    
-	    localStorage.setItem("reserva"+this.props.idres,JSON.stringify(this.state));
+	    sessionStorage.setItem("reserva"+this.props.idres,JSON.stringify(this.state));
     }
   }
 

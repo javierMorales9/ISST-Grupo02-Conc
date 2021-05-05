@@ -50,7 +50,7 @@ class Premium extends React.Component {
         cliente: this.props.entire_client,
            };
   
-      await fetch("http://localhost:8080/Concierge/rest/service",{
+      await fetch("http://localhost:8080/Concierge/rest/openPetition",{
         method:'PUT', 
         mode: 'cors',
         headers:{"Content-Type":"application/json"},

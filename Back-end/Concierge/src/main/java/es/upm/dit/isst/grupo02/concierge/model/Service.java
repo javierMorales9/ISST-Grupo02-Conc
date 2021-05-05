@@ -1,14 +1,12 @@
 package es.upm.dit.isst.grupo02.concierge.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 
 
 @Entity(name="Service")
@@ -19,12 +17,6 @@ public class Service implements Serializable {
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private int id;
-		private int numero_usuarios;
-		@ManyToOne
-		@JoinColumn(name = "cliente", referencedColumnName = "id")
-		private Client cliente;
-		private Date fecha_inicio;
-		private Date fecha_fin;
 		private String tipo;
 		private String solicitud;
 		private double precio;
@@ -35,31 +27,6 @@ public class Service implements Serializable {
 		}
 		public void setId(int id) {
 			this.id = id;
-		}
-		public int getNumero_usuarios() {
-			return numero_usuarios;
-		}
-		public void setNumero_usuarios(int numero_usuarios) {
-			this.numero_usuarios = numero_usuarios;
-		}
-		
-		public Client getCliente() {
-			return cliente;
-		}
-		public void setCliente(Client cliente) {
-			this.cliente = cliente;
-		}
-		public Date getFecha_inicio() {
-			return fecha_inicio;
-		}
-		public void setFecha_inicio(Date fecha_inicio) {
-			this.fecha_inicio = fecha_inicio;
-		}
-		public Date getFecha_fin() {
-			return fecha_fin;
-		}
-		public void setFecha_fin(Date fecha_fin) {
-			this.fecha_fin = fecha_fin;
 		}
 		public String getTipo() {
 			return tipo;

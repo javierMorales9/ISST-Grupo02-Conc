@@ -34,8 +34,8 @@ class TarjetaReserva extends React.Component {
    ********************************/
 
   async handleCancelation() {
-    var dele = await fetch(
-      "http://localhost:8080/Concierge/rest/service/" + this.props.id,
+    await fetch(
+      "http://localhost:8080/Concierge/rest/" + (this.props.open ? "openPetition/" : "request/") + this.props.id,
       {
         method: "DELETE",
       }
@@ -105,22 +105,17 @@ class TarjetaReserva extends React.Component {
   async updateService() {
     let data = {
       id: this.props.id,
-      numero_usuarios:
-        this.state.n_user == "" ? this.props.n_user : this.state.n_user,
-      tipo: this.state.tipo == "" ? this.props.tipo : this.state.tipo,
-      solicitud:
-        this.state.solicitud == ""
-          ? this.props.solicitud
-          : this.state.solicitud,
       cliente: JSON.parse(sessionStorage.getItem("entire_client")),
       fecha_inicio: this.toTimestamp(this.state.fecha_inicio),
       fecha_fin: this.toTimestamp(this.state.fecha_fin),
-      precio: this.props.precio,
-      disponibilidad: this.props.disponibilidad,
+      numero_usuarios: this.state.n_user == "" ? this.props.n_user : this.state.n_user,
+      service: await fetch("http://localhost:8080/Concierge/rest/service/" + this.props.service_id).then((res) => res.json())
     };
 
+    console.log(data)
+
     await fetch(
-      "http://localhost:8080/Concierge/rest/service/" + this.props.id,
+      "http://localhost:8080/Concierge/rest/request/" + this.props.id,
       {
         method: "POST",
         mode: "cors",
@@ -182,7 +177,7 @@ class TarjetaReserva extends React.Component {
                     width="300px"
                     style={{
                       minHeight: "200px",
-                      paddingTop: "50px",
+                      paddingTop: "0px",
                       minWidth: "275px",
                     }}
                   />
@@ -228,15 +223,6 @@ class TarjetaReserva extends React.Component {
                     name="fecha_fin"
                     placeholder={this.props.fecha_fin}
                     onChange={this.handleDateChange}
-                  ></input>
-                  <p style={{ margin: "10px 0px 10px 0px" }}>
-                    Solicitud: </p>
-                  <input
-                    type="text"
-                    name="solicitud"
-                    style={{ marginBottom: "20px" }}
-                    placeholder={this.props.solicitud}
-                    onChange={this.handleChange}
                   ></input>
                 </div>
               </div>

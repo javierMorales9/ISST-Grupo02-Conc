@@ -50,9 +50,6 @@ export default class Form extends React.Component {
                 return (
                     <div className="formulario_reserva">
                         <form>
-                            <label id="form_hab">
-                                Nº habitacion: <input type="text" name="name"/>
-                            </label>
                             <div style={{marginBottom:'10px'}}>
                                 <label id="form_tipo" for="date">Fecha:</label>
                                 <input type="date" id="date" name="date"/>

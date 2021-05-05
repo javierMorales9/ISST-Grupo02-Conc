@@ -13,6 +13,8 @@
                 <property name="show_sql">true</property>
                 <property name="hbm2ddl.auto">update</property>
                 <mapping class="es.upm.dit.isst.grupo02.concierge.model.Client"/>
+                <mapping class="es.upm.dit.isst.grupo02.concierge.model.Request"/>
+                <mapping class="es.upm.dit.isst.grupo02.concierge.model.OpenPetition"/>
                 <mapping class="es.upm.dit.isst.grupo02.concierge.model.Service"/>
         </session-factory>
 </hibernate-configuration>
