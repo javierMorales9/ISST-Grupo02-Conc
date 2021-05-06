@@ -15,10 +15,11 @@ class TarjetaReserva extends React.Component {
       edit: false,
       n_habitacion: this.props.n_habitacion,
       n_user: this.props.n_user,
+      nombre: this.props.nombre,
       tipo: this.props.tipo,
-      solicitud: this.props.solicitud,
       fecha_fin: fecha_fin,
       fecha_inicio: fecha_inicio,
+      solicitud: this.props.solicitud,
       chat: false,
       cancel_allowed: false,
       alert: "anulada",
@@ -44,7 +45,7 @@ class TarjetaReserva extends React.Component {
       .then((res) => console.log(res));
     this.props.alert.show(
       "La reserva " +
-        this.props.solicitud +
+        this.props.tipo +
         " fué " +
         this.state.alert +
         " exitosamente.",
@@ -108,6 +109,7 @@ class TarjetaReserva extends React.Component {
       cliente: JSON.parse(sessionStorage.getItem("entire_client")),
       fecha_inicio: this.toTimestamp(this.state.fecha_inicio),
       fecha_fin: this.toTimestamp(this.state.fecha_fin),
+      solicitud: this.state.solicitud == "" ? this.props.solicitud : this.state.solicitud,
       numero_usuarios: this.state.n_user == "" ? this.props.n_user : this.state.n_user,
       service: await fetch("http://localhost:8080/Concierge/rest/service/" + this.props.service_id).then((res) => res.json())
     };
@@ -124,7 +126,7 @@ class TarjetaReserva extends React.Component {
       }
     );
     this.props.alert.show(
-      "La reserva " + this.state.solicitud + " fué modificada exitosamente.",
+      "La reserva " + this.state.tipo + " fué modificada exitosamente.",
       {
         timeout: 0,
         closeCopy: "Aceptar",
@@ -149,7 +151,6 @@ class TarjetaReserva extends React.Component {
 
   render() {
     const chat = this.state.chat;
-
     if (this.state.edit) {
       return (
         //el texto no varia, siempre es mod reserva o cancelar reserva,
@@ -159,7 +160,7 @@ class TarjetaReserva extends React.Component {
           <div className="booking_smallcontainer">
             <div className="first_group">
               <div>
-                {this.props.tipo === "Premium" ? (
+                {this.props.nombre === "Premium" ? (
                   <img
                     src={Habitacion}
                     height="100px"
@@ -182,7 +183,7 @@ class TarjetaReserva extends React.Component {
                     }}
                   />
                 )}
-                {this.props.tipo === "Premium" ? (
+                {this.props.nombre === "Premium" ? (
                   <div>
                     <ProgressBar
                       text={this.state.cancel_button}
@@ -224,12 +225,22 @@ class TarjetaReserva extends React.Component {
                     placeholder={this.props.fecha_fin}
                     onChange={this.handleDateChange}
                   ></input>
+                  <p style={{ margin: "10px 0px 10px 0px" }}>
+                    Solicitud:{" "}
+                  </p>
+                  <input
+                    type="text"
+                    name="solicitud"
+                    style={{ width: "163px" }}
+                    placeholder={this.props.solicitud}
+                    onChange={this.handleChange}
+                  />
                 </div>
               </div>
             </div>
 
             <div className="second_container" style={{ marginBottom: "20px" }}>
-              {this.contactoPremium(this.props.tipo)}
+              {this.contactoPremium(this.props.nombre)}
               <button
                 className="booking_buttons"
                 style={{ marginLeft: "40px", marginRight: "40px" }}
@@ -251,7 +262,7 @@ class TarjetaReserva extends React.Component {
             {chat ? (
               <Chatbot
                 n_habitacion={this.props.n_habitacion}
-                solicitud={this.props.solicitud}
+                solicitud={this.props.tipo}
               />
             ) : (
               <span></span>
@@ -260,7 +271,7 @@ class TarjetaReserva extends React.Component {
         </div>
       );
     } else {
-      //console.log(this.state);
+      
       return (
         //el texto no varia, siempre es mod reserva o cancelar reserva,
         //pero el link variará en función de la reserva.
@@ -269,7 +280,7 @@ class TarjetaReserva extends React.Component {
           <div className="booking_smallcontainer">
             <div className="first_group">
               <div>
-                {this.props.tipo === "Premium" ? (
+                {this.props.nombre === "Premium" ? (
                   <img
                     src={Habitacion}
                     height="100px"
@@ -292,7 +303,7 @@ class TarjetaReserva extends React.Component {
                     }}
                   />
                 )}
-                {this.props.tipo === "Premium" ? (
+                {this.props.nombre === "Premium" ? (
                   <div>
                     <ProgressBar
                       text={this.state.cancel_button}
@@ -322,14 +333,15 @@ class TarjetaReserva extends React.Component {
                     {"-"}
                     {this.state.fecha_fin.getFullYear()}
                   </p>
-                  <p>Tipo de Servicio: {this.state.tipo}</p>
-                  <p>Solicitud: {this.state.solicitud} </p>
+                  <p>Servicio: {this.state.nombre}</p>
+                  {this.props.nombre === "Premium" ? <p>Solicitud: {this.state.tipo} </p> : 
+                  <div><p>Tipo: {this.state.tipo} </p> <p>Solicitud: {this.state.solicitud} </p></div>}
                 </div>
               </div>
             </div>
 
             <div className="second_container" style={{ marginBottom: "20px" }}>
-              {this.contactoPremium(this.props.tipo)}
+              {this.contactoPremium(this.props.nombre)}
 
               <button
                 className="booking_buttons"
@@ -343,7 +355,7 @@ class TarjetaReserva extends React.Component {
             {chat ? (
               <Chatbot
                 n_habitacion={this.props.n_habitacion}
-                solicitud={this.props.solicitud}
+                solicitud={this.props.tipo}
               />
             ) : (
               <span></span>
