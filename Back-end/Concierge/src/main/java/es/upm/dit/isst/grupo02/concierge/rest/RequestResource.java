@@ -32,9 +32,10 @@ public class RequestResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(Request cnew) throws URISyntaxException {
 		Request c = RequestDAOImplementation.getInstancia().create(cnew);
-		
+		System.out.println(c);
 	    if (c != null) {
 	        URI uri = new URI("/Concierge/rest/request/" + c.getId());
+	        
 	        return Response.created(uri).build();
 	    }
 	    return Response.status(Response.Status.NOT_FOUND).build();

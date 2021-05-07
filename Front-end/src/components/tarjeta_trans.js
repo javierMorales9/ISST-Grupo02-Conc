@@ -9,11 +9,16 @@ function rutaImg(props){
 class TarjetaTrans extends React.Component {
     constructor(props){
 		super(props);
-		this.state = {
+    
+        this.state = {
 			receivedtext: "",
             num_usrs:0,
+            fecha_inicio : new Date()
+    
+
             //date: "",
 		}
+    
     this.updateServiceRequest = this.updateServiceRequest.bind(this)
 	}
 
@@ -33,8 +38,18 @@ class TarjetaTrans extends React.Component {
 
     }
     
+    handleDateChange = (e) => {
+        const { name, value } = e.target;
+        this.setState({ [name]: new Date(value) });
+        };
 
-
+    //para guardar en la bbdd la fecha en el formato correcto
+    toTimestamp(date) {
+        var datum = new Date(
+        Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
+        );
+        return datum.getTime();
+    }
     async updateServiceRequest() {
         if (this.state.receivedtext===""){
             //alert("xd")
@@ -49,8 +64,10 @@ class TarjetaTrans extends React.Component {
         let data = {
             //fecha_fin: this.state.date,
             //fecha_inicio:this.state.date,
-            fecha_inicio:"2021-02-02",
-            fecha_fin:"2021-02-03",
+            //fecha_inicio:"2021-02-02",
+            //fecha_fin:"2021-02-03",
+            fecha_inicio: this.toTimestamp(this.state.fecha_inicio),
+            fecha_fin: this.toTimestamp(this.state.fecha_inicio),
             numero_usuarios: parseInt(this.state.num_usrs),
             cliente: this.props.client,
             service: this.props.serv,
@@ -61,7 +78,7 @@ class TarjetaTrans extends React.Component {
             console.log(data)        
        		
     
-        await fetch("http://localhost:8080/Concierge/rest/request",{
+        await fetch("http://localhost:8080/Concierge/rest/request/" ,{
             method:'PUT', 
             mode: 'cors',
             headers:{"Content-Type":"application/json"},
@@ -88,15 +105,28 @@ class TarjetaTrans extends React.Component {
                     <div className="flip-box-back">
                         <h2 className="titulo_ocio">Nueva Reserva</h2>
                             <div className="formulario_reserva">
-                            <form>
+                            <div>
+                                {
+                                /**
+                                 *    <div style={{marginBottom:'10px'}}>
+                                    <label id = "form_tipo">
+                                    Fecha  
+                                    <input type="date" id="date" name="fecha_inicio" onChange={this.handleDateChange} />
+                                    </label>
+                                
+                                
+                                
+                                </div>
+                             
+                                 *  */    
+                                }
                                 <div style={{marginBottom:'10px'}}>
-                                    <label id="form_tipo" for="date">Fecha:</label>
-                                    <input type="date" id="date" name="date"/>
-                                </div>
-                                <div>
-                                    <label id="form_tipo" for="appt">Hora:</label>
-                                    <input type="time" id="appt" name="appt"/>
-                                </div>
+                                <label id="form_tipo" for="date">Fecha:</label>
+                                <input type="date" id="date" name="fecha_inicio" onChange={this.handleDateChange}/>
+                            </div>
+                            
+                                
+                                
                                 <label id = "form_tipo">
                                     Lugar de destino:  
                                     <input type = "text" style = {{paddingLeft: '5px' ,marginLeft: '5px'}} value={this.state.receivedtext || '' } onChange = {(e)=> this.changeState(e.target.value)}/>
@@ -107,14 +137,11 @@ class TarjetaTrans extends React.Component {
                                 </label>
                               
                                 <label id="form_esp">
-                                    Número de habitación: {this.props.client.numeroHabitacion}
-                                </label>
-                                <label id="form_esp">
                                     Tipo de vehículo: {this.props.name}
                                 </label>
 
                                 <button id="form_submit" onClick = {this.updateServiceRequest}>Enviar</button>
-                            </form>
+                            </div>
                             <div className="map">
                                 {/*para cada reserva habría que generar un pin y pasárselo como prop a MapContainer*/}
                                 <MapContainer />
