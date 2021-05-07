@@ -12,7 +12,7 @@ import Navbar from './components/navbar.js';
 import NavbarInicio from './components/navbarInicio.js';
 import Login from './pages/login.js';
 import './public/navbar.css';
-import {loginAction, savetheclient} from './redux/actions.js';
+import {loginAction, savetheclient, savetheservicesavailabe} from './redux/actions.js';
 import { positions, Provider } from "react-alert";
 import AlertMUITemplate from "react-alert-template-mui";
 import AlertTemplate from "react-alert-template-basic";
@@ -31,7 +31,7 @@ class App extends React.Component {
 
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     let url = 'https://acallejasz.github.io' + process.env.PUBLIC_URL + '/';
     let url_localHost = 'http://localhost:3000' + process.env.PUBLIC_URL + '/';
 
@@ -44,6 +44,15 @@ class App extends React.Component {
        entire_client = JSON.parse(entire_client)
     this.props.dispatch(loginAction(isLoged,id));
     this.props.dispatch(savetheclient(entire_client))
+    
+    
+    const all_serv = await fetch("http://localhost:8080/Concierge/rest/service/",{
+      method: "GET",
+      mode:'cors',
+    }).then(res => res.json());
+    //console.log(all_serv)
+
+    this.props.dispatch(savetheservicesavailabe(all_serv))
     
 
     if(window.location.href+"/" === url_localHost || window.location.href === url_localHost){
@@ -136,7 +145,7 @@ class App extends React.Component {
               <Route path="/transport">
                 <div>
                   {this.state.primer_componente}
-                  <Transport login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
+                  <Transport login={this.props.login} services = {this.props.all_services} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
                 </div>
               </Route>
               <Route path="/login">

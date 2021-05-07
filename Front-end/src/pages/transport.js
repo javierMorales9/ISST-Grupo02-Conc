@@ -5,10 +5,17 @@ import MapContainer from '../components/map.js';
 import Form from '../components/form.js';
 import '../public/transport.css';
 import '../public/main_styles.css';
+import TarjetaTrans from '../components/tarjeta_trans.js';
+import '../public/leisure.css';
 
 export default class Transport extends React.Component {
 
+    
+
+
     render() {
+
+//        console.log(this.props.services)
 
 	if (this.props.cliente == null){
 	    window.location.href = 'http://localhost:3000' + process.env.PUBLIC_URL + '/login';
@@ -31,25 +38,32 @@ export default class Transport extends React.Component {
         } else {
             return (
                 <div>
-                    <h1 className="subtitulo">Transporte</h1>
-                    <hr className="raya_titulo"/>
-
-                    <h2 className="category">Nueva Reserva</h2>
-                    <div id="reseras_general_transporte"> 
-                        <div id="reservas_hechas">
-                            <div id="mis_reservas">
-                                <Form className='reserva_trasporte' page='transport'/>
-                            </div>
-
-                            <div className="map">
-                                {/*para cada reserva habría que generar un pin y pasárselo como prop a MapContainer*/}
-                                <MapContainer />
-                            </div>
-                        </div>
+                <h1 className='subtitulo'>Transporte</h1>
+                <hr style={{color:'gray', width: '70%', border:'2px solid'}}/>
+    
+                <div className='container'>
+                    <div>
+                    {Object.values(this.props.services).map((val,key) =>
+                            val.nombre === "Transporte" ? 
+                                <TarjetaTrans client = {this.props.cliente} serv = {val} name = {val.tipo=== "Avion" ? "Avión" : val.tipo} imagen = {val.tipo.toLowerCase().replace(/\s/g, '') + ".jpg"}/>
+                             : <div></div>
+                            
+                            ) 
+                    }
                     </div>
-                    <Footer/>
+                
+                    {
+//                        <TarjetaTrans name={'Private driver'} imagen={'privatedriver.jpg'}/>
+ //                   <TarjetaTrans name={'Uber'} imagen={'uber.jpg'}/>
+  //                  <TarjetaTrans name={'Taxi'} imagen={'taxi.jpg'}/>
+   //                 <TarjetaTrans name={'Avión'} imagen={'avion.jpg'}/>
+    //                <TarjetaTrans name={'Tren'} imagen={'tren.jpg'}/>
+                }
                 </div>
-            );
+    
+                <Footer/>
+              </div>
+                     );
         }
     }
 }
