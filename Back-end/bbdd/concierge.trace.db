@@ -249,3 +249,11 @@ Caused by: org.h2.jdbc.JdbcSQLException: La conexión no fue cerrada por la apli
 The connection was not closed by the application and is garbage collected [90018-197]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
 	... 14 more
+2021-05-07 16:36:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'' (SERVICE: PRECIO DOUBLE NOT NULL)"
+Data conversion error converting "'' (SERVICE: PRECIO DOUBLE NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."SERVICE"("ID","DISPONIBILIDAD","NOMBRE","PRECIO","TIPO")VALUES(?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5) [22018-197]
+2021-05-07 16:36:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'' (SERVICE: PRECIO DOUBLE NOT NULL)"
+Data conversion error converting "'' (SERVICE: PRECIO DOUBLE NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."SERVICE"("ID","DISPONIBILIDAD","NOMBRE","PRECIO","TIPO")VALUES(?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5) [22018-197]
