@@ -4,6 +4,11 @@ import ProgressBar from "../components/progressBar.js";
 import Chatbot from "../components/chatbot.js";
 import { withAlert } from "react-alert";
 import "../public/booking.css";
+function rutaImg(props) {
+  return "/conciergeWeb/media/" + props;
+}
+const opts = ["Taxi", "Tren", "Avion", "Uber", "Private driver", "Premium"];
+const ocio = ["Cine", "Spa", "Gym", "Teatro", "Premium"];
 
 class TarjetaReserva extends React.Component {
   constructor(props) {
@@ -36,13 +41,13 @@ class TarjetaReserva extends React.Component {
 
   async handleCancelation() {
     await fetch(
-      "http://localhost:8080/Concierge/rest/" + (this.props.open ? "openPetition/" : "request/") + this.props.id,
+      "http://localhost:8080/Concierge/rest/" +
+        (this.props.open ? "openPetition/" : "request/") +
+        this.props.id,
       {
         method: "DELETE",
       }
-    )
-      .then((res) => res.text())
-      .then((res) => console.log(res));
+    ).then((res) => res.text());
     this.props.alert.show(
       "La reserva " +
         this.props.tipo +
@@ -109,12 +114,16 @@ class TarjetaReserva extends React.Component {
       cliente: JSON.parse(sessionStorage.getItem("entire_client")),
       fecha_inicio: this.toTimestamp(this.state.fecha_inicio),
       fecha_fin: this.toTimestamp(this.state.fecha_fin),
-      solicitud: this.state.solicitud == "" ? this.props.solicitud : this.state.solicitud,
-      numero_usuarios: this.state.n_user == "" ? this.props.n_user : this.state.n_user,
-      service: await fetch("http://localhost:8080/Concierge/rest/service/" + this.props.service_id).then((res) => res.json())
+      solicitud:
+        this.state.solicitud == ""
+          ? this.props.solicitud
+          : this.state.solicitud,
+      numero_usuarios:
+        this.state.n_user == "" ? this.props.n_user : this.state.n_user,
+      service: await fetch(
+        "http://localhost:8080/Concierge/rest/service/" + this.props.service_id
+      ).then((res) => res.json()),
     };
-
-    console.log(data)
 
     await fetch(
       "http://localhost:8080/Concierge/rest/request/" + this.props.id,
@@ -151,6 +160,7 @@ class TarjetaReserva extends React.Component {
 
   render() {
     const chat = this.state.chat;
+    console.log(this.props.nombre);
     if (this.state.edit) {
       return (
         //el texto no varia, siempre es mod reserva o cancelar reserva,
@@ -162,18 +172,34 @@ class TarjetaReserva extends React.Component {
               <div>
                 {this.props.nombre === "Premium" ? (
                   <img
-                    src={Habitacion}
+                    src={rutaImg(
+                      this.props.nombre.toLowerCase().replace(/\s/g, "") +
+                        ".png"
+                    )}
                     height="100px"
-                    width="300px"
+                    width="200px"
                     style={{
                       minHeight: "200px",
                       paddingTop: "23px",
+                      paddingLeft: "15px",
                       minWidth: "275px",
                     }}
                   />
                 ) : (
                   <img
-                    src={Habitacion}
+                    src={
+                      ocio.includes(this.props.tipo)
+                        ? rutaImg(
+                            this.props.tipo.toLowerCase().replace(/\s/g, "") +
+                              ".png"
+                          )
+                        : opts.includes(this.props.tipo)
+                        ? rutaImg(
+                            this.props.tipo.toLowerCase().replace(/\s/g, "") +
+                              ".jpg"
+                          )
+                        : Habitacion
+                    }
                     height="220px"
                     width="300px"
                     style={{
@@ -225,9 +251,7 @@ class TarjetaReserva extends React.Component {
                     placeholder={this.props.fecha_fin}
                     onChange={this.handleDateChange}
                   ></input>
-                  <p style={{ margin: "10px 0px 10px 0px" }}>
-                    Solicitud:{" "}
-                  </p>
+                  <p style={{ margin: "10px 0px 10px 0px" }}>Solicitud: </p>
                   <input
                     type="text"
                     name="solicitud"
@@ -271,7 +295,6 @@ class TarjetaReserva extends React.Component {
         </div>
       );
     } else {
-      
       return (
         //el texto no varia, siempre es mod reserva o cancelar reserva,
         //pero el link variará en función de la reserva.
@@ -282,18 +305,34 @@ class TarjetaReserva extends React.Component {
               <div>
                 {this.props.nombre === "Premium" ? (
                   <img
-                    src={Habitacion}
+                    src={rutaImg(
+                      this.props.nombre.toLowerCase().replace(/\s/g, "") +
+                        ".png"
+                    )}
                     height="100px"
-                    width="300px"
+                    width="200px"
                     style={{
                       minHeight: "200px",
                       paddingTop: "23px",
+                      paddingLeft: "15px",
                       minWidth: "275px",
                     }}
                   />
                 ) : (
                   <img
-                    src={Habitacion}
+                    src={
+                      ocio.includes(this.props.tipo)
+                        ? rutaImg(
+                            this.props.tipo.toLowerCase().replace(/\s/g, "") +
+                              ".png"
+                          )
+                        : opts.includes(this.props.tipo)
+                        ? rutaImg(
+                            this.props.tipo.toLowerCase().replace(/\s/g, "") +
+                              ".jpg"
+                          )
+                        : Habitacion
+                    }
                     height="220px"
                     width="300px"
                     style={{
@@ -334,8 +373,14 @@ class TarjetaReserva extends React.Component {
                     {this.state.fecha_fin.getFullYear()}
                   </p>
                   <p>Servicio: {this.state.nombre}</p>
-                  {this.props.nombre === "Premium" ? <p>Solicitud: {this.state.tipo} </p> : 
-                  <div><p>Tipo: {this.state.tipo} </p> <p>Solicitud: {this.state.solicitud} </p></div>}
+                  {this.props.nombre === "Premium" ? (
+                    <p>Solicitud: {this.state.tipo} </p>
+                  ) : (
+                    <div>
+                      <p>Tipo: {this.state.tipo} </p>{" "}
+                      <p>Solicitud: {this.state.solicitud} </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

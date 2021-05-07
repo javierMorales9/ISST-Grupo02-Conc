@@ -50,7 +50,6 @@ class App extends React.Component {
       method: "GET",
       mode:'cors',
     }).then(res => res.json());
-    //console.log(all_serv)
 
     this.props.dispatch(savetheservicesavailabe(all_serv))
     
@@ -115,7 +114,7 @@ class App extends React.Component {
               <Route path="/leisure">
                 <div>
                   {this.state.primer_componente}
-                  <Leisure login={this.props.login} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
+                  <Leisure login={this.props.login} services = {this.props.all_services} cliente={this.props.entire_client} id_cliente={this.props.id_cliente}/>
                 </div>
               </Route>
               <Route path="/booking">

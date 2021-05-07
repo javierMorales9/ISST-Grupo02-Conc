@@ -41,8 +41,8 @@ class Premium extends React.Component {
     }else{
       let data = {
         disponibilidad:true,
-        fecha_inicio:"2021-02-02",
-        fecha_fin:"2021-02-03",
+        fecha_inicio: new Date(),
+        fecha_fin: new Date(),
         numero_usuarios:1,
         precio:20.1,
         solicitud: this.state.receivedtext,

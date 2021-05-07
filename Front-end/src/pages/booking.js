@@ -33,9 +33,8 @@ export default class Booking extends React.Component {
       .then((res) => res.json())
       .then((open) => {
         this.setState({ open: open });
-      });  
+      });
   };
-
 
   render() {
     if (sessionStorage.getItem("login") == null) {

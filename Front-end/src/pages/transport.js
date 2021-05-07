@@ -10,12 +10,7 @@ import '../public/leisure.css';
 
 export default class Transport extends React.Component {
 
-    
-
-
     render() {
-
-//        console.log(this.props.services)
 
 	if (this.props.cliente == null){
 	    window.location.href = 'http://localhost:3000' + process.env.PUBLIC_URL + '/login';
@@ -51,16 +46,7 @@ export default class Transport extends React.Component {
                             ) 
                     }
                     </div>
-                
-                    {
-//                        <TarjetaTrans name={'Private driver'} imagen={'privatedriver.jpg'}/>
- //                   <TarjetaTrans name={'Uber'} imagen={'uber.jpg'}/>
-  //                  <TarjetaTrans name={'Taxi'} imagen={'taxi.jpg'}/>
-   //                 <TarjetaTrans name={'Avión'} imagen={'avion.jpg'}/>
-    //                <TarjetaTrans name={'Tren'} imagen={'tren.jpg'}/>
-                }
                 </div>
-    
                 <Footer/>
               </div>
                      );
