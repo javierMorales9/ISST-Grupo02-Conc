@@ -249,3 +249,9 @@ select.formulario, input.formulario {
     outline:none;
     transition-duration: 0.4s;
 }
+
+#select{
+    font-family: Ibarra Real Nova;
+    font-size: 22px;
+    margin-left: 10px;
+}

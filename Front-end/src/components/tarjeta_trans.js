@@ -62,6 +62,8 @@ class TarjetaTrans extends React.Component {
         solicitud: this.state.receivedtext,
       };
 
+      // console.log(data);
+
       await fetch("http://localhost:8080/Concierge/rest/request/", {
         method: "PUT",
         mode: "cors",
