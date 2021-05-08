@@ -24,6 +24,7 @@ class RoomService extends React.Component {
   //     }
   //   })
   async sendRequest(solicitud, serv, n) {
+    
     var date = new Date();
     var datum = new Date(
       Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
@@ -54,7 +55,9 @@ class RoomService extends React.Component {
            "http://localhost:3000" + process.env.PUBLIC_URL + "/booking";
        },
      });
-  }
+
+    }
+
 
   handleChangeAlmohada = (event) => {
     this.setState({ tipoAlmohada: event.target.value });
@@ -246,10 +249,10 @@ class RoomService extends React.Component {
         {/*Lavanderia*/}
         <div className="laundry_container">
           <div id="id_lavanderia">
-            <div className="sin-background">Lavanderia</div>
+            <div className="sin-background">Lavandería</div>
           </div>
 
-          <form className="formulario_container">
+          <div className="formulario_container">
             <div className="formulario">
               <p> Elija la hora: </p>
               <div className="formulario">
@@ -283,8 +286,9 @@ class RoomService extends React.Component {
                   );
                 }}
               />
+
             </div>
-          </form>
+          </div>
         </div>
 
         <Footer />
