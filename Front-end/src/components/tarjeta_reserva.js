@@ -7,8 +7,21 @@ import "../public/booking.css";
 function rutaImg(props) {
   return "/conciergeWeb/media/" + props;
 }
-const opts = ["Taxi", "Tren", "Avion", "Uber", "Private driver", "Premium","Desayuno" ];
-const ocio = ["Cine", "Spa", "Gym", "Teatro", "Premium"];
+const opts = [
+  "Taxi",
+  "Tren",
+  "Avion",
+  "Uber",
+  "Private driver",
+  "Premium",
+  "Desayuno",
+  "Almohada",
+  "Lavanderia",
+  "Limpieza",
+  "Sabanas",
+  "Toallas",
+]; //JPEG
+const ocio = ["Cine", "Spa", "Gym", "Teatro", "Premium"]; //PNG
 
 class TarjetaReserva extends React.Component {
   constructor(props) {

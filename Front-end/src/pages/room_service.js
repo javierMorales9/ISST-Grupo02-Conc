@@ -24,7 +24,6 @@ class RoomService extends React.Component {
   //     }
   //   })
   async sendRequest(solicitud, serv, n) {
-    
     var date = new Date();
     var datum = new Date(
       Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
@@ -48,16 +47,14 @@ class RoomService extends React.Component {
     // no se creen filas en la tabla services
 
     this.props.alert.show("La petición ha sido completada", {
-       timeout: 0,
-       closeCopy: "Aceptar",
-       onClose: () => {
-         window.location.href =
-           "http://localhost:3000" + process.env.PUBLIC_URL + "/booking";
-       },
-     });
-
-    }
-
+      timeout: 0,
+      closeCopy: "Aceptar",
+      onClose: () => {
+        window.location.href =
+          "http://localhost:3000" + process.env.PUBLIC_URL + "/booking";
+      },
+    });
+  }
 
   handleChangeAlmohada = (event) => {
     this.setState({ tipoAlmohada: event.target.value });
@@ -147,7 +144,7 @@ class RoomService extends React.Component {
                 <div className="sin-background">Confort</div>
               </div>
               <div>
-                <ul>
+                <ul id="ulStyle">
                   <li>
                     Almohadas{" "}
                     <select
@@ -195,8 +192,8 @@ class RoomService extends React.Component {
                     />
                   </li>
                   <li>
-                    <p>Limpieza</p>
                     <div className="formulario">
+                      <p>Limpieza</p>
                       <label
                         id="form_tipo"
                         for="appt"
@@ -286,7 +283,6 @@ class RoomService extends React.Component {
                   );
                 }}
               />
-
             </div>
           </div>
         </div>
