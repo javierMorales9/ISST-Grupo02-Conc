@@ -5,7 +5,7 @@ import "../public/main_styles.css";
 import "../public/room_service.css";
 import { withAlert } from "react-alert";
 
-export default class RoomService extends React.Component {
+class RoomService extends React.Component {
   constructor(props) {
     super(props);
 
@@ -46,14 +46,14 @@ export default class RoomService extends React.Component {
     // recuerda pasar en el body el objeto servicio entero para que
     // no se creen filas en la tabla services
 
-    // this.props.alert.show("La petición ha sido completada", {
-    //   timeout: 0,
-    //   closeCopy: "Aceptar",
-    //   onClose: () => {
-    //     window.location.href =
-    //       "http://localhost:3000" + process.env.PUBLIC_URL + "/booking";
-    //   },
-    // });
+    this.props.alert.show("La petición ha sido completada", {
+       timeout: 0,
+       closeCopy: "Aceptar",
+       onClose: () => {
+         window.location.href =
+           "http://localhost:3000" + process.env.PUBLIC_URL + "/booking";
+       },
+     });
   }
 
   handleChangeAlmohada = (event) => {
@@ -292,3 +292,5 @@ export default class RoomService extends React.Component {
     );
   }
 }
+
+export default withAlert()(RoomService);
