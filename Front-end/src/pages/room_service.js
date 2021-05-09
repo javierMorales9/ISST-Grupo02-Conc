@@ -12,6 +12,7 @@ class RoomService extends React.Component {
     this.state = {
       horaLavanderia: "12:00",
       tipoAlmohada: "Fibra",
+      tipoToalla: "Toalla de cara",
       horaLimpieza: "12:00",
       tipoDesayuno: "Desayuno Continental",
       nDesayuno: 2,
@@ -61,6 +62,10 @@ class RoomService extends React.Component {
     this.setState({ tipoAlmohada: event.target.value });
   };
 
+  handleChangeToalla = (event) => {
+    this.setState({ tipoToalla: event.target.value });
+  };
+
   handleHour = (event) => {
     this.setState({ horaLimpieza: event.target.value });
   };
@@ -93,7 +98,7 @@ class RoomService extends React.Component {
           <div className="cafeconf_container">
             <div className="room_container">
               <div id="id_cafeteria">
-                <div className="sin-background">Cafeteria</div>
+                <div className="sin-background">Cafetería</div>
               </div>
               <div className="secondcont">
                 <p style={{ margin: "23px" }}>
@@ -145,72 +150,61 @@ class RoomService extends React.Component {
                 <div className="sin-background">Confort</div>
               </div>
               <div className="secondcont">
-                <div>
-                  <div className="formulario">
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <p>Almohadas:</p>
-                      <select
-                        id="select"
-                        value={this.state.tipoAlmohada}
-                        onChange={this.handleChangeAlmohada}
-                        style={{ marginLeft: "0px" }}
-                      >
-                        <option value="Viscoelástica">Viscoelástica</option>
-                        <option value="Fibra" selected>
-                          Fibra
-                        </option>
-                        <option value="Látex">Látex</option>
-                        <option value="Duvet/Plumón">Duvet/Plumón</option>
-                        <option value="Cervical">Cervical</option>
-                        <option value="embarazadas">Para embarazadas</option>
-                      </select>
-                    </div>
-                  </div>
-                  <input
-                    id="form_submit"
-                    type="submit"
-                    value="Pedir"
-                    onClick={() => {
-                      this.sendRequest(
-                        "Llevar almohada " + this.state.tipoAlmohada,
-                        "Almohada",
-                        1
-                      );
-                    }}
-                    style={{
-                      marginBottom: "3px",
-                      width: "180px",
-                      marginTop: "20px",
-                    }}
-                  />
-                </div>
-                <div>
-                  <div
-                    className="formulario"
-                    style={{ justifyContent: "center" }}
-                  >
-                    <p>Cambio toallas </p>
-                  </div>
-                  <input
-                    id="form_submit"
-                    type="submit"
-                    value="Pedir"
-                    onClick={() => {
-                      this.sendRequest("Cambio toallas", "Toallas", 1);
-                    }}
-                    style={{
-                      marginBottom: "3px",
-                      width: "180px",
-                      marginTop: "0px",
-                    }}
-                  />
-                </div>
+                              <div>
+
+
+                                <div className="formulario">
+                                  <div style={{display: "flex",flexDirection: "column", alignItems: "center",}}>
+
+                                    <p>Almohadas:</p>
+
+                                    <select id="select" value={this.state.tipoAlmohada} onChange={this.handleChangeAlmohada} style={{ marginLeft: "0px" }}>
+
+                                        <option value="Viscoelástica">Viscoelástica</option>
+                                        <option value="Fibra" selected>Fibra</option>
+                                        <option value="Látex">Látex</option>
+                                        <option value="Duvet/Plumón">Duvet/Plumón</option>
+                                        <option value="Cervical">Cervical</option>
+                                        <option value="embarazadas">Para embarazadas</option>
+
+                                    </select>
+                                  
+                                  </div>
+                                </div>
+
+                                <input id="form_submit" style={{marginBottom: "3px", width: "180px", marginTop: "20px",}} type="submit" value="Pedir"
+                                                  onClick={() => { this.sendRequest("Llevar almohada " + this.state.tipoAlmohada, "Almohada", 1 );}}/>
+
+                              </div>
+                              
+
+
+                              <div>
+                                <div className="formulario">
+                                 <div style={{display: "flex",flexDirection: "column",alignItems: "center", justifyContent: "center"}}>
+                                 
+                                    <p>Toallas:</p>
+                                    <select id="select" value={this.state.tipoToalla} onChange={this.handleChangeToalla} style={{ marginLeft: "0px" }}>
+
+                                        <option >Toalla de manos</option>
+                                        <option selected>Toalla de cara</option>
+                                        <option>Toalla de ducha</option>
+                                        <option>Toalla para la playa</option>
+                                        <option>Todas</option>
+                                        
+                                    </select>
+                                  </div>
+                                </div>
+                                <input id="form_submit" type="submit" value="Pedir" style={{marginBottom: "3px",width: "180px",marginTop: "20px"}}
+                                        onClick={() => { this.sendRequest(""+this.state.tipoToalla, "Toallas", 1);}}/>
+                              </div>
+                {
+                  /////////////////////////////////////////
+                  //          LA PARTE DE ABAJO          
+                  ////////////////////////////////////////
+                }
+
+
                 <div>
                   <div
                     className="formulario"
