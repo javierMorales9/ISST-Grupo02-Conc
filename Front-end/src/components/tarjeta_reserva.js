@@ -173,7 +173,6 @@ class TarjetaReserva extends React.Component {
 
   render() {
     const chat = this.state.chat;
-    console.log(this.props.nombre);
     if (this.state.edit) {
       return (
         //el texto no varia, siempre es mod reserva o cancelar reserva,

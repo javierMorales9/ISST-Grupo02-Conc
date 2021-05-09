@@ -6,6 +6,15 @@
     width: 500px;
 }
 
+.secondcont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 500px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
 .sin-background{
 	position:relative;
 }

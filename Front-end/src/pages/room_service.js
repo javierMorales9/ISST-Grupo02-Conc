@@ -18,20 +18,23 @@ class RoomService extends React.Component {
     };
   }
 
-  //   this.props.services.map((k) => {
-  //     if (k["tipo"] === "Toallas") {
-  //       return k;
-  //     }
-  //   })
   async sendRequest(solicitud, serv, n) {
     var date = new Date();
     var datum = new Date(
       Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0)
     );
 
+    var ser_id = 0;
+
+    this.props.services.map((el, id) =>
+      el.tipo == serv ? (ser_id = el.id) : ser_id
+    );
+
     let data = {
       cliente: this.props.cliente,
-      service: serv, //es el servicio entero
+      service: await fetch(
+        "http://localhost:8080/Concierge/rest/service/" + ser_id
+      ).then((res) => res.json()),
       solicitud: solicitud,
       numero_usuarios: n,
       fecha_inicio: datum.getTime(),
@@ -43,8 +46,6 @@ class RoomService extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    // recuerda pasar en el body el objeto servicio entero para que
-    // no se creen filas en la tabla services
 
     this.props.alert.show("La petición ha sido completada", {
       timeout: 0,
@@ -94,9 +95,9 @@ class RoomService extends React.Component {
               <div id="id_cafeteria">
                 <div className="sin-background">Cafeteria</div>
               </div>
-              <div>
-                <p>
-                  Seleccione el desayuno
+              <div className="secondcont">
+                <p style={{ margin: "23px" }}>
+                  Seleccione el desayuno:
                   <select id="select" onChange={this.handleTipoDesayuno}>
                     <option value="Desayuno inglés">Desayuno inglés</option>
                     <option value="Desayuno Continental" selected>
@@ -108,7 +109,7 @@ class RoomService extends React.Component {
                     <option value="Desayuno vienés">Desayuno vienés</option>
                   </select>
                 </p>
-                <p>
+                <p style={{ margin: "5px" }}>
                   Cantidad
                   <select id="select" onChange={this.handleNDesayuno}>
                     <option value="1">1</option>
@@ -120,16 +121,16 @@ class RoomService extends React.Component {
                   </select>
                 </p>
 
-                <p>
+                <p style={{ margin: "5px" }}>
                   <input
                     id="form_submit"
                     type="submit"
                     value="Pedir"
-                    style={{ marginBottom: "30px", width: "400px" }}
+                    style={{ marginBottom: "30px", width: "440px" }}
                     onClick={() => {
                       this.sendRequest(
                         this.state.tipoDesayuno,
-                        this.props.services[16],
+                        "Desayuno",
                         this.state.nDesayuno
                       );
                     }}
@@ -143,101 +144,130 @@ class RoomService extends React.Component {
               <div id="id_confort">
                 <div className="sin-background">Confort</div>
               </div>
-              <div>
-                <ul id="ulStyle">
-                  <li>
-                    Almohadas{" "}
-                    <select
-                      id="select"
-                      value={this.state.tipoAlmohada}
-                      onChange={this.handleChangeAlmohada}
+              <div className="secondcont">
+                <div>
+                  <div className="formulario">
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
                     >
-                      <option value="Viscoelástica">Viscoelástica</option>
-                      <option value="Fibra" selected>
-                        Fibra
-                      </option>
-                      <option value="Látex">Látex</option>
-                      <option value="Duvet/Plumón">Duvet/Plumón</option>
-                      <option value="Cervical">Cervical</option>
-                      <option value="embarazadas">Para embarazadas</option>
-                    </select>
-                    <input
-                      id="form_submit"
-                      type="submit"
-                      value="Pedir"
-                      onClick={() => {
-                        this.sendRequest(
-                          "LLevar almohada " + this.state.tipoAlmohada,
-                          this.props.services[12],
-                          1
-                        );
-                      }}
-                      style={{ marginBottom: "30px", width: "400px" }}
-                    />
-                  </li>
-                  <li>
-                    Cambio Toallas
-                    <input
-                      id="form_submit"
-                      type="submit"
-                      value="Pedir"
-                      onClick={() => {
-                        this.sendRequest(
-                          "Cambio toallas",
-                          this.props.services[13],
-                          1
-                        );
-                      }}
-                      style={{ marginBottom: "30px", width: "400px" }}
-                    />
-                  </li>
-                  <li>
-                    <div className="formulario">
-                      <p>Limpieza</p>
-                      <label
-                        id="form_tipo"
-                        for="appt"
-                        style={{ margin: "5px" }}
-                      ></label>
-                      <input
-                        type="time"
-                        id="appt"
-                        name="appt"
-                        onChange={this.handleHour}
-                      />
+                      <p>Almohadas:</p>
+                      <select
+                        id="select"
+                        value={this.state.tipoAlmohada}
+                        onChange={this.handleChangeAlmohada}
+                        style={{ marginLeft: "0px" }}
+                      >
+                        <option value="Viscoelástica">Viscoelástica</option>
+                        <option value="Fibra" selected>
+                          Fibra
+                        </option>
+                        <option value="Látex">Látex</option>
+                        <option value="Duvet/Plumón">Duvet/Plumón</option>
+                        <option value="Cervical">Cervical</option>
+                        <option value="embarazadas">Para embarazadas</option>
+                      </select>
                     </div>
+                  </div>
+                  <input
+                    id="form_submit"
+                    type="submit"
+                    value="Pedir"
+                    onClick={() => {
+                      this.sendRequest(
+                        "Llevar almohada " + this.state.tipoAlmohada,
+                        "Almohada",
+                        1
+                      );
+                    }}
+                    style={{
+                      marginBottom: "3px",
+                      width: "180px",
+                      marginTop: "20px",
+                    }}
+                  />
+                </div>
+                <div>
+                  <div
+                    className="formulario"
+                    style={{ justifyContent: "center" }}
+                  >
+                    <p>Cambio toallas </p>
+                  </div>
+                  <input
+                    id="form_submit"
+                    type="submit"
+                    value="Pedir"
+                    onClick={() => {
+                      this.sendRequest("Cambio toallas", "Toallas", 1);
+                    }}
+                    style={{
+                      marginBottom: "3px",
+                      width: "180px",
+                      marginTop: "0px",
+                    }}
+                  />
+                </div>
+                <div>
+                  <div
+                    className="formulario"
+                    style={{ justifyContent: "center" }}
+                  >
+                    <p>Limpieza:</p>
+                    <label
+                      id="form_tipo"
+                      for="appt"
+                      style={{ margin: "5px" }}
+                    ></label>
                     <input
-                      id="form_submit"
-                      type="submit"
-                      value="Pedir"
-                      style={{ marginBottom: "30px", width: "400px" }}
-                      onClick={() => {
-                        this.sendRequest(
-                          "Servicio de limpieza a las " +
-                            this.state.horaLimpieza,
-                          this.props.services[14],
-                          1
-                        );
-                      }}
+                      type="time"
+                      id="appt"
+                      name="appt"
+                      onChange={this.handleHour}
                     />
-                  </li>
-                  <li>
-                    Cambio sábanas{" "}
-                    <input
-                      id="form_submit"
-                      type="submit"
-                      value="Pedir"
-                      style={{ marginBottom: "30px", width: "400px" }}
-                      onClick={() => {
-                        this.sendRequest(
-                          "Cambiar las sábanas",
-                          this.props.services[15],
-                          1
-                        );
-                      }}
-                    />
-                  </li>
-                </ul>
+                  </div>
+                  <input
+                    id="form_submit"
+                    type="submit"
+                    value="Pedir"
+                    style={{
+                      marginBottom: "3px",
+                      width: "180px",
+                      marginTop: "0px",
+                    }}
+                    onClick={() => {
+                      this.sendRequest(
+                        "Servicio de limpieza a las " + this.state.horaLimpieza,
+                        "Limpieza",
+                        1
+                      );
+                    }}
+                  />
+                </div>
+                <div style={{ justifyContent: "center" }}>
+                  <div
+                    className="formulario"
+                    style={{ justifyContent: "center" }}
+                  >
+                    <p>Cambio sábanas</p>{" "}
+                  </div>
+                  <input
+                    id="form_submit"
+                    type="submit"
+                    value="Pedir"
+                    style={{
+                      marginBottom: "3px",
+                      width: "180px",
+                      marginTop: "00px",
+                    }}
+                    onClick={() => {
+                      this.sendRequest("Cambiar las sábanas", "Sabanas", 1);
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -249,7 +279,10 @@ class RoomService extends React.Component {
             <div className="sin-background">Lavandería</div>
           </div>
 
-          <div className="formulario_container">
+          <div
+            className="formulario_container"
+            style={{ alignItems: "center" }}
+          >
             <div className="formulario">
               <p> Elija la hora: </p>
               <div className="formulario">
@@ -278,7 +311,7 @@ class RoomService extends React.Component {
                 onClick={() => {
                   this.sendRequest(
                     "Servicio de lavandería a las " + this.state.horaLavanderia,
-                    this.props.services[17],
+                    "Lavanderia",
                     1
                   );
                 }}
