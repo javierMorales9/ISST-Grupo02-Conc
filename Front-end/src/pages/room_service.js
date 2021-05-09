@@ -172,15 +172,15 @@ class RoomService extends React.Component {
                                   </div>
                                 </div>
 
-                                <input id="form_submit" style={{marginBottom: "3px", width: "180px", marginTop: "20px",}} type="submit" value="Pedir"
+                                <input id="form_submit" style={{marginLeft: "10px", marginBottom: "3px", width: "180px", marginTop: "20px",}} type="submit" value="Pedir"
                                                   onClick={() => { this.sendRequest("Llevar almohada " + this.state.tipoAlmohada, "Almohada", 1 );}}/>
 
                               </div>
                               
 
 
-                              <div>
-                                <div className="formulario">
+                              <div >
+                                <div className="formulario" >
                                  <div style={{display: "flex",flexDirection: "column",alignItems: "center", justifyContent: "center"}}>
                                  
                                     <p>Toallas:</p>
@@ -195,7 +195,7 @@ class RoomService extends React.Component {
                                     </select>
                                   </div>
                                 </div>
-                                <input id="form_submit" type="submit" value="Pedir" style={{marginBottom: "3px",width: "180px",marginTop: "20px"}}
+                                <input id="form_submit" type="submit" value="Pedir" style={{marginLeft: "15px", marginBottom: "3px",width: "180px",marginTop: "20px"}}
                                         onClick={() => { this.sendRequest(""+this.state.tipoToalla, "Toallas", 1);}}/>
                               </div>
                 {
@@ -228,6 +228,7 @@ class RoomService extends React.Component {
                     type="submit"
                     value="Pedir"
                     style={{
+                      marginLeft:"10px",
                       marginBottom: "3px",
                       width: "180px",
                       marginTop: "0px",
@@ -253,6 +254,7 @@ class RoomService extends React.Component {
                     type="submit"
                     value="Pedir"
                     style={{
+                      marginLeft: "0px",
                       marginBottom: "3px",
                       width: "180px",
                       marginTop: "00px",
