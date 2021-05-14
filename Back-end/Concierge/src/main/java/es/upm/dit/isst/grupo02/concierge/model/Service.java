@@ -17,8 +17,8 @@ public class Service implements Serializable {
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private int id;
+		private String nombre;
 		private String tipo;
-		private String solicitud;
 		private double precio;
 		private boolean disponibilidad;
 		
@@ -34,11 +34,11 @@ public class Service implements Serializable {
 		public void setTipo(String tipo) {
 			this.tipo = tipo;
 		}
-		public String getSolicitud() {
-			return solicitud;
+		public String getNombre() {
+			return nombre;
 		}
-		public void setSolicitud(String solicitud) {
-			this.solicitud = solicitud;
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
 		}
 		public double getPrecio() {
 			return precio;

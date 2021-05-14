@@ -31,6 +31,7 @@ public class Request implements Serializable {
 		@JoinColumn(name = "service", referencedColumnName = "id")
 		private Service service;
 		private int numero_usuarios;
+		private String solicitud;
 		private Date fecha_inicio;
 		private Date fecha_fin;
 		
@@ -69,6 +70,12 @@ public class Request implements Serializable {
 		}
 		public void setFecha_fin(Date fecha_fin) {
 			this.fecha_fin = fecha_fin;
+		}
+		public String getSolicitud() {
+			return solicitud;
+		}
+		public void setSolicitud(String solicitud) {
+			this.solicitud = solicitud;
 		}
 
 		

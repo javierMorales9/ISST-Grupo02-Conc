@@ -76,10 +76,10 @@ export default class Booking extends React.Component {
                 n_habitacion={el.cliente.numeroHabitacion}
                 fecha_inicio={el.fecha_inicio}
                 fecha_fin={el.fecha_fin}
-                tipo={el.tipo}
+                nombre={el.tipo}
                 precio={el.precio}
                 n_user={el.numero_usuarios}
-                solicitud={el.solicitud}
+                tipo={el.solicitud}
                 disponibilidad={el.disponibilidad}
                 id={el.id}
                 key={el.id}
@@ -93,10 +93,11 @@ export default class Booking extends React.Component {
                 n_habitacion={el.cliente.numeroHabitacion}
                 fecha_inicio={el.fecha_inicio}
                 fecha_fin={el.fecha_fin}
-                tipo={el.service.tipo}
+                nombre={el.service.nombre}
                 precio={el.service.precio}
                 n_user={el.numero_usuarios}
-                solicitud={el.service.solicitud}
+                tipo={el.service.tipo}
+                solicitud={el.solicitud}
                 disponibilidad={el.service.disponibilidad}
                 service_id={el.service.id}
                 id={el.id}
