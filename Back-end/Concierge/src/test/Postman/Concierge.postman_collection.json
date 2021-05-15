@@ -1,0 +1,128 @@
+{
+	"id": "58952185-832b-48cf-aa91-11c061cc6f7f",
+	"name": "Concierge",
+	"timestamp": "2021-05-14T11:37:16.538Z",
+	"collection_id": "af41673d-542c-463e-b317-e2f5fe36524a",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "74692b0e-e20b-463f-89d7-bdc7fe6563cd",
+			"name": "get /client (1)",
+			"url": "http://localhost:8080/Concierge/rest/client",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				16
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5338000b-8054-45a3-9d73-d37bedba9e49",
+			"name": "client 1",
+			"url": "http://localhost:8080/Concierge/rest/client/1",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b80f197c-c6dc-40d7-abb4-859d31cfa907",
+			"name": "delete a client 1",
+			"url": "http://localhost:8080/Concierge/rest/client/1?id=1",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				13
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "49cc935d-0072-469b-9093-829f49f7dbc7",
+			"name": "client 1",
+			"url": "http://localhost:8080/Concierge/rest/client/1",
+			"time": 9,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1af1b4be-6489-45a1-af89-6bc08c4bbcdb",
+			"name": "get /client (2)",
+			"url": "http://localhost:8080/Concierge/rest/client",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 62,
+	"collection": {
+		"requests": [
+			{
+				"id": "74692b0e-e20b-463f-89d7-bdc7fe6563cd",
+				"method": "GET"
+			},
+			{
+				"id": "5338000b-8054-45a3-9d73-d37bedba9e49",
+				"method": "GET"
+			},
+			{
+				"id": "b80f197c-c6dc-40d7-abb4-859d31cfa907",
+				"method": "DELETE"
+			},
+			{
+				"id": "49cc935d-0072-469b-9093-829f49f7dbc7",
+				"method": "GET"
+			},
+			{
+				"id": "1af1b4be-6489-45a1-af89-6bc08c4bbcdb",
+				"method": "GET"
+			}
+		]
+	}
+}
