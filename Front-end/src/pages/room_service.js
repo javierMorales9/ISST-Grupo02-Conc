@@ -158,7 +158,7 @@ class RoomService extends React.Component {
 
                                     <p>Almohadas:</p>
 
-                                    <select id="select" value={this.state.tipoAlmohada} onChange={this.handleChangeAlmohada} style={{ marginLeft: "0px" }}>
+                                    <select id="select" value={this.state.tipoAlmohada} onChange={this.handleChangeAlmohada} style={{ marginLeft: "9px" }}>
 
                                         <option value="Viscoelástica">Viscoelástica</option>
                                         <option value="Fibra" selected>Fibra</option>
@@ -184,7 +184,7 @@ class RoomService extends React.Component {
                                  <div style={{display: "flex",flexDirection: "column",alignItems: "center", justifyContent: "center"}}>
                                  
                                     <p>Toallas:</p>
-                                    <select id="select" value={this.state.tipoToalla} onChange={this.handleChangeToalla} style={{ marginLeft: "0px" }}>
+                                    <select id="select" value={this.state.tipoToalla} onChange={this.handleChangeToalla} style={{ marginLeft: "7px" }}>
 
                                         <option >Toalla de manos</option>
                                         <option selected>Toalla de cara</option>
